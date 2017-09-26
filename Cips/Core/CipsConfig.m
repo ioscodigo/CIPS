@@ -1,25 +1,30 @@
 //
-//  HTTPHelper.m
+//  ChipsConfig.m
 //  Pods
 //
-//  Created by Fajar on 9/22/17.
+//  Created by Fajar on 9/26/17.
 //
 //
 
-#import "HTTPHelper.h"
+#import "CipsConfig.h"
 
+@interface Cips(){
+    NSString *AppKey;
+    NSString *ScreetKey;
+}
 
+@end
 
-@implementation HTTPHelper
+@implementation Cips
 
-static HTTPHelper *obj = nil;
+static Cips *obj = nil;
 
-+(HTTPHelper*)instance
++(Cips*)instance
 {
-    @synchronized([HTTPHelper class])
+    @synchronized([Cips class])
     {
         if (!obj)
-        [[self alloc] init];
+            [[self alloc] init];
         
         return obj;
     }
@@ -27,9 +32,14 @@ static HTTPHelper *obj = nil;
     return nil;
 }
 
+
++(void)initializeWithAppkey:(NSString *)AppKey withSecretKey:(NSString *)SecretKey{
+    Cips *cips = [Cips instance];
+}
+
 +(id)alloc
 {
-    @synchronized([HTTPHelper class])
+    @synchronized([Cips class])
     {
         NSAssert(obj == nil, @"Attempted to allocate a second instance of a singleton.");
         obj = [super alloc];
@@ -47,5 +57,6 @@ static HTTPHelper *obj = nil;
     
     return self;
 }
+
 
 @end

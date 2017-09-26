@@ -7,6 +7,7 @@
 //
 
 #import "ChipsViewController.h"
+#import <Cips/Cips.h>
 
 @interface ChipsViewController ()
 

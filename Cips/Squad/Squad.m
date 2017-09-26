@@ -7,6 +7,10 @@
 //
 
 #import "Squad.h"
+#import "Cips/CipsHTTPHelper.h"
+#import <Cips/Cips+NSString.h>
+#import "SquadResponseModel.h"
+#import "Internal/SquadConstant.h"
 
 @implementation Squad
 
@@ -45,6 +49,12 @@ static Squad *obj = nil;
     }
     
     return self;
+}
+
+-(void)loginWithUser:(NSString *)user andPassoword:(NSString *)password{
+    [[CipsHTTPHelper instance] requestFormDataWithMethod:POST WithUrl:SQUAD_BASE.environment withParameter:@{} withBlock:^(CipsHTTPResponse *response) {
+        
+    }];
 }
 
 

@@ -1,7 +1,7 @@
 use_frameworks!
 
 target 'Chips_Example' do
-  pod 'Chips', :path => '../'
+  pod 'Cips', :path => '../'
 
   target 'Chips_Tests' do
     inherit! :search_paths

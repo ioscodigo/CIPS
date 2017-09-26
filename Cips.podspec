@@ -7,7 +7,7 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'Chips'
+  s.name             = 'Cips'
   s.version          = '0.1.0'
   s.summary          = 'A short description of Chips.'
 
@@ -32,28 +32,32 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '8.0'
   s.xcconfig       = { 'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/"' }
 
-#s.source_files = 'Chips/Chips.h'
+ s.source_files = 'Cips/Core/Cips.h'
   
   # s.resource_bundles = {
   #   'Chips' => ['Chips/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-
+   s.public_header_files = 'Cips/Core/Cips.h'
+#  s.private_header_files = 'Cips/Squad/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking'
 
     s.subspec 'Core' do |core|
-        core.source_files = 'Chips/Core/**/*'
+        core.source_files = 'Cips/Core/**/*'
+        core.public_header_files = 'Cips/Core/*.h'
+    # core.private_header_files = 'Cips/Core/*.h'
     end
 
     s.subspec 'Squad' do |squad|
-        squad.dependency	'Chips/Core'
-        squad.source_files = 'Chips/Squad/**/*'
+        squad.dependency	'Cips/Core'
+        squad.source_files = 'Cips/Squad/**/*'
+#squad.private_header_files = 'Cips/Squad/*.h'
     end
 
     s.subspec 'Qnock' do |qnock|
-        qnock.dependency	'Chips/Core'
-        qnock.source_files = 'Chips/Qnock/**/*'
+        qnock.dependency	'Cips/Core'
+        qnock.source_files = 'Cips/Qnock/**/*'
     end
 end
