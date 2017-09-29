@@ -63,18 +63,17 @@
     [api setEnvironment:env];
 }
 
--(void)loginWithEmail:(NSString *)email andPassoword:(NSString *)password respon:(void (^)(SquadResponseModel *response))block{
+-(void)loginWithEmail:(NSString *)email andPassoword:(NSString *)password completion:(squadCompletion)respon{
     NSDictionary *param = @{
                             @"username":email,
                             @"email":email,
                             @"password":password,
                             @"grant_type":@"password"
                             };
-    NSLog(@" email :%@ , password: %@",email,password);
-    
+    [api loginWithParam:param completion:respon];
 }
 
--(void)registerWithEmail:(NSString *)email password:(NSString *)password fullname:(NSString *)fullname companyid:(NSString *)comp_id redirecturi:(NSString *)red_uri verifyuri:(NSString *)ver_uri respon:(void (^)(SquadResponseModel *response))block{
+-(void)registerWithEmail:(NSString *)email password:(NSString *)password fullname:(NSString *)fullname companyid:(NSString *)comp_id redirecturi:(NSString *)red_uri verifyuri:(NSString *)ver_uri completion:(squadCompletion)respon{
     NSDictionary *param = @{
                             @"email":email,
                             @"password":password,

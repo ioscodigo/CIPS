@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface SquadResponseModel : NSObject
 
 @property (nonatomic,strong) NSString* status;

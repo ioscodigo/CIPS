@@ -29,7 +29,7 @@
     NSString *client_secret;
     NSString *client_id;
     CipsHTTPHelper *helper;
-
+    
 
 - (id)init
 {
@@ -42,6 +42,7 @@
         client_secret = clientSecret;
         client_id = clientid;
         helper = [CipsHTTPHelper instance];
+        BaseAPI = SQUAD_BASE_SANDBOX;
     }
     return self;
 }
@@ -49,9 +50,9 @@
     [self postWithUrl:url withHeader:nil withParam:param withBlock:block];
 }
 
--(void)postWithUrl:(NSString *)url withHeader:(NSDictionary *)header withParam:(NSDictionary *)param withBlock:(void (^)(SquadResponseModel *response))block{
+-(void)postWithUrl:(NSString *)url withHeader:(NSDictionary *)header withParam:(NSDictionary *)param completion:(squadCompletion)block{
     NSMutableDictionary *parameter = [param mutableCopy];
-    
+    param = nil;
     [helper requestMulitpartDataWithMethod:POST WithUrl:[NSString stringWithFormat:@"%@%@",BaseAPI,url] withParameter:parameter withHeader:header withBlock:^(CipsHTTPResponse *respon) {
         SquadResponseModel *responSquad = [[SquadResponseModel alloc] init];
         responSquad.statusCode = respon.responseCode;
@@ -73,7 +74,18 @@
     }];
 }
 
-
+-(void)loginWithParam:(NSDictionary *)param completion:(squadCompletion)block{
+    NSMutableDictionary *parameter = [param mutableCopy];
+    param = nil;
+    [parameter addEntriesFromDictionary:@{
+                                          @"client_id":client_id,
+                                          @"client_secret":client_secret
+                                          }];
+    [helper requestFormDataWithMethod:POST WithUrl: withParameter:parameter withBlock:^(CipsHTTPResponse *response) {
+        NSLog(@"%@",response.error);
+        NSLog(@"%@",response.data);
+    }];
+}
 
 -(void)setEnvironment:(ENVIRONMENT)env{
     switch (env) {
@@ -88,4 +100,17 @@
     }
 }
 
+-(NSString *)getURL:(NSString *)str{
+    return [NSString stringWithFormat:@"%@%@",BaseAPI,str];
+}
+
 @end
+
+@implementation NSString(Squad)
+
+-(NSString *)env{
+    return [NSString stringWithFormat:@"%@%@",BaseAPI,self];
+}
+
+@end
+

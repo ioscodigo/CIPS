@@ -10,6 +10,8 @@
 #import "SquadResponseModel.h"
 #import "Cips/CipsHTTPHelper.h"
 
+typedef void (^squadCompletion)(SquadResponseModel *response);
+
 @interface Squad : NSObject
 
 @property (nonatomic,strong) NSString *clientID;
@@ -19,6 +21,6 @@
 
 +(Squad *)instance;
 +(void)initWithClientId:(NSString *)clientID withClientSecret:(NSString *)clientSecret;
--(void)loginWithEmail:(NSString *)email andPassoword:(NSString *)password respon:(void (^)(SquadResponseModel *response))block;
+-(void)loginWithEmail:(NSString *)email andPassoword:(NSString *)password completion:(squadCompletion)respon;
 
 @end

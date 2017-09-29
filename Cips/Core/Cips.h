@@ -12,7 +12,6 @@
 
 #endif /* Chips_h */
 
-#import "CipsConfig.h"
 #if __has_include(<Cips/Squad.h>)
     #import "Cips/Squad.h"
 #endif

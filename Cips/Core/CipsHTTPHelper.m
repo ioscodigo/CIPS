@@ -61,8 +61,7 @@ static CipsHTTPHelper *obj = nil;
     [self request:method withURL:url withBody:post withHeaders:head withBlock:block];
 }
 
-
--(void)requestFormDataWithMethod:(HTTPMethod)method WithUrl:(NSString *)url withParamater:(NSDictionary *)param withBlock:(void (^)(CipsHTTPResponse *response))block {
+-(void)requestFormDataWithMethod:(HTTPMethod)method WithUrl:(NSString *)url withParameter:(NSDictionary *)param withBlock:(void (^)(CipsHTTPResponse *response))block {
     [self requestFormDataWithMethod:method WithUrl:url withParameter:param withHeader:nil withBlock:block];
 }
 
@@ -72,8 +71,7 @@ static CipsHTTPHelper *obj = nil;
         [head addEntriesFromDictionary:headers];
     }
     NSString *query = [self joinQueryWithDictionary:param];
-    [query dataUsingEncoding:NSUTF8StringEncoding];
-    
+    [self request:method withURL:url withBody:[query dataUsingEncoding:NSUTF8StringEncoding] withHeaders:headers withBlock:block];
 }
 
 -(void)request:(HTTPMethod)method withURL:(NSString *)URL withBlock:(void (^)(CipsHTTPResponse *response))block {
@@ -106,10 +104,13 @@ static CipsHTTPHelper *obj = nil;
             break;
     }
     NSURLRequest *req = [self request:methods withUrl:URL withBody:body withHeader:header];
-    [[NSURLSession sharedSession] dataTaskWithRequest:req completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSLog(@"req");
+    [[[NSURLSession sharedSession] dataTaskWithRequest:req completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSLog(@"aa");
         CipsHTTPResponse *respon = [[CipsHTTPResponse alloc] init];
-        respon.error = error;
         respon.responseCode = [(NSHTTPURLResponse *)response statusCode];
+        respon.error = error;
+        if(!error){
         NSString *responseStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSError *jsonError = nil;
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
@@ -120,8 +121,9 @@ static CipsHTTPHelper *obj = nil;
             respon.data = json;
         }
         respon.responString = responseStr;
+        }
         block(respon);
-    }];
+    }] resume];
 }
 
 
