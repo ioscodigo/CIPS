@@ -16,6 +16,11 @@ typedef enum {
     DELETE
 } HTTPMethod;
 
+typedef enum {
+    PRODUCTION,
+    SANDBOX
+} ENVIRONMENT;
+
 @interface CipsHTTPHelper : NSObject
 
 +(CipsHTTPHelper *)instance;

@@ -7,11 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CipsHTTPHelper.h"
 
-typedef enum {
-    PRODUCTION,
-    SANDBOX
-} ENVIRONMENT;
 
 @interface Cips : NSObject
 

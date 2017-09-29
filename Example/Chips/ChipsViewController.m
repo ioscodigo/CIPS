@@ -19,6 +19,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [Squad initWithClientId:@"2" withClientSecret:@"b"];
+    [[Squad instance] loginWithEmail:@"a" andPassoword:@"a" respon:^(SquadResponseModel *response) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning
