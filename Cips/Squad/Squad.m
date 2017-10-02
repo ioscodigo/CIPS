@@ -7,7 +7,6 @@
 //
 
 #import "Squad.h"
-#import <Cips/Cips+NSString.h>
 #import "Internal/SquadAPI.h"
 
 

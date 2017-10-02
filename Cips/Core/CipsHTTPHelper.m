@@ -7,7 +7,7 @@
 //
 
 #import "CipsHTTPHelper.h"
-#import "CipsConfig.h"
+//#import "CipsConfig.h"
 
 
 
