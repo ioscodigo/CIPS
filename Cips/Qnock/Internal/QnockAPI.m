@@ -13,10 +13,10 @@
 #define QNOCK_BASE_SANDBOX                  (QNOCK_PROTOCOL @"push.qnock.netconnect.stg.codigo.id/")
 
 @implementation QnockAPI
-    NSString *BaseAPI;
-    NSString *client_secret;
-    NSString *client_id;
-    CipsHTTPHelper *helper;
+    NSString *BaseAPI_qnock;
+    NSString *client_secret_qnock;
+    NSString *client_id_qnock;
+    CipsHTTPHelper *helper_qnock;
 
 - (id)init
 {
@@ -26,10 +26,10 @@
 -(id)initWithSecretKey:(NSString *)clientSecret withClientid:(NSString*)clientid{
     self = [super init];
     if (self) {
-        client_secret = clientSecret;
-        client_id = clientid;
-        helper = [CipsHTTPHelper instance];
-        BaseAPI = QNOCK_BASE_SANDBOX;
+        client_secret_qnock = clientSecret;
+        client_id_qnock = clientid;
+        helper_qnock = [CipsHTTPHelper instance];
+        BaseAPI_qnock = QNOCK_BASE_SANDBOX;
     }
     return self;
 }
@@ -41,7 +41,7 @@
 -(void)postWithUrl:(NSString *)url withHeader:(NSDictionary *)header withParam:(NSDictionary *)param completion:(qnockCompletion)block{
     NSMutableDictionary *parameter = [param mutableCopy];
     param = nil;
-    [helper requestMulitpartDataWithMethod:POST WithUrl:[NSString stringWithFormat:@"%@%@",BaseAPI,url] withParameter:parameter withHeader:header withBlock:^(CipsHTTPResponse *respon) {
+    [helper_qnock requestMulitpartDataWithMethod:POST WithUrl:[NSString stringWithFormat:@"%@%@",BaseAPI_qnock,url] withParameter:parameter withHeader:header withBlock:^(CipsHTTPResponse *respon) {
         QnockResponseModel *responQnock = [[QnockResponseModel alloc] init];
        // responSquad.statusCode = respon.responseCode;
         if(respon.error){
@@ -66,28 +66,14 @@
 -(void)setEnvironment:(ENVIRONMENT)env{
     switch (env) {
         case PRODUCTION:
-            BaseAPI = QNOCK_BASE_PRODUCTION;
+            BaseAPI_qnock = QNOCK_BASE_PRODUCTION;
             break;
         case SANDBOX:
-            BaseAPI = QNOCK_BASE_SANDBOX;
+            BaseAPI_qnock = QNOCK_BASE_SANDBOX;
             break;
         default:
             break;
     }
 }
-
-
--(NSString *)getURL:(NSString *)str{
-    return [NSString stringWithFormat:@"%@%@",BaseAPI,str];
-}
-
-@end
-
-@implementation NSString(Squad)
-
--(NSString *)env{
-    return [NSString stringWithFormat:@"%@%@",BaseAPI,self];
-}
-
 
 @end

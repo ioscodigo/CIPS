@@ -6,11 +6,11 @@
 //
 //
 
-//#ifndef QnockConstant_h
-//#define QnockConstant_h
+#ifndef QnockConstant_h
+#define QnockConstant_h
 
-@interface QnockConstant : NSObject
-@property (nonatomic, strong) NSString *token;
+//@interface QnockConstant : NSObject
+//@property (nonatomic, strong) NSString *token;
 
 /*
  static let TOKEN = BASE + "/token"
@@ -21,4 +21,4 @@
  
  */
 
-//#endif /* QnockConstant_h */
+#endif /* QnockConstant_h */

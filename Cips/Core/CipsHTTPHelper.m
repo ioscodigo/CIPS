@@ -7,9 +7,6 @@
 //
 
 #import "CipsHTTPHelper.h"
-//#import "CipsConfig.h"
-
-
 
 @implementation CipsHTTPHelper
 
@@ -71,7 +68,10 @@ static CipsHTTPHelper *obj = nil;
         [head addEntriesFromDictionary:headers];
     }
     NSString *query = [self joinQueryWithDictionary:param];
-    [self request:method withURL:url withBody:[query dataUsingEncoding:NSUTF8StringEncoding] withHeaders:headers withBlock:block];
+    NSData *data = [query dataUsingEncoding:NSASCIIStringEncoding];
+    NSString *length = [NSString stringWithFormat:@"%lu",(unsigned long)[data length]];
+    [head addEntriesFromDictionary:@{@"Content-Length":length}];
+    [self request:method withURL:url withBody:data withHeaders:headers withBlock:block];
 }
 
 -(void)request:(HTTPMethod)method withURL:(NSString *)URL withBlock:(void (^)(CipsHTTPResponse *response))block {
@@ -104,9 +104,7 @@ static CipsHTTPHelper *obj = nil;
             break;
     }
     NSURLRequest *req = [self request:methods withUrl:URL withBody:body withHeader:header];
-    NSLog(@"req");
     [[[NSURLSession sharedSession] dataTaskWithRequest:req completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSLog(@"aa");
         CipsHTTPResponse *respon = [[CipsHTTPResponse alloc] init];
         respon.responseCode = [(NSHTTPURLResponse *)response statusCode];
         respon.error = error;
@@ -223,7 +221,8 @@ static CipsHTTPHelper *obj = nil;
         if (result.length) [result appendString:@"&"];
         [result appendString:pair[0]];
         [result appendString:@"="];
-        [result appendString:[self escape:[pair[1] description]]];
+//        [result appendString:[self escape:[pair[1] description]]];
+        [result appendString:[pair[1] description]];
     }
     return result;
 }
