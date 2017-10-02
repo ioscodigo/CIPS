@@ -7,7 +7,6 @@
 //
 
 #import "Squad.h"
-#import <Cips/Cips+NSString.h>
 #import "Internal/SquadAPI.h"
 
 
@@ -56,7 +55,7 @@
 
 +(void)initWithClientId:(NSString *)clientID withClientSecret:(NSString *)clientSecret{
     [Squad alloc];
-    api = [[SquadAPI alloc] initWithSecretKey:clientID withClientid:clientSecret];
+    api = [[SquadAPI alloc] initWithSecretKey:clientSecret withClientid:clientID];
 }
 
 +(void)setEnvironment:(ENVIRONMENT)env {
@@ -90,8 +89,17 @@
                             };
 }
 
+//-(void)editUserInfoWithData:(NSDictionary *)userEdited withAccessToken
+
 -(void)uploadImageUser:(NSString *)userid respon:(void(^)(SquadResponseModel *response))block{
     
+}
+
+-(void)refreshTokenWithToken:(NSString *)refresh_token respon:(squadCompletion)respon{
+    NSDictionary *param = @{
+                            @"access_token":refresh_token,
+                            @"grant_tyoe":@"refresh_token"
+                            };
 }
 
 @end

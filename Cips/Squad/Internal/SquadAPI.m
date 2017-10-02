@@ -7,6 +7,7 @@
 //
 
 #import "SquadAPI.h"
+#import "SquadConstant.h"
 
 #define SQUAD_PROTOCOL                      @"http://"
 #define SQUAD_BASE_PRODUCTION               (SQUAD_PROTOCOL @"api.squad2.stg.codigo.id/")
@@ -51,9 +52,7 @@
 }
 
 -(void)postWithUrl:(NSString *)url withHeader:(NSDictionary *)header withParam:(NSDictionary *)param completion:(squadCompletion)block{
-    NSMutableDictionary *parameter = [param mutableCopy];
-    param = nil;
-    [helper requestMulitpartDataWithMethod:POST WithUrl:[NSString stringWithFormat:@"%@%@",BaseAPI,url] withParameter:parameter withHeader:header withBlock:^(CipsHTTPResponse *respon) {
+    [helper requestMulitpartDataWithMethod:POST WithUrl:[NSString stringWithFormat:@"%@%@",BaseAPI,url] withParameter:param withHeader:header withBlock:^(CipsHTTPResponse *respon) {
         SquadResponseModel *responSquad = [[SquadResponseModel alloc] init];
         responSquad.statusCode = respon.responseCode;
         if(respon.error){
@@ -81,10 +80,77 @@
                                           @"client_id":client_id,
                                           @"client_secret":client_secret
                                           }];
-    [helper requestFormDataWithMethod:POST WithUrl: withParameter:parameter withBlock:^(CipsHTTPResponse *response) {
-        NSLog(@"%@",response.error);
-        NSLog(@"%@",response.data);
-    }];
+    [self postWithUrl:SQUAD_LOGIN withParam:parameter withBlock:block];
+}
+
+-(void)registerWithParam:(NSDictionary *)param completion:(squadCompletion)block{
+    NSMutableDictionary *parameter = [param mutableCopy];
+    param = nil;
+    [parameter addEntriesFromDictionary:@{
+                                          @"client_id":client_id
+                                          }];
+    [self postWithUrl:SQUAD_REGISTER withParam:parameter withBlock:block];
+}
+
+-(void)userInfoWithParam:(NSDictionary *)param completion:(squadCompletion)block{
+    [self postWithUrl:SQUAD_USER_INFO withParam:param withBlock:block];
+}
+
+-(void)refreshTokenWithParam:(NSDictionary *)param completion:(squadCompletion)block{
+    NSMutableDictionary *parameter = [param mutableCopy];
+    param = nil;
+    [parameter addEntriesFromDictionary:@{
+                                          @"client_id":client_id,
+                                          @"client_secret":client_secret
+                                          }];
+    [self postWithUrl:SQUAD_LOGIN withParam:parameter withBlock:block];
+}
+
+-(void)logutWithParam:(NSDictionary *)param completion:(squadCompletion)block{
+    NSMutableDictionary *paramater = [param mutableCopy];
+    [paramater addEntriesFromDictionary:@{
+                                          @"client_id":client_id,
+                                          @"client_secret":client_secret
+                                          }];
+    [self postWithUrl:SQUAD_LOGOUT withParam:paramater withBlock:block];
+}
+
+-(void)getUserInfoWithParam:(NSDictionary *)param completion:(squadCompletion)block{
+    [self postWithUrl:SQUAD_USER_INFO_PARAM withParam:param withBlock:block];
+}
+
+//-(void)universalSearch:(NSDictionary *)param
+
+-(void)verifyEmailWithParam:(NSDictionary *)param completion:(squadCompletion)block{
+    [self postWithUrl:SQUAD_VERIFY_EMAIL withParam:param withBlock:block];
+}
+
+-(void)forgotPasswordWithParam:(NSDictionary *)param completion:(squadCompletion)block{
+    NSMutableDictionary *paramater = [param mutableCopy];
+    [paramater addEntriesFromDictionary:@{
+                                          @"client_id":client_id
+                                          }];
+    [self postWithUrl:SQUAD_FORGOT_PASSWORD withParam:paramater withBlock:block];
+}
+
+-(void)forgotPasswordStep2WithParam:(NSDictionary *)param completion:(squadCompletion)block{
+    [self postWithUrl:SQUAD_FORGOT_PASSWODR_STEP2 withParam:param withBlock:block];
+}
+
+-(void)updateEmailWithParam:(NSDictionary *)param completion:(squadCompletion)block{
+    [self postWithUrl:SQUAD_UPDATE_EMAIL withParam:param withBlock:block];
+}
+
+-(void)checkPasswordWithParam:(NSDictionary *)param completion:(squadCompletion)block{
+    [self postWithUrl:SQUAD_CHECK_PASSWORD withParam:param withBlock:block];
+}
+
+-(void)resendRegistrationWithParam:(NSDictionary *)param completion:(squadCompletion)block{
+    NSMutableDictionary *paramater = [param mutableCopy];
+    [paramater addEntriesFromDictionary:@{
+                                          @"client_id":client_id
+                                          }];
+    [self postWithUrl:SQUAD_RESEND_REG_VERIVICATION withParam:paramater withBlock:block];
 }
 
 -(void)setEnvironment:(ENVIRONMENT)env{
@@ -106,11 +172,4 @@
 
 @end
 
-@implementation NSString(Squad)
-
--(NSString *)env{
-    return [NSString stringWithFormat:@"%@%@",BaseAPI,self];
-}
-
-@end
 
