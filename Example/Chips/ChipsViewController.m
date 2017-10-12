@@ -19,10 +19,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [Squad initWithClientId:@"1028948410f4662836" withClientSecret:@"f3752b5d0b7e308adba65b06aed0dc81"];
-    [[Squad instance] loginWithEmail:@"leomastakusuma@gmail.com" andPassoword:@"Masta123" completion:^(SquadResponseModel *response) {
-        
-    }];
+//    [Squad initWithClientId:@"1028948410f4662836" withClientSecret:@"f3752b5d0b7e308adba65b06aed0dc81"];
+//    [[Squad instance] loginWithEmail:@"leomastakusuma@gmail.com" andPassoword:@"Masta123" completion:^(SquadResponseModel *response) {
+//        
+//    }];
+    
 }
 
 - (void)didReceiveMemoryWarning

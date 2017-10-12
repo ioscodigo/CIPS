@@ -6,19 +6,14 @@
 //
 //
 
-#ifndef QnockConstant_h
-#define QnockConstant_h
 
-//@interface QnockConstant : NSObject
-//@property (nonatomic, strong) NSString *token;
-
-/*
- static let TOKEN = BASE + "/token"
- static let STATUS = BASE + "/apps/status"
- static let IMPRESITION = BASE + "/callback/iphone"
- static let SUBSCRIBE = BASE + "/user/subscribe"
- static let UNSUBSCRIBE = BASE + "/user/unsubscribe"
- 
- */
-
-#endif /* QnockConstant_h */
+#define QNOCK_TOKEN @"/token"
+#define QNOCK_STATUS @"/apps/status"
+#define QNOCK_IMPRESITION @"/callback/iphone"
+#define QNOCK_SUBSCRIBE @"/user/subscribe"
+#define QNOCK_UNSUBSCRIBE @"/user/unsubscribe"
+#define QNOCK_PUSH @"/push/iphone"
+#define QNOCK_REPORT @"/report"
+#define QNOCK_CHANNEL @"/channel"
+#define QNOCK_PUSH_DEVICE @"/push/device"
+#define QNOCK_PUSH_NOTIF @"/push/notification"

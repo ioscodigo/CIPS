@@ -11,16 +11,14 @@
 #import <Cips/CipsHTTPHelper.h>
 
 typedef void (^qnockCompletion)(QnockResponseModel *response);
-
+ 
 @interface QnockAPI : NSObject
--(id)initWithSecretKey:(NSString *)clientSecret withClientid:(NSString*)clientid;
 
--(void)postWithUrl:(NSString *)url withHeader:(NSDictionary *)header withParam:(NSDictionary *)param withBlock:(void (^)(QnockResponseModel *response))block;
--(void)postWithUrl:(NSString *)url withParam:(NSDictionary *)param withBlock:(void (^)(QnockResponseModel *response))block;
+@property (nonatomic, strong) NSString *tokenQnock;
+@property (nonatomic, strong) NSString *keyTokenQnock;
+
+-(id)initWithSecretKey:(NSString *)clientSecret withClientid:(NSString*)clientid completion:(void (^)(NSString *responseToken))block;
 -(void)setEnvironment:(ENVIRONMENT)env;
-
--(void)loginWithParam:(NSDictionary *)param completion:(qnockCompletion)block;
-
-
-
+-(void) subscribe: (NSDictionary *)param completion:(qnockCompletion)block;
+-(void) unsubscribe: (NSDictionary *)param completion:(qnockCompletion)block;
 @end

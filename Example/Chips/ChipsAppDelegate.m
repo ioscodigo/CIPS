@@ -7,11 +7,15 @@
 //
 
 #import "ChipsAppDelegate.h"
+#import <Cips/Cips.h>
 
 @implementation ChipsAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Qnock initWithClientId:@"8" withClientSecret:@"Z6AJioWnew" completion:^(NSString *responseToken) {
+        NSLog(@"repons %@", responseToken);
+    }];
     // Override point for customization after application launch.
     return YES;
 }
