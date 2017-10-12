@@ -61,6 +61,17 @@ static CipsHTTPHelper *sharedInstance = nil;
     [self request:method withURL:url withBody:data withHeaders:headers withBlock:block];
 }
 
+-(void)requestJSONWithMethod:(HTTPMethod)method WithUrl:(NSString *)url withParameter:(NSDictionary *)param withHeader:(NSDictionary *)headers withBlock:(void (^)(CipsHTTPResponse *response))block{
+    NSMutableDictionary *head = [[NSMutableDictionary alloc] initWithDictionary:@{@"Content-type":@"application/application/json"}];
+    if(headers != nil){
+        [head addEntriesFromDictionary:headers];
+    }
+    NSData *data = [NSJSONSerialization dataWithJSONObject:param options:0 error:nil];
+    NSString *length = [NSString stringWithFormat:@"%lu",(unsigned long)[data length]];
+    [head addEntriesFromDictionary:@{@"Content-Length":length}];
+    [self request:method withURL:url withBody:data withHeaders:headers withBlock:block];
+}
+
 -(void)request:(HTTPMethod)method withURL:(NSString *)URL withBlock:(void (^)(CipsHTTPResponse *response))block {
     [self request:method withURL:URL withBody:nil withHeaders:nil withBlock:block];
 }
