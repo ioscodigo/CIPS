@@ -10,39 +10,26 @@
 
 @implementation CipsHTTPHelper
 
-static CipsHTTPHelper *obj = nil;
+
+
+static CipsHTTPHelper *sharedInstance = nil;
 
 +(CipsHTTPHelper*)instance
 {
-    @synchronized([CipsHTTPHelper class])
-    {
-        if (!obj)
-        [[self alloc] init];
-        
-        return obj;
-    }
-    
-    return nil;
+    static dispatch_once_t oncePredicate;
+    dispatch_once(&oncePredicate, ^{
+        sharedInstance = [[CipsHTTPHelper alloc] init];
+    });
+    return sharedInstance;
 }
 
-+(id)alloc
-{
-    @synchronized([CipsHTTPHelper class])
-    {
-        NSAssert(obj == nil, @"Attempted to allocate a second instance of a singleton.");
-        obj = [super alloc];
-        return obj;
-    }
-    
-    return nil;
-}
 
 -(id)init {
     self = [super init];
     if (self != nil) {
         // initialize stuff here
+        _keyChain = [[KeychainWrapper alloc] init];
     }
-    
     return self;
 }
 

@@ -6,16 +6,23 @@
 //
 //
 
-#ifndef Cips_h
-#define Cips_h
 
-
-#endif /* Chips_h */
-
+#import <Foundation/Foundation.h>
 #if __has_include(<Cips/Squad.h>)
-    #import "Cips/Squad.h"
+#import "Cips/Squad.h"
 #endif
 #if __has_include(<Cips/Qnock.h>)
-    #import "Cips/Qnock.h"
+#import "Cips/Qnock.h"
 #endif
+
+@interface Cips : NSObject
+
+
+//@property (nonatomic, strong) Squad *squad;
+//@property (nonatomic, weak) Qnock *qnock;
+
++(instancetype)service;
+
+
+@end
 

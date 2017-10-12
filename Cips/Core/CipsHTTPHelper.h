@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CipsHTTPResponse.h"
+#import "KeychainWrapper.h"
 
 typedef enum {
     GET,
@@ -22,6 +23,8 @@ typedef enum {
 } ENVIRONMENT;
 
 @interface CipsHTTPHelper : NSObject
+
+@property(nonatomic,strong) KeychainWrapper *keyChain;
 
 +(CipsHTTPHelper *)instance;
 

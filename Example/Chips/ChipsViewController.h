@@ -8,6 +8,6 @@
 
 @import UIKit;
 
-@interface ChipsViewController : UIViewController
+@interface ChipsViewController : UIViewController <UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @end
