@@ -38,4 +38,9 @@ typedef enum {
 -(void)request:(HTTPMethod)method withURL:(NSString *)URL withHeaders:(NSDictionary *)header withBlock:(void (^)(CipsHTTPResponse *response))block;
 -(void)request:(HTTPMethod)method withURL:(NSString *)URL withBody:(NSData *)body withBlock:(void (^)(CipsHTTPResponse *response))block;
 -(void)request:(HTTPMethod)method withURL:(NSString *)URL withBody:(NSData *)body withHeaders:(NSDictionary *)header withBlock:(void (^)(CipsHTTPResponse *response))block;
+
+-(void)requestJSONWithMethod:(HTTPMethod)method WithUrl:(NSString *)url withParameter:(NSDictionary *)param withHeader:(NSDictionary *)headers withBlock:(void (^)(CipsHTTPResponse *response))block;
+
+
+
 @end
