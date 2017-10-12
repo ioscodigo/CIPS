@@ -32,7 +32,7 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '8.0'
   s.xcconfig       = { 'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/"' }
 
- s.source_files = 'Cips/Core/Cips.h'
+ s.source_files = 'Cips/Core/Cips.{h,m}'
   
   # s.resource_bundles = {
   #   'Chips' => ['Chips/Assets/*.png']
@@ -45,14 +45,17 @@ TODO: Add long description of the pod here.
   # s.dependency 'AFNetworking'
 
     s.subspec 'Core' do |core|
-        core.source_files = 'Cips/Core/**/*'
+        core.source_files = 'Cips/Core/**/*.{h,m}'
         core.public_header_files = 'Cips/Core/*.h'
     # core.private_header_files = 'Cips/Core/*.h'
     end
 
     s.subspec 'Squad' do |squad|
         squad.dependency	'Cips/Core'
-        squad.source_files = 'Cips/Squad/**/*'
+        squad.source_files = 'Cips/Squad/**/*.{h,m}'
+        squad.resource_bundles = {
+            'CipsSquad' => ['Cips/Squad/Resource/**/*.{storyboard,xcassets}']
+        }
 #squad.private_header_files = 'Cips/Squad/*.h'
     end
 
