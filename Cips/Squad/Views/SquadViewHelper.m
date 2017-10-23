@@ -7,7 +7,6 @@
 //
 
 #import "SquadViewHelper.h"
-#import "SquadLoginViewController.h"
 
 @implementation SquadViewHelper
 
@@ -25,10 +24,17 @@ UIStoryboard *storyBoard;
     return self;
 }
 
--(void)viewController{
+-(UIViewController *)viewController{
     UIViewController *controller = [storyBoard instantiateViewControllerWithIdentifier:@"SquadLoginVC"];
+    return controller;
 //    NSLog(@"controller %@",(SquadLoginViewController *)controller);
 //    NSLog(@"bundle %@",[bundle resourcePath]);
+}
+
+-(StatusView *)statusView{
+    UIView *view = [[bundle loadNibNamed:@"StatusView" owner:self options:nil] objectAtIndex:0];
+    StatusView *status = [view.subviews objectAtIndex:0];
+    return status;
 }
 
 @end

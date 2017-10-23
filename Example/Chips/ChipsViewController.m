@@ -9,8 +9,10 @@
 #import "ChipsViewController.h"
 #import <Cips/Cips.h>
 #import <Photos/Photos.h>
+#import <Cips/SquadViewHelper.h>
 
 @interface ChipsViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *labelTest;
 
 @end
 
@@ -25,11 +27,20 @@
     [[Squad instance] loginWithEmail:@"leomastakusuma@gmail.com" andPassoword:@"Masta123" completion:^(SquadResponseModel *response) {
         
     }];
+    
 //    [Squ]
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    
+    [self presentViewController:[[[SquadViewHelper alloc] init] viewController] animated:true completion:nil];
+//    CGFloat space = 2;
+//    NSDictionary *attributed = @{
+//                                 NSKernAttributeName : @(space),
+//                                 NSFontAttributeName : self.labelTest.font
+//                                 };
+//    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.labelTest.text attributes:attributed];
+//    self.labelTest.attributedText = attrString;
+//    [self.labelTest layoutIfNeeded];
 //    [self ]
 //    [self iamgePicker];
 }

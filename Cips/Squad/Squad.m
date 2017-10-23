@@ -8,7 +8,7 @@
 
 #import "Squad.h"
 #import "Internal/SquadAPI.h"
-#import "Resource/SquadViewHelper.h"
+#import "Views/SquadViewHelper.h"
 
 
 

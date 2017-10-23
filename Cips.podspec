@@ -54,9 +54,9 @@ TODO: Add long description of the pod here.
         squad.dependency	'Cips/Core'
         squad.source_files = 'Cips/Squad/**/*.{h,m}'
         squad.resource_bundles = {
-            'CipsSquad' => ['Cips/Squad/Resource/**/*.{storyboard,xcassets}']
+            'CipsSquad' => ['Cips/Squad/Resource/**/*.{storyboard,xcassets,xib}']
         }
-#squad.private_header_files = 'Cips/Squad/*.h'
+        squad.private_header_files = ['Cips/Squad/Internal/*.h','Cips/Squad/Views/*.h']
     end
 
     s.subspec 'Qnock' do |qnock|
