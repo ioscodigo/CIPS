@@ -15,5 +15,6 @@
 @property (nonatomic,strong) NSDictionary *data;
 @property (nonatomic,strong) NSString *message;
 @property (nonatomic,strong) NSString *responString;
+//@property (nonatomic,strong) NS
 
 @end

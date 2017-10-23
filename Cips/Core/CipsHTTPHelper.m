@@ -58,18 +58,22 @@ static CipsHTTPHelper *sharedInstance = nil;
     NSData *data = [query dataUsingEncoding:NSASCIIStringEncoding];
     NSString *length = [NSString stringWithFormat:@"%lu",(unsigned long)[data length]];
     [head addEntriesFromDictionary:@{@"Content-Length":length}];
-    [self request:method withURL:url withBody:data withHeaders:headers withBlock:block];
+    [self request:method withURL:url withBody:data withHeaders:head withBlock:block];
 }
 
 -(void)requestJSONWithMethod:(HTTPMethod)method WithUrl:(NSString *)url withParameter:(NSDictionary *)param withHeader:(NSDictionary *)headers withBlock:(void (^)(CipsHTTPResponse *response))block{
-    NSMutableDictionary *head = [[NSMutableDictionary alloc] initWithDictionary:@{@"Content-type":@"application/application/json"}];
+    NSLog(@"param %@",param);
+    NSLog(@"url %@",url);
+    NSMutableDictionary *head = [[NSMutableDictionary alloc] initWithDictionary:@{@"Content-Type":@"application/json"}];
     if(headers != nil){
         [head addEntriesFromDictionary:headers];
     }
     NSData *data = [NSJSONSerialization dataWithJSONObject:param options:0 error:nil];
+    NSString *query = [self joinQueryWithDictionary:param];
+//    NSData *data = [query dataUsingEncoding:NSASCIIStringEncoding];
     NSString *length = [NSString stringWithFormat:@"%lu",(unsigned long)[data length]];
     [head addEntriesFromDictionary:@{@"Content-Length":length}];
-    [self request:method withURL:url withBody:data withHeaders:headers withBlock:block];
+    [self request:method withURL:url withBody:data withHeaders:head withBlock:block];
 }
 
 -(void)request:(HTTPMethod)method withURL:(NSString *)URL withBlock:(void (^)(CipsHTTPResponse *response))block {
@@ -102,8 +106,11 @@ static CipsHTTPHelper *sharedInstance = nil;
             break;
     }
     NSURLRequest *req = [self request:methods withUrl:URL withBody:body withHeader:header];
+//    NSLog(@"header %@",req.allHTTPHeaderFields);
     [[[NSURLSession sharedSession] dataTaskWithRequest:req completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    
         CipsHTTPResponse *respon = [[CipsHTTPResponse alloc] init];
+        
         respon.responseCode = [(NSHTTPURLResponse *)response statusCode];
         respon.error = error;
         if(!error){
@@ -125,6 +132,7 @@ static CipsHTTPHelper *sharedInstance = nil;
 
 
 -(NSURLRequest *)request:(NSString *)method withUrl:(NSString *)URL withBody:(NSData *)body withHeader:(NSDictionary *)headers{
+//    NSLog(@"URL STRING %@",URL);
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:URL]];
     [request setHTTPMethod:method];
