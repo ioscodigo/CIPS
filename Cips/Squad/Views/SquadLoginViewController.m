@@ -39,6 +39,7 @@
     }];
 }
 - (IBAction)registerOnClick:(id)sender {
+    
 }
 - (IBAction)siginSocialLogin:(UIButton *)sender {
 }

@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 iOS SDK for Cips Service.
 DESC
 
-  s.homepage         = 'http://git.cips.stg.codigo.id/root/CipsiOS-SDK'
+  s.homepage         = 'http://gitlab.codigo.id/iOS/Chips'
   # s.screenshots    = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'iOS Team' => 'ios@codigo.id' }
-  s.source           = { :git => 'http://git.cips.stg.codigo.id/root/CipsiOS-SDK.git', :tag => s.version.to_s }
+  s.source           = { :git => 'http://gitlab.codigo.id/iOS/Chips.git', :tag => s.version.to_s }
   s.requires_arc	 = true
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 

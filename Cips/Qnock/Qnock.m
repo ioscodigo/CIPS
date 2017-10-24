@@ -66,7 +66,7 @@ static Qnock *objQnock = nil;
     [apiQnock setEnvironment:env];
 }
 
--(void)unsubsribe:(NSString *)FCMtoken withChannel: (NSString *) channel completion:(qnockCompletion)respon{
+-(void)unsubscribe:(NSString *)FCMtoken withChannel: (NSString *) channel completion:(qnockCompletion)respon{
     NSDictionary *param = @{@"user_token_id" : FCMtoken,
                             @"channel" : channel,
                             @"device" : @"Iphone",

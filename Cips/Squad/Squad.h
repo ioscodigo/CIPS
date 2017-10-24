@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SquadResponseModel.h"
 #import "Cips/CipsHTTPHelper.h"
+#import "Views/SquadViewHelper.h"
 
 typedef void (^squadCompletion)(SquadResponseModel *response);
 
