@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Cips'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of Chips.'
+  s.summary          = 'iOS SDK for Cips Service.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,8 +18,8 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+iOS SDK for Cips Service.
+DESC
 
   s.homepage         = 'http://git.cips.stg.codigo.id/root/CipsiOS-SDK'
   # s.screenshots    = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
