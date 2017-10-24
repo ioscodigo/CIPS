@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/fajaraw/Chips'
+  s.homepage         = 'http://git.cips.stg.codigo.id/root/CipsiOS-SDK'
   # s.screenshots    = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'fajaraw' => 'fajar@codigo.id' }
-  s.source           = { :git => 'https://github.com/fajaraw/Chips.git', :tag => s.version.to_s }
+  s.author           = { 'iOS Team' => 'ios@codigo.id' }
+  s.source           = { :git => 'http://git.cips.stg.codigo.id/root/CipsiOS-SDK.git', :tag => s.version.to_s }
   s.requires_arc	 = true
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
