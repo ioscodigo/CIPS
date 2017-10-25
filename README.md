@@ -23,6 +23,8 @@ it, simply add the following line to your Podfile:
 pod 'Cips', :git => 'http://gitlab.codigo.id/iOS/Chips.git'
 ```
 
+if not want use all service , check service usage for installation each service
+
 ## Usage
 
 ```swift
@@ -36,6 +38,10 @@ import  Cips
 ### Qnock Usage
 
 Note that the `Firebase/Core` and `Firebase/Messaging` is required if using QNOCK SDK.
+
+```ruby
+pod 'Cips/Qnock', :git => 'http://gitlab.codigo.id/iOS/Chips.git'
+```
 
 ##### Register Qnock
 
@@ -74,6 +80,11 @@ Qnock.instance().unsubscribe(FCMTOKEN, withChannel: channel) { (response) in
 
 
 ### Squad Usage
+
+```ruby
+pod 'Cips/Squad', :git => 'http://gitlab.codigo.id/iOS/Chips.git'
+```
+
 
 ## Author
 
