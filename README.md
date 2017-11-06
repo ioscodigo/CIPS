@@ -44,6 +44,7 @@ pod 'Cips/Qnock', :git => 'http://gitlab.codigo.id/iOS/Chips.git'
 ```
 
 ##### Register Qnock
+    Register qnock on appdelegate first using clientid and clientsecret from cms QNOCK.
 
 ```swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -56,6 +57,8 @@ return true
 
 ##### Receiving Notification
 
+    Use when notification received on device. This used on App Delegate 
+
 ```swift
 func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
     let data = Qnock.instance().notifReceived(userInfo)
@@ -63,6 +66,10 @@ func application(application: UIApplication, didReceiveRemoteNotification userIn
 ```
 
 ##### Subscribe Channel
+    
+    This function use for subscribe or register new user id or new channel to qnock. 
+    
+    Userid on this function from userid member client not userid Qnock.
 
 ```swift
 Qnock.instance().subscribe(FCMTOKEN, withChannel: channel, userID: userid) { (response) in
@@ -70,7 +77,8 @@ Qnock.instance().subscribe(FCMTOKEN, withChannel: channel, userID: userid) { (re
 }
 ```
 
-##### UnSubscribe Channel
+##### Unsubscribe Channel
+    This function to use unsubscribe or unregister channel from qnock. Use when user want to stop notification or user has logout.
 
 ```swift
 Qnock.instance().unsubscribe(FCMTOKEN, withChannel: channel) { (response) in
@@ -78,8 +86,15 @@ Qnock.instance().unsubscribe(FCMTOKEN, withChannel: channel) { (response) in
 }
 ```
 
+#### Change Environment
+    Change environment QNOCK PRODUCTION mode or SANDBOX mode
+
+```swift
+Qnock.setEnvironment(ENVIRONMENT)
+````
 
 ### Squad Usage
+
 
 ```ruby
 pod 'Cips/Squad', :git => 'http://gitlab.codigo.id/iOS/Chips.git'
