@@ -10,4 +10,7 @@
 
 @interface SquadForgotPasswordViewController : UIViewController
 
+@property (weak, nonatomic) NSString *accessToken;
+@property (weak, nonatomic) NSString *userID;
+
 @end

@@ -7,33 +7,91 @@
 //
 
 #import "SquadViewHelper.h"
-#import "SquadLoginViewController.h"
+#import "Views/SquadRegisterViewController.h"
+#import "Views/SquadLoginViewController.h"
+#import "Views/SquadProfileViewController.h"
+#import "Views/StatusView.h"
+
 
 @implementation SquadViewHelper
 
+static SquadViewHelper *sharedInstance;
+
 NSURL *bundleURL;
 NSBundle *bundle;
-UIStoryboard *storyBoard;
+int LOADINGTAG = 9912;
+
 
 -(id)init{
     self = [super init];
     if (self) {
         bundleURL = [[NSBundle bundleForClass:[self class]] URLForResource:@"CipsSquad" withExtension:@"bundle"];
         bundle = [NSBundle bundleWithURL:bundleURL];
-        storyBoard = [UIStoryboard storyboardWithName:@"Squad" bundle:bundle];
+        _storyboard = [UIStoryboard storyboardWithName:@"Squad" bundle:bundle];
     }
     return self;
 }
 
--(UIViewController *)loginViewController:(id<SquadControllerDelegate>)delegate{
-    UIViewController *controller = [storyBoard instantiateViewControllerWithIdentifier:@"SquadLoginVC"];
-    return controller;
++(SquadViewHelper *)helper{
+    static dispatch_once_t oncePredicate;
+    dispatch_once(&oncePredicate, ^{
+        sharedInstance = [[SquadViewHelper alloc] init];
+    });
+    return sharedInstance;
 }
 
--(StatusView *)statusView{
-    UIView *view = [[bundle loadNibNamed:@"StatusView" owner:self options:nil] objectAtIndex:0];
-    StatusView *status = [view.subviews objectAtIndex:0];
-    return status;
++(void)SquadLoginViewWithController:(UIViewController *)controller delegate:(id<SquadControllerDelegate>)delegate{
+    SquadViewHelper *helper = [SquadViewHelper helper];
+    SquadLoginViewController *login = [helper.storyboard instantiateViewControllerWithIdentifier:@"SquadLoginVC"];
+    login.delegate = delegate;
+    UINavigationController *NavController = [[UINavigationController alloc] initWithRootViewController:login];
+    [NavController setNavigationBarHidden:true];
+    [controller presentViewController:NavController animated:true completion:nil];
 }
+
++(void)SquadProfileViewWithController:(UIViewController *)controller token:(NSString *)access_token{
+    SquadViewHelper *helper = [SquadViewHelper helper];
+    SquadProfileViewController *profile = [helper.storyboard instantiateViewControllerWithIdentifier:@"profileVC"];
+    profile.accessToken = access_token;
+    UINavigationController *NavController = [[UINavigationController alloc] initWithRootViewController:profile];
+    [NavController setNavigationBarHidden:true];
+    [controller presentViewController:NavController animated:true completion:nil];
+}
+
+-(void)addLoading{
+    UIWindow *window = [UIApplication sharedApplication].delegate.window;
+    UIView *view = [[UIView alloc] initWithFrame:window.bounds];
+    view.tag = LOADINGTAG;
+    view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithFrame:view.bounds];
+    [indicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [view addSubview:indicator];
+    [indicator startAnimating];
+    [window addSubview:view];
+}
+
+-(void)removeLoading{
+    UIWindow *window = [UIApplication sharedApplication].delegate.window;
+    UIView *view = [window viewWithTag:LOADINGTAG];
+    if(view){
+        [view removeFromSuperview];
+    }
+}
+
+-(void)showMessage:(NSString *)msg status:(STATUS_VIEW)status{
+    StatusView *view = [[StatusView alloc] init];
+    [view status:msg type:status];
+    [view show];
+}
+
+-(void)popupMessage:(NSString *)msg{
+    
+}
+//+(SquadLoginViewController *)loginViewController:(id<SquadControllerDelegate>)delegate{
+//    SquadViewHelper *helper = [SquadViewHelper helper];
+//    SquadLoginViewController *controller =(SquadLoginViewController *)[helper.storyboard instantiateViewControllerWithIdentifier:@"SquadLoginVC"];
+//    return controller;
+//}
+
 
 @end

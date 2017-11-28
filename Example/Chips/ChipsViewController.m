@@ -9,9 +9,12 @@
 #import "ChipsViewController.h"
 #import <Cips/Cips.h>
 #import <Photos/Photos.h>
-#import <Cips/SquadViewHelper.h>
 
-@interface ChipsViewController ()
+
+@interface ChipsViewController (){
+    NSString *accessToken;
+    NSString *userID;
+}
 @property (weak, nonatomic) IBOutlet UILabel *labelTest;
 
 @end
@@ -22,10 +25,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [Squad initWithClientId:@"1028948410f4662836" withClientSecret:@"f3752b5d0b7e308adba65b06aed0dc81"];
-    [[Squad instance] loginWithEmail:@"leomastakusuma@gmail.com" andPassoword:@"Masta123" completion:^(SquadResponseModel *response) {
-        
-    }];
+    [Squad initWithClientId:@"6b345e743f707b70283b29" withClientSecret:@"4473524f74692f3039796725693b45724834554e38716e38545024673347542179444d7034545e2e70367831523b525a3434" withCompanyId:@"11"];
+//    [[Squad instance] loginWithEmail:@"leomastakusuma@gmail.com" andPassoword:@"Masta123" completion:^(SquadResponseModel *response) {
+//        
+//    }];
+    [[UIApplication sharedApplication]setStatusBarHidden:true];
 //    [Squad initWithClientId:@"1028948410f4662836" withClientSecret:@"f3752b5d0b7e308adba65b06aed0dc81"];
 //    [[Squad instance] loginWithEmail:@"leomastakusuma@gmail.com" andPassoword:@"Masta123" completion:^(SquadResponseModel *response) {
 //        
@@ -34,7 +38,13 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [self presentViewController:[[[SquadViewHelper alloc] init] viewController] animated:true completion:nil];
+    if(!accessToken){
+        [SquadViewHelper SquadLoginViewWithController:self delegate:self];
+    }else{
+        [SquadViewHelper SquadProfileViewWithController:self token:accessToken];
+    }
+//    [[SquadViewHelper helper] showMessage:@"TEST" status:SUCCESS];
+//    [self presentViewController:[[[SquadViewHelper alloc] init] viewController] animated:true completion:nil];
 //    CGFloat space = 2;
 //    NSDictionary *attributed = @{
 //                                 NSKernAttributeName : @(space),
@@ -51,6 +61,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(BOOL)prefersStatusBarHidden{
+    return true;
+    
 }
 
 -(void)iamgePicker{
@@ -89,9 +104,9 @@
     }];
 }
 -(void)registerEmail{
-    [[Squad instance] registerFirstWithEmail:@"squadtest@mailhog.codigo.id" password:@"Test1234" fullname:@"abcd" companyid:@"2" redirecturi:@"a" verifyuri:@"a" completion:^(SquadResponseModel *response) {
-        NSLog(response.display_message);
-    }];
+//    [[Squad instance] registerFirstWithEmail:@"squadtest@mailhog.codigo.id" password:@"Test1234" fullname:@"abcd" companyid:@"2" redirecturi:@"a" verifyuri:@"a" completion:^(SquadResponseModel *response) {
+//        NSLog(response.display_message);
+//    }];
 }
 
 -(void)verificationRegister{
@@ -165,6 +180,16 @@
     NSLog(@"messeage: %@",response.message);
     NSLog(@"display_message: %@",response.display_message);
     NSLog(@"data %@",response.data);
+}
+
+-(void)squadLoginResponse:(NSDictionary *)data status:(BOOL)isSuccees message:(NSString *)message controller:(UIViewController *)controller{
+    
+    NSLog(@"Status %d, message: %@",isSuccees,message);
+    if(isSuccees){
+        accessToken = [data objectForKey:@"access_token"];
+        NSLog(@"Access token %@",accessToken);
+        [controller dismissViewControllerAnimated:true completion:nil];
+    }
 }
 
 @end

@@ -7,8 +7,12 @@
 //
 
 #import "SquadForgotPasswordViewController.h"
+#import "../SquadViewHelper.h"
+#import "../Squad.h"
+#import "PopupMessage.h"
 
-@interface SquadForgotPasswordViewController ()
+@interface SquadForgotPasswordViewController ()<PopupMessageDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *fieldEmailAddress;
 
 @end
 
@@ -16,22 +20,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (IBAction)sendRequstForgot:(id)sender {
+    NSString *email = self.fieldEmailAddress.text;
+    [Squad.instance passwordForgotWithUserid:@"" email:email verifyUrl:@"http://web.squad.dev.codigo.id" redirectUrl:@"http://web.squad.dev.codigo.id/forgot" respon:^(SquadResponseModel *response) {
+        if([response.status isEqualToString:@"200"]){
+            PopupMessage *msg = [[PopupMessage alloc] init];
+            msg.delegate = self;
+            [msg show:@"Please check your email to reset your password"];
+        }else{
+            [SquadViewHelper.helper showMessage:response.display_message status:ERROR];
+        }
+    }];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)popupOnDismiss{
+    [self.navigationController popViewControllerAnimated:true];
 }
-*/
+
+- (IBAction)exitOnClick:(id)sender {
+    [self.navigationController popViewControllerAnimated:true];
+}
+
 
 @end

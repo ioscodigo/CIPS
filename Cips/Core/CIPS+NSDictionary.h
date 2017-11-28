@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CIPS_NSDictionary : NSObject
+@interface NSDictionary(CIPS)
+
+-(NSString *)StringForKey:(NSString *)key;
+-(BOOL)BoolForKey:(NSString *)key;
+-(NSDictionary *)dictionaryForKey:(NSString *)key;
 
 @end

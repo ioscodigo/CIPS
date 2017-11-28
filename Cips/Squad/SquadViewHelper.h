@@ -8,22 +8,40 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SquadLoginViewController.h"
-#import "SquadRegisterViewController.h"
-#import "StatusView.h"
+//#import <Views/SquadRegisterViewController.h>
+//#import <Views/StatusView.h>
+//
+//#import "Views/SquadLoginViewController.h"
+//#import "Views/SquadRegisterViewController.h"
+typedef enum {
+    SUCCESS,
+    ERROR,
+    WARNING
+} STATUS_VIEW;
 
 @protocol SquadControllerDelegate
 
 @optional
--(void)squadLoginResponse:(NSDictionary *)data status:(BOOL)isSuccees message:(NSString *)message controller:(SquadLoginViewController *)controller;
+-(void)squadLoginResponse:(NSDictionary *)data status:(BOOL)isSuccees message:(NSString *)message controller:(UIViewController *)controller;
 
 @optional
--(void)squadRegisterResponse:(NSDictionary *)data status:(BOOL)isSuccess message:(NSString *)message controller:(SquadRegisterViewController *)controller;
+-(void)squadRegisterResponse:(NSDictionary *)data status:(BOOL)isSuccess message:(NSString *)message controller:(UIViewController *)controller;
 
 @end
 
 @interface SquadViewHelper : NSObject
 
--(UIViewController *)viewController;
+@property (nonatomic,strong) UIStoryboard *storyboard;
+
+
+
+
+-(void)addLoading;
+-(void)removeLoading;
+
++(SquadViewHelper *)helper;
++(void)SquadLoginViewWithController:(UIViewController *)controller delegate:(id<SquadControllerDelegate>)delegate;
++(void)SquadProfileViewWithController:(UIViewController *)controller token:(NSString *)access_token;
+-(void)showMessage:(NSString *)msg status:(STATUS_VIEW)status;
 
 @end

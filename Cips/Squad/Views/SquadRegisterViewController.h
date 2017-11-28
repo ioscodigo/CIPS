@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "../SquadViewHelper.h"
 
 @interface SquadRegisterViewController : UIViewController
 
+@property (nonatomic) id<SquadControllerDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UITextField *fiedlFirstName;
 @property (weak, nonatomic) IBOutlet UITextField *fieldLastName;

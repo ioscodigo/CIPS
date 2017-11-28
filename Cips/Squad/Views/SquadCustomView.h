@@ -15,5 +15,11 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable UIColor *borderColor;
 @property (nonatomic) IBInspectable CGFloat borderWidth;
 @property (nonatomic) IBInspectable CGFloat cornerRadius;
+@property (nonatomic) IBInspectable BOOL addAllBorder;
+@property (nonatomic) IBInspectable BOOL addLeftBorder;
+@property (nonatomic) IBInspectable BOOL addRightBorder;
+@property (nonatomic) IBInspectable BOOL addTopBorder;
+@property (nonatomic) IBInspectable BOOL addBottomBorder;
+
 
 @end

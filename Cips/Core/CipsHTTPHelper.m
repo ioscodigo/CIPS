@@ -41,7 +41,7 @@ static CipsHTTPHelper *sharedInstance = nil;
     
     NSString *boundary = nil;
     NSData *post = [self multipartDataWithParameters:param boundary:&boundary];
-    NSMutableDictionary *head = [[NSMutableDictionary alloc] initWithDictionary:@{@"Content-type":[@"multipart/form-data; boundary=" stringByAppendingString:boundary]}];
+    NSMutableDictionary *head = [[NSMutableDictionary alloc] initWithDictionary:@{@"Content-Type":[@"multipart/form-data; boundary=" stringByAppendingString:boundary]}];
     [self request:method withURL:url withBody:post withHeaders:head withBlock:block];
 }
 
@@ -50,10 +50,11 @@ static CipsHTTPHelper *sharedInstance = nil;
 }
 
 -(void)requestFormDataWithMethod:(HTTPMethod)method WithUrl:(NSString *)url withParameter:(NSDictionary *)param withHeader:(NSDictionary *)headers withBlock:(void (^)(CipsHTTPResponse *response))block {
-    NSMutableDictionary *head = [[NSMutableDictionary alloc] initWithDictionary:@{@"Content-type":@"application/x-www-form-urlencoded"}];
+    NSMutableDictionary *head = [[NSMutableDictionary alloc] initWithDictionary:@{@"Content-Type":@"application/x-www-form-urlencoded"}];
     if(headers != nil){
         [head addEntriesFromDictionary:headers];
     }
+    NSLog(@"url %@",url);
     NSString *query = [self joinQueryWithDictionary:param];
     NSData *data = [query dataUsingEncoding:NSASCIIStringEncoding];
     NSString *length = [NSString stringWithFormat:@"%lu",(unsigned long)[data length]];
@@ -62,15 +63,12 @@ static CipsHTTPHelper *sharedInstance = nil;
 }
 
 -(void)requestJSONWithMethod:(HTTPMethod)method WithUrl:(NSString *)url withParameter:(NSDictionary *)param withHeader:(NSDictionary *)headers withBlock:(void (^)(CipsHTTPResponse *response))block{
-    NSLog(@"param %@",param);
-    NSLog(@"url %@",url);
     NSMutableDictionary *head = [[NSMutableDictionary alloc] initWithDictionary:@{@"Content-Type":@"application/json"}];
     if(headers != nil){
         [head addEntriesFromDictionary:headers];
     }
     NSData *data = [NSJSONSerialization dataWithJSONObject:param options:0 error:nil];
     NSString *query = [self joinQueryWithDictionary:param];
-//    NSData *data = [query dataUsingEncoding:NSASCIIStringEncoding];
     NSString *length = [NSString stringWithFormat:@"%lu",(unsigned long)[data length]];
     [head addEntriesFromDictionary:@{@"Content-Length":length}];
     [self request:method withURL:url withBody:data withHeaders:head withBlock:block];
@@ -106,7 +104,6 @@ static CipsHTTPHelper *sharedInstance = nil;
             break;
     }
     NSURLRequest *req = [self request:methods withUrl:URL withBody:body withHeader:header];
-//    NSLog(@"header %@",req.allHTTPHeaderFields);
     [[[NSURLSession sharedSession] dataTaskWithRequest:req completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
     
         CipsHTTPResponse *respon = [[CipsHTTPResponse alloc] init];
@@ -125,14 +122,16 @@ static CipsHTTPHelper *sharedInstance = nil;
         }
         respon.responString = responseStr;
         }
-        block(respon);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            block(respon);
+        });
+       
     }] resume];
 }
 
 
 
 -(NSURLRequest *)request:(NSString *)method withUrl:(NSString *)URL withBody:(NSData *)body withHeader:(NSDictionary *)headers{
-//    NSLog(@"URL STRING %@",URL);
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:URL]];
     [request setHTTPMethod:method];

@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "../SquadViewHelper.h"
 
-typedef enum {
-    SUCCESS,
-    ERROR,
-    WARNING
-} STATUS;
 
 @interface StatusView : UIView
 
+-(instancetype)status:(NSString *)message type:(STATUS_VIEW)status;
+-(instancetype)setMessageColor:(UIColor *)color;
+-(void)showOnView:(UIView *)view;
+-(void)show;
 @end

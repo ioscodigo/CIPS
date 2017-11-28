@@ -18,18 +18,22 @@ typedef void (^squadCompletion)(SquadResponseModel *response);
 
 @property (nonatomic,strong) NSString *clientID;
 @property (nonatomic,strong) NSString *clientSecret;
+@property (nonatomic,strong) NSString *companyID;
+
+
 
 -(instancetype)init __attribute__((unavailable("init not available")));
 
 +(Squad *)instance;
-+(void)initWithClientId:(NSString *)clientID withClientSecret:(NSString *)clientSecret;
++(void)initWithClientId:(NSString *)clientID withClientSecret:(NSString *)clientSecret withCompanyId:(NSString *)companyID;
 -(void)loginWithEmail:(NSString *)email andPassoword:(NSString *)password completion:(squadCompletion)respon;
--(void)registerFirstWithEmail:(NSString *)email password:(NSString *)password fullname:(NSString *)fullname companyid:(NSString *)comp_id redirecturi:(NSString *)red_uri verifyuri:(NSString *)ver_uri completion:(squadCompletion)respon;
+-(void)registerFirstWithEmail:(NSString *)email password:(NSString *)password firstName:(NSString *)firstname lastName:(NSString *)lastname companyid:(NSString *)comp_id redirecturi:(NSString *)red_uri verifyuri:(NSString *)ver_uri completion:(squadCompletion)respon;
 -(void)userInfoGetWithToken:(NSString *)access_token respon:(void (^)(SquadResponseModel *response))block;
 
 -(void)profileEditWithData:(NSDictionary *)userEdited respon:(squadCompletion)response;
 
--(void)uploadImageWithParam:(NSDictionary *)param respon:(squadCompletion)response;
+-(void)uploadImage:(NSData *)imageData userid:(NSString *)userid accessToken:(NSString *)accessToken respon:(squadCompletion)response;
+
 -(void)tokenRefreshWithToken:(NSString *)refresh_token respon:(squadCompletion)response;
 -(void)logoutAccessToken:(NSString *)access_token refreshToken:(NSString *)refresh_token respon:(squadCompletion)response;
 -(void)resourceWithParamsGetWithToken:(NSString *)access_token respon:(squadCompletion)response;
@@ -41,5 +45,7 @@ typedef void (^squadCompletion)(SquadResponseModel *response);
 -(void)verificationRegisterWithUserid:(NSString *)userid code:(NSString *)code redirect:(NSString *)redirectURI respon:(squadCompletion)response;
 -(void)passwordUpdateWithAccessToken:(NSString *)accessToken userid:(NSString *)userid oldPassword:(NSString *)oldPass newPassword:(NSString *)newPass respon:(squadCompletion)response;
 -(void)verificationRegisterResend:(NSString *)email respon:(squadCompletion)response;
+-(void)getListCountry:(squadCompletion)response;
+-(void)getListCityWithCountryId:(NSString *)countryID respon:(squadCompletion)response;
 
 @end

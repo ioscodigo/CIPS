@@ -8,6 +8,8 @@
 
 @import UIKit;
 
-@interface ChipsViewController : UIViewController <UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+#import <Cips/SquadViewHelper.h>
+
+@interface ChipsViewController : UIViewController <UINavigationControllerDelegate,UIImagePickerControllerDelegate,SquadControllerDelegate>
 
 @end

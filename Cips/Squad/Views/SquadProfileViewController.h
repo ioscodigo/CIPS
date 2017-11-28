@@ -9,17 +9,19 @@
 #import <UIKit/UIKit.h>
 
 @interface SquadProfileViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITextField *fieldFirstName;
-@property (weak, nonatomic) IBOutlet UITextField *fieldLastName;
-@property (weak, nonatomic) IBOutlet UITextField *fieldEmail;
-@property (weak, nonatomic) IBOutlet UITextField *fieldBirthdayDay;
-@property (weak, nonatomic) IBOutlet UITextField *fieldBirthdayMonth;
-@property (weak, nonatomic) IBOutlet UITextField *fieldBirthdayYear;
-@property (weak, nonatomic) IBOutlet UITextField *fieldBirthdayPlace;
-@property (weak, nonatomic) IBOutlet UITextField *fieldGender;
-@property (weak, nonatomic) IBOutlet UITextField *fieldAddress;
-@property (weak, nonatomic) IBOutlet UITextField *fieldCountry;
-@property (weak, nonatomic) IBOutlet UITextField *fieldZipCode;
-@property (weak, nonatomic) IBOutlet UITextField *fieldCity;
+@property (weak, nonatomic) IBOutlet UILabel *labelName;
+@property (weak, nonatomic) IBOutlet UILabel *labelEmail;
+@property (weak, nonatomic) IBOutlet UILabel *labelBirthDate;
+@property (weak, nonatomic) IBOutlet UILabel *labelBirthPlace;
+@property (weak, nonatomic) IBOutlet UILabel *labelGender;
+@property (weak, nonatomic) IBOutlet UILabel *labelAddress;
+@property (weak, nonatomic) IBOutlet UILabel *labelCountry;
+@property (weak, nonatomic) IBOutlet UILabel *labelCity;
+@property (weak, nonatomic) IBOutlet UILabel *labelZipCode;
+
+@property (weak, nonatomic) NSString *accessToken;
+@property (weak, nonatomic) NSString *userID;
+
+
 
 @end

@@ -7,32 +7,66 @@
 //
 
 #import "SquadProfileViewController.h"
+#import "Cips/Cips.h"
+#import <Cips/CIPS+NSDictionary.h>
+#import "../SquadViewHelper.h"
+#import "SquadEditProfileViewController.h"
 
-@interface SquadProfileViewController ()
-
+@interface SquadProfileViewController ()<UITextFieldDelegate>{
+    SquadViewHelper *helper;
+}
 @end
 
 @implementation SquadProfileViewController
 
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    helper = [SquadViewHelper helper];
 }
 
-
-- (IBAction)updateOnClick:(id)sender {
+- (void)viewDidAppear:(BOOL)animated{
+    [helper addLoading];
+    [self loadDataProfile];
 }
 
-- (IBAction)changePassworOnClick:(id)sender {
+-(void)loadDataProfile{
+    [Squad.instance userInfoGetWithToken:self.accessToken respon:^(SquadResponseModel *response) {
+        [helper removeLoading];
+        NSLog(@"%@",response.message);
+        if(response.isSucces){
+            NSDictionary *userData = [response.data objectForKey:@"user"];
+            _labelName.text = [NSString stringWithFormat:@"%@ %@",[userData StringForKey:@"first_name"],[userData StringForKey:@"last_name"]];
+            _labelEmail.text = [userData StringForKey:@"email"];
+            _labelBirthDate.text = [userData StringForKey:@"birthdate"]; //01-januari-1897
+            _labelGender.text = [userData StringForKey:@"gender"];
+            _labelAddress.text = [userData StringForKey:@"address"];
+//            _labelCity.text = [userData StringForKey:@"city"];
+            if([[userData objectForKey:@"country"] objectForKey:@"_id"] != nil){
+                _labelCity.text = [[userData objectForKey:@"city"] objectForKey:@"_name"];
+            }
+            if([[userData objectForKey:@"country"] objectForKey:@"_id"] != nil){
+                _labelCountry.text = [[userData objectForKey:@"country"] objectForKey:@"_name"];
+            }
+            self.userID = [userData StringForKey:@"user_id"];
+            
+        }else{
+            NSLog(@"Profile Failed %@",response.display_message);
+        }
+    }];
 }
 
-- (IBAction)genderOnClick:(id)sender {
+- (IBAction)squadeditProfileOnClick:(id)sender {
+    SquadEditProfileViewController *editProfile = [self.storyboard instantiateViewControllerWithIdentifier:@"editProfileVC"];
+    editProfile.accessToken = self.accessToken;
+    editProfile.userID = self.userID;
+    [self.navigationController pushViewController:editProfile animated:true];
 }
 
-- (IBAction)countryOnClick:(id)sender {
-}
-
-- (IBAction)cityOnClick:(id)sender {
+- (IBAction)squadDismissOnClick:(id)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 
 

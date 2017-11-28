@@ -41,6 +41,7 @@
 		14CD888A67CEAA82E8961874 /* Pods-Chips_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chips_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chips_Example/Pods-Chips_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		1F760229FAC6B9681B7F97BD /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2EE2355C93F86DB46BC643E4 /* Pods_Chips_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chips_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30F53AF41FA06F53006DD98F /* Chips_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chips_Example.entitlements; sourceTree = "<group>"; };
 		4436CC76C8B57768B93BB484 /* Pods-Chips_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chips_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chips_Tests/Pods-Chips_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* Chips_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chips_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -98,6 +99,7 @@
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
+				30F53AF41FA06F53006DD98F /* Chips_Example.entitlements */,
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F593195388D20070C39A /* Example for Chips */,
 				6003F5B5195388D20070C39A /* Tests */,
@@ -250,6 +252,14 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = fajaraw;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = H8YLW5ZK54;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -524,6 +534,8 @@
 			baseConfigurationReference = 14CD888A67CEAA82E8961874 /* Pods-Chips_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Chips_Example.entitlements;
+				DEVELOPMENT_TEAM = H8YLW5ZK54;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chips/Chips-Prefix.pch";
 				INFOPLIST_FILE = "Chips/Chips-Info.plist";
@@ -539,6 +551,8 @@
 			baseConfigurationReference = FFD60A8B93F6A4F4615CAE70 /* Pods-Chips_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Chips_Example.entitlements;
+				DEVELOPMENT_TEAM = H8YLW5ZK54;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chips/Chips-Prefix.pch";
 				INFOPLIST_FILE = "Chips/Chips-Info.plist";

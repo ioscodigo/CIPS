@@ -62,5 +62,6 @@ DESC
     s.subspec 'Qnock' do |qnock|
         qnock.dependency	'Cips/Core'
         qnock.source_files = 'Cips/Qnock/**/*'
+        
     end
 end

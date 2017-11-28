@@ -8,14 +8,11 @@
 
 #import "Squad.h"
 #import "Internal/SquadAPI.h"
-#import "Views/SquadViewHelper.h"
-
 
 
 @implementation Squad
 
     SquadAPI *api;
-    SquadViewHelper *viewHelper;
 
     static Squad *obj = nil;
 
@@ -38,7 +35,6 @@
     {
         NSAssert(obj == nil, @"Attempted to allocate a second instance of a singleton.");
         obj = [super alloc];
-        viewHelper = [[SquadViewHelper alloc] init];
         return obj;
     }
     
@@ -49,16 +45,20 @@
     return nil;
 }
 
--(id)initWithID:(NSString *)clientid secret:(NSString *)clientSecret{
+-(id)initWithID:(NSString *)clientid secret:(NSString *)clientSecret withCompanyId:(NSString *)companyID{
     [Squad alloc];
-    if (self != nil) {
-        api = [[SquadAPI alloc] initWithSecretKey:clientid withClientid:clientSecret];
+    if (obj != nil) {
+        api = [[SquadAPI alloc] initWithSecretKey:clientid withClientid:clientSecret withCompanyId:companyID];
+        self.companyID = companyID;
     }
+    return obj;
 }
 
-+(void)initWithClientId:(NSString *)clientID withClientSecret:(NSString *)clientSecret{
++(void)initWithClientId:(NSString *)clientID withClientSecret:(NSString *)clientSecret withCompanyId:(NSString *)companyID{
     [Squad alloc];
-    api = [[SquadAPI alloc] initWithSecretKey:clientSecret withClientid:clientID];
+    api = [[SquadAPI alloc] initWithSecretKey:clientSecret withClientid:clientID withCompanyId:companyID];
+    Squad.instance.companyID = companyID;
+    
 }
 
 
@@ -74,16 +74,17 @@
                             @"password":password,
                             @"grant_type":@"password"
                             };
-    [viewHelper viewController];
-//    [api loginWithParam:param completion:respon];
+    [api loginWithParam:param completion:respon];
 }
 
--(void)registerFirstWithEmail:(NSString *)email password:(NSString *)password fullname:(NSString *)fullname companyid:(NSString *)comp_id redirecturi:(NSString *)red_uri verifyuri:(NSString *)ver_uri completion:(squadCompletion)respon{
+-(void)registerFirstWithEmail:(NSString *)email password:(NSString *)password firstName:(NSString *)firstname lastName:(NSString *)lastname companyid:(NSString *)comp_id redirecturi:(NSString *)red_uri verifyuri:(NSString *)ver_uri completion:(squadCompletion)respon{
+    NSLog(@"%@:%@:%@:%@:%@:%@:%@",email,password,firstname,lastname,_companyID,red_uri,ver_uri);
     NSDictionary *param = @{
                             @"email":email,
                             @"password":password,
-                            @"fullname":fullname,
-                            @"company_id":comp_id,
+                            @"first_name":firstname,
+                            @"last_name":lastname,
+                            @"company_id":_companyID,
                             @"redirect_uri":red_uri,
                             @"Verify_url":ver_uri
                             };
@@ -94,16 +95,17 @@
     NSDictionary *param = @{
                             @"access_token":access_token
                             };
-    [api getUserInfoWithParam:param completion:block];
+    [api userInfoWithParam:param completion:block];
 }
 
 -(void)profileEditWithData:(NSDictionary *)userEdited respon:(squadCompletion)response{
     [api editInfoWithParam:userEdited completion:response];
 }
 
--(void)uploadImageWithParam:(NSDictionary *)param respon:(squadCompletion)response{
-    [api uploadImageWithParam:param completion:response];
+-(void)uploadImage:(NSData *)imageData userid:(NSString *)userid accessToken:(NSString *)accessToken respon:(squadCompletion)response {
+    [api uploadImageWithParam:@{@"user_id":userid,@"access_token":accessToken} imageData:imageData completion:response];
 }
+
 
 -(void)uploadImageUser:(NSString *)userid respon:(void(^)(SquadResponseModel *response))block{
     
@@ -147,6 +149,7 @@
                             @"verify_url":verifyUrl,
                             @"redirect_url":redirecturl
                             };
+    NSLog(@"param %@",param);
     [api forgotPasswordWithParam:param completion:response];
 }
 
@@ -194,7 +197,16 @@
 -(void)verificationRegisterResend:(NSString *)email respon:(squadCompletion)response{
     [api resendVerificationRegisterWithParam:@{@"email":email} completion:response];
 }
-     
+
+
+-(void)getListCountry:(squadCompletion)response{
+    [api getListCountryWithCompletion:response];
+}
+
+-(void)getListCityWithCountryId:(NSString *)countryID respon:(squadCompletion)response{
+    [api getListCityWithCountryId:countryID completion:response];
+}
+
 
 
 
