@@ -7,8 +7,10 @@
 //
 
 @import UIKit;
+@import UserNotifications;
+#import <FirebaseMessaging/FirebaseMessaging.h>
 
-@interface ChipsAppDelegate : UIResponder <UIApplicationDelegate>
+@interface ChipsAppDelegate : UIResponder <UIApplicationDelegate,FIRMessagingDelegate,UNUserNotificationCenterDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

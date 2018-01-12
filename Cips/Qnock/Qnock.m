@@ -56,14 +56,25 @@ static Qnock *objQnock = nil;
 
 +(void)initWithClientId:(NSString *)clientID withClientSecret:(NSString *)clientSecret completion:(void (^)(NSString *responseToken))block{
     [Qnock alloc];
+    objQnock.qnock_environment = PRODUCTION;
     apiQnock = [[QnockAPI alloc] initWithSecretKey:clientSecret withClientid:clientID completion:^(NSString *responseToken) {
         block(responseToken);
     }];
 }
 
 
-+(void)setEnvironment:(ENVIRONMENT)env {
-    [apiQnock setEnvironment:env];
++(void)initWithClientId:(NSString *)clientID withClientSecret:(NSString *)clientSecret withEnvironment:(CIPSENVIRONMENT)env completion:(void (^)(NSString *responseToken))block{
+    [Qnock alloc];
+    objQnock.qnock_environment = env;
+    apiQnock = [[QnockAPI alloc] initWithSecretKey:clientSecret withClientid:clientID withEnvironment:env completion:^(NSString *responseToken) {
+        block(responseToken);
+    }];
+}
+
+
+-(void)setEnvironment:(CIPSENVIRONMENT)env onComplete:(void (^)(NSString *responseToken))block {
+    self.qnock_environment = env;
+    [apiQnock setEnvironment:env onComplete:block];
 }
 
 -(void)unsubscribe:(NSString *)FCMtoken withChannel: (NSString *) channel completion:(qnockCompletion)respon{

@@ -33,7 +33,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELCOME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opE-r9-BOo" customClass="SquadCustomLabel">
-                                        <rect key="frame" x="122.5" y="124" width="131" height="24"/>
+                                        <rect key="frame" x="140" y="124" width="96" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
                                         <nil key="highlightedColor"/>
@@ -192,7 +192,7 @@
                                             <action selector="forgotPassword:" destination="JAm-UF-60g" eventType="touchUpInside" id="Q1I-aj-naE"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gi-lD-Tri">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gi-lD-Tri">
                                         <rect key="frame" x="161.5" y="441" width="53.5" height="17"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gz-Oz-ahW">
@@ -230,7 +230,7 @@
                                             <constraint firstAttribute="trailing" secondItem="Kl2-Ia-fto" secondAttribute="trailing" id="t0N-Ys-Xyt"/>
                                         </constraints>
                                     </view>
-                                    <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RiX-Mh-svx">
+                                    <view hidden="YES" tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RiX-Mh-svx">
                                         <rect key="frame" x="97" y="472" width="180" height="40"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rO1-Rv-7af">
@@ -338,6 +338,33 @@
                                             <action selector="registerOnClick:" destination="JAm-UF-60g" eventType="touchUpInside" id="dYB-fS-kxl"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cct-xP-k18">
+                                        <rect key="frame" x="16" y="36" width="25" height="25"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico-close-modal" translatesAutoresizingMaskIntoConstraints="NO" id="F5t-oc-lSI">
+                                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBx-XJ-xsB">
+                                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                <connections>
+                                                    <action selector="dismisLoginViewController:" destination="JAm-UF-60g" eventType="touchUpInside" id="nd6-4g-URt"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="F5t-oc-lSI" firstAttribute="top" secondItem="cct-xP-k18" secondAttribute="top" id="150-QS-JmM"/>
+                                            <constraint firstAttribute="bottom" secondItem="mBx-XJ-xsB" secondAttribute="bottom" id="Aeo-V6-GB2"/>
+                                            <constraint firstAttribute="trailing" secondItem="F5t-oc-lSI" secondAttribute="trailing" id="JP0-hi-QR6"/>
+                                            <constraint firstItem="mBx-XJ-xsB" firstAttribute="top" secondItem="cct-xP-k18" secondAttribute="top" id="MqA-n7-z9l"/>
+                                            <constraint firstItem="F5t-oc-lSI" firstAttribute="leading" secondItem="cct-xP-k18" secondAttribute="leading" id="Qwd-L5-VYt"/>
+                                            <constraint firstItem="mBx-XJ-xsB" firstAttribute="leading" secondItem="cct-xP-k18" secondAttribute="leading" id="TP3-oC-Drx"/>
+                                            <constraint firstAttribute="width" constant="25" id="Y82-Bv-kme"/>
+                                            <constraint firstAttribute="bottom" secondItem="F5t-oc-lSI" secondAttribute="bottom" id="ef0-xZ-WqU"/>
+                                            <constraint firstAttribute="trailing" secondItem="mBx-XJ-xsB" secondAttribute="trailing" id="mMn-6l-16z"/>
+                                            <constraint firstAttribute="height" constant="25" id="yhw-rg-XWp"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -348,8 +375,10 @@
                                     <constraint firstItem="zLx-hv-vdR" firstAttribute="leading" secondItem="Dav-z6-NaX" secondAttribute="leading" constant="44" id="JBP-ZF-BCv"/>
                                     <constraint firstItem="lpO-lJ-WM3" firstAttribute="top" secondItem="opE-r9-BOo" secondAttribute="bottom" constant="63" id="Jgd-Fe-P8h"/>
                                     <constraint firstItem="CiV-97-qhk" firstAttribute="top" secondItem="Dav-z6-NaX" secondAttribute="top" constant="44" id="Jho-R5-MzV"/>
+                                    <constraint firstItem="cct-xP-k18" firstAttribute="top" secondItem="Dav-z6-NaX" secondAttribute="top" constant="36" id="Llx-al-Dna"/>
                                     <constraint firstItem="opE-r9-BOo" firstAttribute="top" secondItem="CiV-97-qhk" secondAttribute="bottom" constant="32" id="M5D-d0-UVf"/>
-                                    <constraint firstItem="fap-82-qlN" firstAttribute="top" secondItem="RiX-Mh-svx" secondAttribute="bottom" constant="52" id="R3w-Bo-Ps8"/>
+                                    <constraint firstItem="cct-xP-k18" firstAttribute="leading" secondItem="Dav-z6-NaX" secondAttribute="leading" constant="16" id="PhM-Ie-PjI"/>
+                                    <constraint firstItem="fap-82-qlN" firstAttribute="top" secondItem="RiX-Mh-svx" secondAttribute="bottom" id="R3w-Bo-Ps8"/>
                                     <constraint firstItem="RiX-Mh-svx" firstAttribute="top" secondItem="0gi-lD-Tri" secondAttribute="bottom" constant="14" id="R9c-Fz-sqz"/>
                                     <constraint firstItem="CiV-97-qhk" firstAttribute="centerX" secondItem="Dav-z6-NaX" secondAttribute="centerX" id="SAZ-x1-EYs"/>
                                     <constraint firstItem="sd7-r5-lb8" firstAttribute="top" secondItem="lpO-lJ-WM3" secondAttribute="bottom" constant="12" id="SZF-34-3gy"/>
@@ -425,7 +454,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FORGOT PASSWORD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3y-5p-yhK" customClass="SquadCustomLabel">
-                                        <rect key="frame" x="64.5" y="70" width="247.5" height="24"/>
+                                        <rect key="frame" x="94.5" y="70" width="187.5" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
                                         <nil key="highlightedColor"/>
@@ -886,14 +915,14 @@ to the terms &amp; condition</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hh5-FD-oLk">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmc-42-hJj">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmc-42-hJj" customClass="TPKeyboardAvoidingScrollView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="611"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DVq-QM-1hA">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="763"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="513"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EDIT  PROFILE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmf-67-JRJ" customClass="SquadCustomLabel">
-                                                        <rect key="frame" x="135.5" y="60" width="103.5" height="48"/>
+                                                        <rect key="frame" x="149.5" y="60" width="75.5" height="48"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -931,7 +960,7 @@ to the terms &amp; condition</string>
                                                         </constraints>
                                                     </view>
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4T5-nd-T9R" customClass="SquadCustomView">
-                                                        <rect key="frame" x="43" y="256" width="289" height="200"/>
+                                                        <rect key="frame" x="43" y="256" width="289" height="150"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZXu-Lv-yZg" customClass="SquadCustomView">
                                                                 <rect key="frame" x="144" y="0.0" width="144.5" height="50"/>
@@ -1062,17 +1091,17 @@ to the terms &amp; condition</string>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="addBottomBorder" value="YES"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QG4-fd-RJ6">
-                                                                <rect key="frame" x="0.0" y="150" width="289" height="50"/>
+                                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QG4-fd-RJ6">
+                                                                <rect key="frame" x="0.0" y="150" width="289" height="0.0"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+62" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfv-8J-Iyq">
-                                                                        <rect key="frame" x="15" y="16.5" width="264" height="17"/>
+                                                                        <rect key="frame" x="15" y="-8.5" width="264" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Not Available" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jRo-CI-uJL">
-                                                                        <rect key="frame" x="50" y="16.5" width="219" height="17"/>
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jRo-CI-uJL">
+                                                                        <rect key="frame" x="50" y="-8.5" width="219" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
                                                                     </textField>
@@ -1081,7 +1110,7 @@ to the terms &amp; condition</string>
                                                                 <constraints>
                                                                     <constraint firstItem="Lfv-8J-Iyq" firstAttribute="leading" secondItem="QG4-fd-RJ6" secondAttribute="leading" constant="15" id="6Of-8L-ytn"/>
                                                                     <constraint firstItem="jRo-CI-uJL" firstAttribute="leading" secondItem="QG4-fd-RJ6" secondAttribute="leading" constant="50" id="6jk-AH-C3b"/>
-                                                                    <constraint firstAttribute="height" constant="50" id="Jq6-pt-F42"/>
+                                                                    <constraint firstAttribute="height" id="Jq6-pt-F42"/>
                                                                     <constraint firstItem="Lfv-8J-Iyq" firstAttribute="centerY" secondItem="QG4-fd-RJ6" secondAttribute="centerY" id="SbG-F8-7ii"/>
                                                                     <constraint firstAttribute="trailing" secondItem="jRo-CI-uJL" secondAttribute="trailing" constant="20" id="afw-BY-hnQ"/>
                                                                     <constraint firstItem="jRo-CI-uJL" firstAttribute="centerY" secondItem="QG4-fd-RJ6" secondAttribute="centerY" id="hhb-bu-bHS"/>
@@ -1122,13 +1151,13 @@ to the terms &amp; condition</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v5o-rF-lQT" customClass="SquadCustomView">
-                                                        <rect key="frame" x="43" y="472" width="289" height="100"/>
+                                                        <rect key="frame" x="43" y="422" width="289" height="50"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="km3-5T-bcg">
-                                                                <rect key="frame" x="0.0" y="0.0" width="96.5" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="86" height="50"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Day" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="28B-29-U4B">
-                                                                        <rect key="frame" x="20" y="16.5" width="56.5" height="17"/>
+                                                                        <rect key="frame" x="20" y="16.5" width="46" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                                     </textField>
@@ -1142,10 +1171,10 @@ to the terms &amp; condition</string>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h6k-Yk-FIZ" customClass="SquadCustomView">
-                                                                <rect key="frame" x="96.5" y="0.0" width="96" height="50"/>
+                                                                <rect key="frame" x="117.5" y="0.0" width="85.5" height="50"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Month" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oPt-D7-SwT">
-                                                                        <rect key="frame" x="20" y="16.5" width="56" height="17"/>
+                                                                        <rect key="frame" x="20" y="16.5" width="45.5" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                                     </textField>
@@ -1169,10 +1198,10 @@ to the terms &amp; condition</string>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u8L-be-hCE">
-                                                                <rect key="frame" x="192.5" y="0.0" width="96.5" height="50"/>
+                                                                <rect key="frame" x="203" y="0.0" width="86" height="50"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Year" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c8a-wg-xxz">
-                                                                        <rect key="frame" x="20" y="16.5" width="56.5" height="17"/>
+                                                                        <rect key="frame" x="20" y="16.5" width="46" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                                     </textField>
@@ -1185,11 +1214,11 @@ to the terms &amp; condition</string>
                                                                     <constraint firstAttribute="trailing" secondItem="c8a-wg-xxz" secondAttribute="trailing" constant="20" id="v5J-bR-Uyl"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KFM-Sw-ahB" customClass="SquadCustomView">
-                                                                <rect key="frame" x="0.0" y="50" width="144.5" height="50"/>
+                                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KFM-Sw-ahB" customClass="SquadCustomView">
+                                                                <rect key="frame" x="0.0" y="50" width="288.5" height="0.0"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Not Available" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bOd-lw-NGd">
-                                                                        <rect key="frame" x="20" y="16.5" width="104.5" height="17"/>
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Birth Place" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bOd-lw-NGd">
+                                                                        <rect key="frame" x="20" y="-8.5" width="248.5" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                                     </textField>
@@ -1199,7 +1228,7 @@ to the terms &amp; condition</string>
                                                                     <constraint firstItem="bOd-lw-NGd" firstAttribute="centerY" secondItem="KFM-Sw-ahB" secondAttribute="centerY" id="3BL-Ca-NjJ"/>
                                                                     <constraint firstItem="bOd-lw-NGd" firstAttribute="leading" secondItem="KFM-Sw-ahB" secondAttribute="leading" constant="20" id="GZ2-iV-vj2"/>
                                                                     <constraint firstAttribute="trailing" secondItem="bOd-lw-NGd" secondAttribute="trailing" constant="20" id="q20-k4-IWs"/>
-                                                                    <constraint firstAttribute="height" constant="50" id="quw-eU-b5T"/>
+                                                                    <constraint firstAttribute="height" id="quw-eU-b5T"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -1212,23 +1241,23 @@ to the terms &amp; condition</string>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="addRightBorder" value="YES"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iCi-PC-fiW" customClass="SquadCustomView">
-                                                                <rect key="frame" x="144.5" y="50" width="144.5" height="50"/>
+                                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iCi-PC-fiW" customClass="SquadCustomView">
+                                                                <rect key="frame" x="0.5" y="50" width="288.5" height="0.0"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Not Available" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h1L-wP-Zwa">
-                                                                        <rect key="frame" x="20" y="10" width="104.5" height="30"/>
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gender" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h1L-wP-Zwa">
+                                                                        <rect key="frame" x="20" y="-15" width="248.5" height="30"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                                     </textField>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico-dropdown" translatesAutoresizingMaskIntoConstraints="NO" id="Gny-d8-Vbh">
-                                                                        <rect key="frame" x="117.5" y="17" width="16" height="16"/>
+                                                                        <rect key="frame" x="261.5" y="-8" width="16" height="16"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="16" id="dSo-MX-LWl"/>
                                                                             <constraint firstAttribute="width" constant="16" id="eyw-nw-hKr"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="szA-aB-pDg">
-                                                                        <rect key="frame" x="19.5" y="10" width="104.5" height="30"/>
+                                                                        <rect key="frame" x="19.5" y="-15" width="248.5" height="30"/>
                                                                         <connections>
                                                                             <action selector="squadChangeGender:" destination="Joa-UV-Nr2" eventType="touchUpInside" id="dIb-Iq-Nrs"/>
                                                                         </connections>
@@ -1241,7 +1270,7 @@ to the terms &amp; condition</string>
                                                                     <constraint firstItem="szA-aB-pDg" firstAttribute="centerX" secondItem="h1L-wP-Zwa" secondAttribute="centerX" id="EeS-Mo-Stk"/>
                                                                     <constraint firstItem="h1L-wP-Zwa" firstAttribute="centerY" secondItem="iCi-PC-fiW" secondAttribute="centerY" id="FLU-0Q-f6S"/>
                                                                     <constraint firstItem="szA-aB-pDg" firstAttribute="centerY" secondItem="h1L-wP-Zwa" secondAttribute="centerY" id="KiZ-e5-YFW"/>
-                                                                    <constraint firstAttribute="height" constant="50" id="L4Z-dV-k24"/>
+                                                                    <constraint firstAttribute="height" id="L4Z-dV-k24"/>
                                                                     <constraint firstAttribute="trailing" secondItem="h1L-wP-Zwa" secondAttribute="trailing" constant="20" id="XzW-gB-Ezd"/>
                                                                     <constraint firstAttribute="trailing" secondItem="Gny-d8-Vbh" secondAttribute="trailing" constant="11" id="cFz-5i-lk5"/>
                                                                     <constraint firstItem="h1L-wP-Zwa" firstAttribute="leading" secondItem="iCi-PC-fiW" secondAttribute="leading" constant="20" id="hsY-o6-4Iy"/>
@@ -1261,24 +1290,21 @@ to the terms &amp; condition</string>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
-                                                            <constraint firstItem="iCi-PC-fiW" firstAttribute="leading" secondItem="KFM-Sw-ahB" secondAttribute="trailing" id="08Y-OQ-KUW"/>
                                                             <constraint firstAttribute="trailing" secondItem="iCi-PC-fiW" secondAttribute="trailing" id="1Lf-79-pjb"/>
                                                             <constraint firstAttribute="bottom" secondItem="iCi-PC-fiW" secondAttribute="bottom" id="5l9-OF-WIi"/>
+                                                            <constraint firstAttribute="trailing" secondItem="KFM-Sw-ahB" secondAttribute="trailing" id="6Xi-9y-dCH"/>
                                                             <constraint firstItem="u8L-be-hCE" firstAttribute="top" secondItem="v5o-rF-lQT" secondAttribute="top" id="9If-YC-Hrq"/>
                                                             <constraint firstItem="h6k-Yk-FIZ" firstAttribute="top" secondItem="v5o-rF-lQT" secondAttribute="top" id="Amk-x0-m2w"/>
                                                             <constraint firstItem="km3-5T-bcg" firstAttribute="leading" secondItem="v5o-rF-lQT" secondAttribute="leading" id="Bob-w9-xYr"/>
-                                                            <constraint firstAttribute="bottom" secondItem="KFM-Sw-ahB" secondAttribute="bottom" id="GRc-jh-L56"/>
                                                             <constraint firstItem="KFM-Sw-ahB" firstAttribute="top" secondItem="h6k-Yk-FIZ" secondAttribute="bottom" id="Mf8-4K-ica"/>
                                                             <constraint firstItem="u8L-be-hCE" firstAttribute="leading" secondItem="h6k-Yk-FIZ" secondAttribute="trailing" id="Qba-ll-50z"/>
+                                                            <constraint firstItem="iCi-PC-fiW" firstAttribute="leading" secondItem="v5o-rF-lQT" secondAttribute="leading" id="TOW-uA-ajq"/>
                                                             <constraint firstItem="iCi-PC-fiW" firstAttribute="width" secondItem="KFM-Sw-ahB" secondAttribute="width" id="a8c-JW-fJD"/>
-                                                            <constraint firstItem="h6k-Yk-FIZ" firstAttribute="leading" secondItem="km3-5T-bcg" secondAttribute="trailing" id="djm-os-WaV"/>
-                                                            <constraint firstItem="iCi-PC-fiW" firstAttribute="leading" secondItem="KFM-Sw-ahB" secondAttribute="trailing" id="fQW-fK-z9W"/>
-                                                            <constraint firstItem="iCi-PC-fiW" firstAttribute="top" secondItem="u8L-be-hCE" secondAttribute="bottom" id="hSk-Tp-IS8"/>
+                                                            <constraint firstItem="iCi-PC-fiW" firstAttribute="top" secondItem="KFM-Sw-ahB" secondAttribute="bottom" id="bU0-om-G5N"/>
                                                             <constraint firstItem="u8L-be-hCE" firstAttribute="width" secondItem="h6k-Yk-FIZ" secondAttribute="width" id="ivf-4o-d71"/>
                                                             <constraint firstAttribute="trailing" secondItem="u8L-be-hCE" secondAttribute="trailing" id="kPa-52-SdV"/>
                                                             <constraint firstItem="KFM-Sw-ahB" firstAttribute="leading" secondItem="v5o-rF-lQT" secondAttribute="leading" id="nEc-hA-Nek"/>
                                                             <constraint firstItem="km3-5T-bcg" firstAttribute="top" secondItem="v5o-rF-lQT" secondAttribute="top" id="nO7-l9-C12"/>
-                                                            <constraint firstItem="iCi-PC-fiW" firstAttribute="top" secondItem="h6k-Yk-FIZ" secondAttribute="bottom" id="tYY-gT-I47"/>
                                                             <constraint firstItem="km3-5T-bcg" firstAttribute="width" secondItem="h6k-Yk-FIZ" secondAttribute="width" id="vnX-zv-3sl"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
@@ -1295,13 +1321,13 @@ to the terms &amp; condition</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDw-ce-ARk" customClass="SquadCustomView">
-                                                        <rect key="frame" x="43" y="588" width="289" height="150"/>
+                                                        <rect key="frame" x="43" y="488" width="289" height="0.0"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ymn-4v-aYy">
-                                                                <rect key="frame" x="0.0" y="0.0" width="289" height="50"/>
+                                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ymn-4v-aYy">
+                                                                <rect key="frame" x="0.0" y="0.0" width="289" height="0.0"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Not Available" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9xq-07-D7Z">
-                                                                        <rect key="frame" x="20" y="16.5" width="249" height="17"/>
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9xq-07-D7Z">
+                                                                        <rect key="frame" x="20" y="-8.5" width="249" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                                     </textField>
@@ -1311,26 +1337,26 @@ to the terms &amp; condition</string>
                                                                     <constraint firstAttribute="trailing" secondItem="9xq-07-D7Z" secondAttribute="trailing" constant="20" id="1Ew-Pz-hNu"/>
                                                                     <constraint firstItem="9xq-07-D7Z" firstAttribute="centerY" secondItem="Ymn-4v-aYy" secondAttribute="centerY" id="2KW-MO-LQl"/>
                                                                     <constraint firstItem="9xq-07-D7Z" firstAttribute="leading" secondItem="Ymn-4v-aYy" secondAttribute="leading" constant="20" id="iiI-od-kh6"/>
-                                                                    <constraint firstAttribute="height" constant="50" id="zJt-1u-cux"/>
+                                                                    <constraint firstAttribute="height" id="zJt-1u-cux"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBW-2d-Vfj" customClass="SquadCustomView">
-                                                                <rect key="frame" x="0.0" y="50" width="289" height="50"/>
+                                                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBW-2d-Vfj" customClass="SquadCustomView">
+                                                                <rect key="frame" x="0.0" y="0.0" width="289" height="0.0"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Not Available" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Art-gK-eH0">
-                                                                        <rect key="frame" x="20" y="10" width="249" height="30"/>
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Art-gK-eH0">
+                                                                        <rect key="frame" x="20" y="-15" width="249" height="30"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                                     </textField>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico-dropdown" translatesAutoresizingMaskIntoConstraints="NO" id="AZZ-Rc-IlF">
-                                                                        <rect key="frame" x="262" y="17" width="16" height="16"/>
+                                                                        <rect key="frame" x="262" y="-8" width="16" height="16"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="16" id="IhE-ad-0hj"/>
                                                                             <constraint firstAttribute="width" constant="16" id="KD4-Fp-OCn"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uOa-2J-FUh">
-                                                                        <rect key="frame" x="19.5" y="10" width="249" height="30"/>
+                                                                        <rect key="frame" x="19.5" y="-15" width="249" height="30"/>
                                                                         <connections>
                                                                             <action selector="squadChangeCountry:" destination="Joa-UV-Nr2" eventType="touchUpInside" id="1oA-IZ-JrH"/>
                                                                         </connections>
@@ -1341,7 +1367,7 @@ to the terms &amp; condition</string>
                                                                     <constraint firstItem="uOa-2J-FUh" firstAttribute="centerX" secondItem="Art-gK-eH0" secondAttribute="centerX" id="84U-6l-9mp"/>
                                                                     <constraint firstAttribute="trailing" secondItem="Art-gK-eH0" secondAttribute="trailing" constant="20" id="AzU-36-piE"/>
                                                                     <constraint firstItem="uOa-2J-FUh" firstAttribute="width" secondItem="Art-gK-eH0" secondAttribute="width" id="LmR-Bb-L6m"/>
-                                                                    <constraint firstAttribute="height" constant="50" id="O2q-Mj-4PF"/>
+                                                                    <constraint firstAttribute="height" id="O2q-Mj-4PF"/>
                                                                     <constraint firstItem="Art-gK-eH0" firstAttribute="leading" secondItem="tBW-2d-Vfj" secondAttribute="leading" constant="20" id="S1q-en-2in"/>
                                                                     <constraint firstItem="uOa-2J-FUh" firstAttribute="centerY" secondItem="Art-gK-eH0" secondAttribute="centerY" id="Utc-CZ-l16"/>
                                                                     <constraint firstItem="Art-gK-eH0" firstAttribute="centerY" secondItem="tBW-2d-Vfj" secondAttribute="centerY" id="i9V-fa-ijf"/>
@@ -1360,18 +1386,18 @@ to the terms &amp; condition</string>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="addBottomBorder" value="YES"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uAL-4n-Swh" customClass="SquadCustomView">
-                                                                <rect key="frame" x="145" y="100" width="144.5" height="50"/>
+                                                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uAL-4n-Swh" customClass="SquadCustomView">
+                                                                <rect key="frame" x="0.0" y="0.0" width="289" height="0.0"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Not Available" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rcg-Ew-sjd">
-                                                                        <rect key="frame" x="20" y="16.5" width="104.5" height="17"/>
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Zip Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rcg-Ew-sjd">
+                                                                        <rect key="frame" x="20" y="-8.5" width="249" height="17"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                                     </textField>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="50" id="2fe-Fb-QQo"/>
+                                                                    <constraint firstAttribute="height" id="2fe-Fb-QQo"/>
                                                                     <constraint firstItem="rcg-Ew-sjd" firstAttribute="leading" secondItem="uAL-4n-Swh" secondAttribute="leading" constant="20" id="6bQ-Wd-ws6"/>
                                                                     <constraint firstItem="rcg-Ew-sjd" firstAttribute="centerY" secondItem="uAL-4n-Swh" secondAttribute="centerY" id="MQq-i4-btc"/>
                                                                     <constraint firstAttribute="trailing" secondItem="rcg-Ew-sjd" secondAttribute="trailing" constant="20" id="din-fY-60v"/>
@@ -1383,26 +1409,26 @@ to the terms &amp; condition</string>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                         <real key="value" value="1"/>
                                                                     </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="addLeftBorder" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="addTopBorder" value="YES"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9su-n8-FTE">
-                                                                <rect key="frame" x="0.0" y="100" width="145" height="50"/>
+                                                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9su-n8-FTE">
+                                                                <rect key="frame" x="0.0" y="0.0" width="289.5" height="0.0"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Not Available" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qq1-fc-VT6">
-                                                                        <rect key="frame" x="20" y="10" width="105" height="30"/>
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qq1-fc-VT6">
+                                                                        <rect key="frame" x="20" y="-15" width="249.5" height="30"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                                     </textField>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico-dropdown" translatesAutoresizingMaskIntoConstraints="NO" id="X5p-8i-myv">
-                                                                        <rect key="frame" x="118" y="17" width="16" height="16"/>
+                                                                        <rect key="frame" x="262.5" y="-8" width="16" height="16"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="16" id="Seb-9s-gcV"/>
                                                                             <constraint firstAttribute="height" constant="16" id="WEB-tC-tAz"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFp-Hq-0Mz">
-                                                                        <rect key="frame" x="19.5" y="10" width="105" height="30"/>
+                                                                        <rect key="frame" x="19.5" y="-15" width="249.5" height="30"/>
                                                                         <connections>
                                                                             <action selector="squadChangeCity:" destination="Joa-UV-Nr2" eventType="touchUpInside" id="fpo-eE-5A6"/>
                                                                         </connections>
@@ -1416,7 +1442,7 @@ to the terms &amp; condition</string>
                                                                     <constraint firstItem="qq1-fc-VT6" firstAttribute="leading" secondItem="9su-n8-FTE" secondAttribute="leading" constant="20" id="KYv-64-zJP"/>
                                                                     <constraint firstItem="XFp-Hq-0Mz" firstAttribute="height" secondItem="qq1-fc-VT6" secondAttribute="height" id="Qie-M2-3Zi"/>
                                                                     <constraint firstAttribute="trailing" secondItem="qq1-fc-VT6" secondAttribute="trailing" constant="20" id="ZjN-3O-i82"/>
-                                                                    <constraint firstAttribute="height" constant="50" id="Zuj-es-G8T"/>
+                                                                    <constraint firstAttribute="height" id="Zuj-es-G8T"/>
                                                                     <constraint firstItem="XFp-Hq-0Mz" firstAttribute="centerY" secondItem="qq1-fc-VT6" secondAttribute="centerY" id="iP7-Zy-jaF"/>
                                                                     <constraint firstItem="qq1-fc-VT6" firstAttribute="centerY" secondItem="9su-n8-FTE" secondAttribute="centerY" id="tN5-Ev-wcC"/>
                                                                     <constraint firstAttribute="trailing" secondItem="X5p-8i-myv" secondAttribute="trailing" constant="11" id="wog-Xp-NTw"/>
@@ -1426,17 +1452,17 @@ to the terms &amp; condition</string>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstItem="Ymn-4v-aYy" firstAttribute="leading" secondItem="ZDw-ce-ARk" secondAttribute="leading" id="2Lb-im-VTh"/>
-                                                            <constraint firstItem="uAL-4n-Swh" firstAttribute="leading" secondItem="9su-n8-FTE" secondAttribute="trailing" id="8K2-yt-u4u"/>
                                                             <constraint firstAttribute="bottom" secondItem="uAL-4n-Swh" secondAttribute="bottom" id="9gF-2F-DM1"/>
+                                                            <constraint firstAttribute="trailing" secondItem="9su-n8-FTE" secondAttribute="trailing" id="9iv-ro-1gL"/>
                                                             <constraint firstItem="tBW-2d-Vfj" firstAttribute="top" secondItem="Ymn-4v-aYy" secondAttribute="bottom" id="BNK-e0-bhO"/>
                                                             <constraint firstAttribute="trailing" secondItem="tBW-2d-Vfj" secondAttribute="trailing" id="CE3-q3-q5H"/>
                                                             <constraint firstAttribute="trailing" secondItem="Ymn-4v-aYy" secondAttribute="trailing" id="HPd-ih-bpR"/>
-                                                            <constraint firstItem="uAL-4n-Swh" firstAttribute="top" secondItem="tBW-2d-Vfj" secondAttribute="bottom" id="Q9l-8Q-74s"/>
-                                                            <constraint firstAttribute="bottom" secondItem="9su-n8-FTE" secondAttribute="bottom" id="TGT-Ig-jim"/>
                                                             <constraint firstItem="9su-n8-FTE" firstAttribute="top" secondItem="tBW-2d-Vfj" secondAttribute="bottom" id="ars-C4-fIw"/>
+                                                            <constraint firstItem="uAL-4n-Swh" firstAttribute="leading" secondItem="ZDw-ce-ARk" secondAttribute="leading" id="c96-3A-vAc"/>
                                                             <constraint firstItem="9su-n8-FTE" firstAttribute="leading" secondItem="ZDw-ce-ARk" secondAttribute="leading" id="eBc-tr-9Ro"/>
                                                             <constraint firstItem="uAL-4n-Swh" firstAttribute="width" secondItem="9su-n8-FTE" secondAttribute="width" id="i59-LZ-C9O"/>
                                                             <constraint firstItem="Ymn-4v-aYy" firstAttribute="top" secondItem="ZDw-ce-ARk" secondAttribute="top" id="kZx-lj-xXM"/>
+                                                            <constraint firstItem="uAL-4n-Swh" firstAttribute="top" secondItem="9su-n8-FTE" secondAttribute="bottom" id="m6M-m6-GyP"/>
                                                             <constraint firstItem="tBW-2d-Vfj" firstAttribute="leading" secondItem="ZDw-ce-ARk" secondAttribute="leading" id="qxm-gB-9mY"/>
                                                             <constraint firstAttribute="trailing" secondItem="uAL-4n-Swh" secondAttribute="trailing" id="uid-PV-Vgz"/>
                                                         </constraints>
@@ -1591,6 +1617,13 @@ to the terms &amp; condition</string>
                         <outlet property="buttonCity" destination="XFp-Hq-0Mz" id="49T-fp-UAG"/>
                         <outlet property="buttonCountry" destination="uOa-2J-FUh" id="dno-sf-gjc"/>
                         <outlet property="buttonGender" destination="szA-aB-pDg" id="DgT-d2-TSZ"/>
+                        <outlet property="constraintHeightAddress" destination="zJt-1u-cux" id="7Fs-UN-mVL"/>
+                        <outlet property="constraintHeightBirthPlace" destination="quw-eU-b5T" id="62M-so-n19"/>
+                        <outlet property="constraintHeightCity" destination="Zuj-es-G8T" id="cvt-EU-Rkz"/>
+                        <outlet property="constraintHeightCountry" destination="O2q-Mj-4PF" id="EuC-Gn-kYJ"/>
+                        <outlet property="constraintHeightGender" destination="L4Z-dV-k24" id="0cP-2U-4Qn"/>
+                        <outlet property="constraintHeightPhoneNumber" destination="Jq6-pt-F42" id="jAw-cD-ym3"/>
+                        <outlet property="constraintHeightZipcode" destination="2fe-Fb-QQo" id="zsb-7w-9y8"/>
                         <outlet property="fieldAddress" destination="9xq-07-D7Z" id="02A-I9-hS4"/>
                         <outlet property="fieldBirthGender" destination="h1L-wP-Zwa" id="bU0-qS-2xo"/>
                         <outlet property="fieldBirthPlace" destination="bOd-lw-NGd" id="WPq-KY-DBf"/>
@@ -1605,6 +1638,7 @@ to the terms &amp; condition</string>
                         <outlet property="fieldPassword" destination="1Jp-tO-CPe" id="RC9-13-BLz"/>
                         <outlet property="fieldPhoneNumber" destination="jRo-CI-uJL" id="njs-LZ-hKN"/>
                         <outlet property="fieldZipCode" destination="rcg-Ew-sjd" id="KnL-61-Tt1"/>
+                        <outlet property="imageProfile" destination="59M-9F-g8d" id="CwF-px-y7V"/>
                         <outlet property="scrollView" destination="mmc-42-hJj" id="wo3-jU-kis"/>
                         <outlet property="viewHolderPicker" destination="mJF-cG-22g" id="d4Q-2h-sIb"/>
                         <outlet property="viewKeyboard" destination="Hk6-2M-A38" id="l26-oj-Cxh"/>
@@ -1631,7 +1665,7 @@ to the terms &amp; condition</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7SB-Th-25e" customClass="SquadCustomLabel">
-                                        <rect key="frame" x="136" y="70" width="104" height="48"/>
+                                        <rect key="frame" x="148" y="70" width="80" height="48"/>
                                         <string key="text">CHANGE
 EMAIL</string>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
@@ -1855,7 +1889,7 @@ EMAIL</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ys7-7S-ovK" customClass="SquadCustomLabel">
-                                        <rect key="frame" x="119.5" y="70" width="137.5" height="48"/>
+                                        <rect key="frame" x="135.5" y="70" width="105.5" height="48"/>
                                         <string key="text">CHANGE
 PASSWORD</string>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
@@ -2119,7 +2153,7 @@ PASSWORD</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="80e-ca-zoC">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jua-WF-bWH">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jua-WF-bWH">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEV-sH-UeY">
@@ -2153,7 +2187,7 @@ PASSWORD</string>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PROFILE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zo-t5-mHJ" customClass="SquadCustomLabel">
-                                                        <rect key="frame" x="136" y="60" width="103.5" height="24"/>
+                                                        <rect key="frame" x="150" y="60" width="75.5" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2641,6 +2675,7 @@ PASSWORD</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imageCover" destination="ape-wM-q9B" id="1En-p8-Fxz"/>
                         <outlet property="labelAddress" destination="F6B-xq-ElY" id="21q-qY-cqS"/>
                         <outlet property="labelBirthDate" destination="DEs-eA-ItF" id="GQY-e9-THa"/>
                         <outlet property="labelBirthPlace" destination="5HG-rP-NVO" id="1RY-n2-iUy"/>

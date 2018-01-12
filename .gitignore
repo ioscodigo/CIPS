@@ -33,3 +33,7 @@ Carthage
 Pods/
 Example/Podfile.lock
 Example/Pods/
+Cips/Hearsay/
+Cips/Classes/
+Cips/Spotlight/
+Cips/Squad/

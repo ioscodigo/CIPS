@@ -10,6 +10,8 @@
 #import "Cips/Cips.h"
 #import "SquadRegisterViewController.h"
 #import "SquadForgotPasswordViewController.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 
 @interface SquadLoginViewController ()<UITextFieldDelegate>
@@ -65,6 +67,19 @@
     [self.navigationController pushViewController:reg animated:true];
 }
 - (IBAction)siginSocialLogin:(UIButton *)sender {
+}
+
+-(void)facebookLogin{
+    FBSDKLoginManager *manager = [[FBSDKLoginManager alloc] init];
+    [manager logInWithReadPermissions:@[@"public_profile",@"user_email"] fromViewController:self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+            
+    }];
+}
+
+- (IBAction)dismisLoginViewController:(id)sender {
+    if(_delegate){
+        [_delegate squadLoginResponse:nil status:false message:@"Canceled" controller:self];
+    }
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{

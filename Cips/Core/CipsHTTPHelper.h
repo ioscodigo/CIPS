@@ -20,7 +20,7 @@ typedef enum {
 typedef enum {
     PRODUCTION,
     SANDBOX
-} ENVIRONMENT;
+} CIPSENVIRONMENT;
 
 @interface CipsHTTPHelper : NSObject
 

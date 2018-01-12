@@ -63,7 +63,7 @@
 
 
 
-+(void)setEnvironment:(ENVIRONMENT)env {
++(void)setEnvironment:(CIPSENVIRONMENT)env {
     [api setEnvironment:env];
 }
 
@@ -106,10 +106,6 @@
     [api uploadImageWithParam:@{@"user_id":userid,@"access_token":accessToken} imageData:imageData completion:response];
 }
 
-
--(void)uploadImageUser:(NSString *)userid respon:(void(^)(SquadResponseModel *response))block{
-    
-}
 
 -(void)tokenRefreshWithToken:(NSString *)refresh_token respon:(squadCompletion)response{
     NSDictionary *param = @{

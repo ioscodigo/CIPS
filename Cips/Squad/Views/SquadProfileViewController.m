@@ -11,6 +11,7 @@
 #import <Cips/CIPS+NSDictionary.h>
 #import "../SquadViewHelper.h"
 #import "SquadEditProfileViewController.h"
+#import "UIImageView+WebCache.h"
 
 @interface SquadProfileViewController ()<UITextFieldDelegate>{
     SquadViewHelper *helper;
@@ -44,6 +45,10 @@
             _labelGender.text = [userData StringForKey:@"gender"];
             _labelAddress.text = [userData StringForKey:@"address"];
 //            _labelCity.text = [userData StringForKey:@"city"];
+            NSString *photo = [userData StringForKey:@"photo"];
+            if([photo length] > 1){
+                [_imageCover sd_setImageWithURL:[NSURL URLWithString:photo] placeholderImage:[UIImage imageNamed:@"ico-profile"]];
+            }
             if([[userData objectForKey:@"country"] objectForKey:@"_id"] != nil){
                 _labelCity.text = [[userData objectForKey:@"city"] objectForKey:@"_name"];
             }

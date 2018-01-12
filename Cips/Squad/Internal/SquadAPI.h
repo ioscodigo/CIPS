@@ -14,7 +14,7 @@ typedef void (^squadCompletion)(SquadResponseModel *response);
 
 @interface SquadAPI : NSObject
 -(id)initWithSecretKey:(NSString *)clientSecret withClientid:(NSString*)clientid withCompanyId:(NSString *)companyID;
--(void)setEnvironment:(ENVIRONMENT)env;
+-(void)setEnvironment:(CIPSENVIRONMENT)env;
 
 -(void)loginWithParam:(NSDictionary *)param completion:(squadCompletion)block;
 -(void)registerWithParam:(NSDictionary *)param completion:(squadCompletion)block;

@@ -54,7 +54,6 @@ static CipsHTTPHelper *sharedInstance = nil;
     if(headers != nil){
         [head addEntriesFromDictionary:headers];
     }
-    NSLog(@"url %@",url);
     NSString *query = [self joinQueryWithDictionary:param];
     NSData *data = [query dataUsingEncoding:NSASCIIStringEncoding];
     NSString *length = [NSString stringWithFormat:@"%lu",(unsigned long)[data length]];
@@ -67,10 +66,13 @@ static CipsHTTPHelper *sharedInstance = nil;
     if(headers != nil){
         [head addEntriesFromDictionary:headers];
     }
-    NSData *data = [NSJSONSerialization dataWithJSONObject:param options:0 error:nil];
-    NSString *query = [self joinQueryWithDictionary:param];
-    NSString *length = [NSString stringWithFormat:@"%lu",(unsigned long)[data length]];
-    [head addEntriesFromDictionary:@{@"Content-Length":length}];
+    NSData *data = nil;
+    if(param != nil){
+        data = [NSJSONSerialization dataWithJSONObject:param options:0 error:nil];
+        NSString *query = [self joinQueryWithDictionary:param];
+        NSString *length = [NSString stringWithFormat:@"%lu",(unsigned long)[data length]];
+        [head addEntriesFromDictionary:@{@"Content-Length":length}];
+    }
     [self request:method withURL:url withBody:data withHeaders:head withBlock:block];
 }
 
@@ -105,7 +107,7 @@ static CipsHTTPHelper *sharedInstance = nil;
     }
     NSURLRequest *req = [self request:methods withUrl:URL withBody:body withHeader:header];
     [[[NSURLSession sharedSession] dataTaskWithRequest:req completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-    
+        
         CipsHTTPResponse *respon = [[CipsHTTPResponse alloc] init];
         
         respon.responseCode = [(NSHTTPURLResponse *)response statusCode];

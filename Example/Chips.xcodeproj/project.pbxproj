@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		304E3995200722630077074D /* SpotlightTestingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304E3994200722630077074D /* SpotlightTestingViewController.m */; };
+		30B06F721FD4F9C100B1513D /* SquadTestingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B06F711FD4F9C100B1513D /* SquadTestingViewController.m */; };
+		30EA35DF1FE0DBB700BE8851 /* QnockTestingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30EA35DE1FE0DBB700BE8851 /* QnockTestingViewController.m */; };
+		30EA35E21FE0E23700BE8851 /* QnockPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30EA35E11FE0E23700BE8851 /* QnockPushViewController.m */; };
+		30EA35E41FE3B06D00BE8851 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30EA35E31FE3B06D00BE8851 /* GoogleService-Info.plist */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -41,7 +46,16 @@
 		14CD888A67CEAA82E8961874 /* Pods-Chips_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chips_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chips_Example/Pods-Chips_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		1F760229FAC6B9681B7F97BD /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2EE2355C93F86DB46BC643E4 /* Pods_Chips_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chips_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		30F53AF41FA06F53006DD98F /* Chips_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chips_Example.entitlements; sourceTree = "<group>"; };
+		304E3993200722630077074D /* SpotlightTestingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotlightTestingViewController.h; sourceTree = "<group>"; };
+		304E3994200722630077074D /* SpotlightTestingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotlightTestingViewController.m; sourceTree = "<group>"; };
+		30B06F701FD4F9C100B1513D /* SquadTestingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquadTestingViewController.h; sourceTree = "<group>"; };
+		30B06F711FD4F9C100B1513D /* SquadTestingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquadTestingViewController.m; sourceTree = "<group>"; };
+		30EA35DD1FE0DBB700BE8851 /* QnockTestingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QnockTestingViewController.h; sourceTree = "<group>"; };
+		30EA35DE1FE0DBB700BE8851 /* QnockTestingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QnockTestingViewController.m; sourceTree = "<group>"; };
+		30EA35E01FE0E23700BE8851 /* QnockPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QnockPushViewController.h; sourceTree = "<group>"; };
+		30EA35E11FE0E23700BE8851 /* QnockPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QnockPushViewController.m; sourceTree = "<group>"; };
+		30EA35E31FE3B06D00BE8851 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		30EA36001FE3D26B00BE8851 /* Chips_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chips_Example.entitlements; sourceTree = "<group>"; };
 		4436CC76C8B57768B93BB484 /* Pods-Chips_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chips_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chips_Tests/Pods-Chips_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* Chips_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chips_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -99,7 +113,7 @@
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
-				30F53AF41FA06F53006DD98F /* Chips_Example.entitlements */,
+				30EA36001FE3D26B00BE8851 /* Chips_Example.entitlements */,
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F593195388D20070C39A /* Example for Chips */,
 				6003F5B5195388D20070C39A /* Tests */,
@@ -142,6 +156,14 @@
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				30B06F701FD4F9C100B1513D /* SquadTestingViewController.h */,
+				30B06F711FD4F9C100B1513D /* SquadTestingViewController.m */,
+				30EA35DD1FE0DBB700BE8851 /* QnockTestingViewController.h */,
+				30EA35DE1FE0DBB700BE8851 /* QnockTestingViewController.m */,
+				30EA35E01FE0E23700BE8851 /* QnockPushViewController.h */,
+				30EA35E11FE0E23700BE8851 /* QnockPushViewController.m */,
+				304E3993200722630077074D /* SpotlightTestingViewController.h */,
+				304E3994200722630077074D /* SpotlightTestingViewController.m */,
 			);
 			name = "Example for Chips";
 			path = Chips;
@@ -150,6 +172,7 @@
 		6003F594195388D20070C39A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				30EA35E31FE3B06D00BE8851 /* GoogleService-Info.plist */,
 				6003F595195388D20070C39A /* Chips-Info.plist */,
 				6003F596195388D20070C39A /* InfoPlist.strings */,
 				6003F599195388D20070C39A /* main.m */,
@@ -258,6 +281,9 @@
 							com.apple.Keychain = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 					6003F5AD195388D20070C39A = {
@@ -291,6 +317,7 @@
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
+				30EA35E41FE3B06D00BE8851 /* GoogleService-Info.plist in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
@@ -405,8 +432,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* ChipsAppDelegate.m in Sources */,
+				30EA35E21FE0E23700BE8851 /* QnockPushViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* ChipsViewController.m in Sources */,
+				30EA35DF1FE0DBB700BE8851 /* QnockTestingViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				30B06F721FD4F9C100B1513D /* SquadTestingViewController.m in Sources */,
+				304E3995200722630077074D /* SpotlightTestingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,8 +570,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chips/Chips-Prefix.pch";
 				INFOPLIST_FILE = "Chips/Chips-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = id.codigo.CipsExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -556,8 +588,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chips/Chips-Prefix.pch";
 				INFOPLIST_FILE = "Chips/Chips-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = id.codigo.CipsExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

@@ -14,6 +14,9 @@
 #if __has_include(<Cips/Qnock.h>)
 #import "Cips/Qnock.h"
 #endif
+#if __has_include(<Cips/Spotlight.h>)
+#import "Cips/Spotlight.h"
+#endif
 
 @interface Cips : NSObject
 

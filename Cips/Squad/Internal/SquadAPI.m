@@ -282,7 +282,7 @@
     [self postWithUrl:SQUAD_LIST_CITY withParam:param withBlock:block];
 }
 
--(void)setEnvironment:(ENVIRONMENT)env{
+-(void)setEnvironment:(CIPSENVIRONMENT)env{
     switch (env) {
         case PRODUCTION:
             BaseAPI = SQUAD_BASE_DEVELOPMENT;

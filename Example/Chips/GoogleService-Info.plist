@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>1005685990079-lulmo0ngtvg3d1su0g562r8ob04tmqni.apps.googleusercontent.com</string>
+	<string>1078767043319-cjb1vh37tgr8eq6smi8dhfv92taj70vl.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1005685990079-lulmo0ngtvg3d1su0g562r8ob04tmqni</string>
+	<string>com.googleusercontent.apps.1078767043319-cjb1vh37tgr8eq6smi8dhfv92taj70vl</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDFru4AyAzq5GmAdGv91bYxcPyRVcuFpyQ</string>
+	<string>AIzaSyD1bgbnSlRNx2p0pqg5wqEB7rSPC1uzLz0</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1005685990079</string>
+	<string>1078767043319</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>org.cocoapods.demo.Chips-Example</string>
+	<string>id.codigo.CipsExample</string>
 	<key>PROJECT_ID</key>
-	<string>qnock-8c3c7</string>
+	<string>data-tanah</string>
 	<key>STORAGE_BUCKET</key>
-	<string>qnock-8c3c7.appspot.com</string>
+	<string>data-tanah.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1005685990079:ios:d2b4f081bcd0214e</string>
+	<string>1:1078767043319:ios:d30df6d2afc63dc1</string>
 	<key>DATABASE_URL</key>
-	<string>https://qnock-8c3c7.firebaseio.com</string>
+	<string>https://data-tanah.firebaseio.com</string>
 </dict>
 </plist>

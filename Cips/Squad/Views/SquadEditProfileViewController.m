@@ -12,6 +12,9 @@
 #import <Cips/CIPS+NSDictionary.h>
 #import "Cips/Cips.h"
 #import "../SquadViewHelper.h"
+#import "UIImageView+WebCache.h"
+#import "TPKeyboardAvoiding/UIScrollView+TPKeyboardAvoidingAdditions.h"
+
 
 typedef void (^CaseBlock)();
 
@@ -35,6 +38,17 @@ typedef void (^CaseBlock)();
 @property (weak, nonatomic) IBOutlet UIButton *buttonGender;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCountry;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCity;
+@property (weak, nonatomic) IBOutlet UIImageView *imageProfile;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightPhoneNumber;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightBirthPlace;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightGender;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightAddress;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightCountry;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightZipcode;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightCity;
+
+
 
 @end
 
@@ -44,12 +58,13 @@ typedef void (^CaseBlock)();
     [super viewDidLoad];
     countryid = @"0";
     cityid = @"0";
-    listGender = @[@{@"_name":@"Male",@"_id":@"male"},@{@"_name":@"Female",@"_id":@"female"}];
+    listGender = @[@{@"_name":@"Male",@"_id":@"2"},@{@"_name":@"Female",@"_id":@"1"}];
     listPicker = @{};
     _viewPicker.delegate = self;
     _viewPicker.dataSource = self;
     typeShow = -1;
-    genderid = @"female";
+    genderid = @"2";
+    _fieldBirthGender.text = @"Male";
     [self getListCountry];
     // Do any additional setup after loading the view.
 }
@@ -181,28 +196,28 @@ typedef void (^CaseBlock)();
     if(_fieldBirthPlace.isEnabled){
         [tempDict addEntriesFromDictionary:@{@"birthplace":_fieldBirthPlace.text}];
     }
-    if(_fieldBirthGender.isEnabled){
-        [tempDict addEntriesFromDictionary:@{@"gender":_fieldBirthGender.text}];
-    }
     if(_fieldAddress.isEnabled){
         [tempDict addEntriesFromDictionary:@{@"address":_fieldAddress.text}];
     }
-    if(_fieldCountry.isEnabled){
+    if(_buttonCountry.isEnabled){
         [tempDict addEntriesFromDictionary:@{@"country":countryid}];
     }
-    if(_fieldCity.isEnabled){
+    if(_buttonCity.isEnabled){
         [tempDict addEntriesFromDictionary:@{@"city":cityid}];
     }
     if(_fieldZipCode.isEnabled){
         [tempDict addEntriesFromDictionary:@{@"zip":_fieldZipCode.text}];
     }
+    if(_buttonGender.isEnabled){
+        [tempDict addEntriesFromDictionary:@{@"gender":genderid}];
+    }
     [tempDict addEntriesFromDictionary:@{@"birthdate":[NSString stringWithFormat:@"%@-%@-%@",_fieldBirthdayYear.text,_fieldBirthdayMonth.text,_fieldBirthdayDay.text]}];
-    
+    NSLog(@"edit %@",tempDict);
     [Squad.instance profileEditWithData:tempDict respon:^(SquadResponseModel *response) {
-        NSLog(@"respone %@",response.display_message);
-        NSLog(@"data %@",response.data);
+        NSLog(@"response data %@",response.data);
         if([response.status isEqualToString:@"200"]){
             [SquadViewHelper.helper showMessage:response.display_message status:SUCCESS];
+            [self getEditProfile];
         }else{
             [SquadViewHelper.helper showMessage:response.display_message status:ERROR];
         }
@@ -229,7 +244,18 @@ typedef void (^CaseBlock)();
                 countryid = [[userData objectForKey:@"country"] objectForKey:@"_id"];
                 _fieldCountry.text = [[userData objectForKey:@"country"] objectForKey:@"_name"];
             }
-            genderid = [userData StringForKey:@"gender"];
+            if([[userData StringForKey:@"gender"] length] > 0){
+                genderid = [userData StringForKey:@"gender"];
+                if([genderid isEqualToString:@"2"]){
+                    _fieldBirthGender.text = @"Male";
+                }else{
+                    _fieldBirthGender.text = @"Female";
+                }
+            }
+            NSString *photo = [userData StringForKey:@"photo"];
+            if([photo length] > 1){
+                [_imageProfile sd_setImageWithURL:[NSURL URLWithString:photo] placeholderImage:[UIImage imageNamed:@"ico-profile"]];
+            }
             self.userID = [userData StringForKey:@"user_id"];
             _fieldBirthGender.text = [self.userID isEqualToString:@"1"] ? @"female" : @"male";
             NSArray *birthDate = [[userData StringForKey:@"birthdate"] componentsSeparatedByString:@"-"];
@@ -251,13 +277,14 @@ typedef void (^CaseBlock)();
                         @"phone_number":
                             ^{
                                 [_fieldPhoneNumber setEnabled:true];
-                                [_fieldPhoneNumber setPlaceholder:@"Phone Number"];
+                                [_fieldPhoneNumber.superview setHidden:false];
+                                _constraintHeightPhoneNumber.constant = 50;
                             },
                         @"gender":
                             ^{
-                                [_fieldBirthGender setEnabled:true];
-                                [_fieldBirthGender setPlaceholder:@"Gender"];
                                 [_buttonGender setEnabled:true];
+                                [_fieldBirthGender.superview setHidden:false];
+                                _constraintHeightGender.constant = 50;
                             },
                         @"birthdate":
                             ^{ 
@@ -268,30 +295,33 @@ typedef void (^CaseBlock)();
                         @"birthplace":
                             ^{ 
                                  [_fieldBirthPlace setEnabled:true];
-                                [_fieldBirthPlace setPlaceholder:@"Birth Place"];
+                                _fieldBirthPlace.superview.hidden = false;
+                                _constraintHeightBirthPlace.constant = 50;
                             },
                         @"city":
                             ^{
-//                                [_fieldCity setEnabled:true];
-                                [_fieldCity setPlaceholder:@"City"];
                                 [_buttonCity setEnabled:true];
+                                _fieldCity.superview.hidden = false;
+                                _constraintHeightCity.constant = 50;
                                 
                             },
                         @"country":
                             ^{
-//                                [_fieldCountry setEnabled:true];
-                                [_fieldCountry setPlaceholder:@"Country"];
                                 [_buttonCountry setEnabled:true];
+                                _fieldCountry.superview.hidden = false;
+                                _constraintHeightCountry.constant = 50;
                             },
                         @"zip":
                             ^{
                                 [_fieldZipCode setEnabled:true];
-                                [_fieldZipCode setPlaceholder:@"ZIP Code"];
+                                _fieldZipCode.superview.hidden = false;
+                                _constraintHeightZipcode.constant = 50;
                             },
                         @"address":
                             ^{
                                 [_fieldAddress setEnabled:true];
-                                [_fieldAddress setPlaceholder:@"Address"];
+                                _fieldAddress.superview.hidden = false;
+                                _constraintHeightAddress.constant = 50;
                             },
                         @"first_name":
                             ^{
@@ -327,6 +357,7 @@ typedef void (^CaseBlock)();
         [SquadViewHelper.helper removeLoading];
         if([response.status isEqualToString:@"200"]){
             [SquadViewHelper.helper showMessage:response.display_message status:SUCCESS];
+            [self getEditProfile];
         }else{
             [SquadViewHelper.helper showMessage:response.display_message status:SUCCESS];
         }
@@ -337,6 +368,8 @@ typedef void (^CaseBlock)();
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     return listPicker.count + 1;
 }
+
+//-willsho
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;

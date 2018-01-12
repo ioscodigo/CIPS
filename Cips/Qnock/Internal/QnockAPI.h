@@ -18,7 +18,8 @@ typedef void (^qnockCompletion)(QnockResponseModel *response);
 @property (nonatomic, strong) NSString *keyTokenQnock;
 
 -(id)initWithSecretKey:(NSString *)clientSecret withClientid:(NSString*)clientid completion:(void (^)(NSString *responseToken))block;
--(void)setEnvironment:(ENVIRONMENT)env;
+-(id)initWithSecretKey:(NSString *)clientSecret withClientid:(NSString*)clientid withEnvironment:(CIPSENVIRONMENT)env completion:(void (^)(NSString *responseToken))block;
+-(void)setEnvironment:(CIPSENVIRONMENT)env onComplete: (void (^)(NSString *responseToken))block;
 -(void) subscribe: (NSDictionary *)param completion:(qnockCompletion)block;
 -(void) unsubscribe: (NSDictionary *)param completion:(qnockCompletion)block;
 -(id) recevied: (NSDictionary *) userinfo;

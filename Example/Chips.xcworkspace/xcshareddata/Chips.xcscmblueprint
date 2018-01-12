@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "81E568C57DFE25BFCC5B798D0B9CAF1195CDB958",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "948E24008489545167B24EB3D1B3B0BD4844BF51" : 9223372036854775807,
+    "81E568C57DFE25BFCC5B798D0B9CAF1195CDB958" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "9A4C81B5-402C-41A5-9C9A-F8D8AD5C6520",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "948E24008489545167B24EB3D1B3B0BD4844BF51" : "Chips\/Cips\/Squad\/Views\/Net-CJ\/",
+    "81E568C57DFE25BFCC5B798D0B9CAF1195CDB958" : "Chips\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Chips",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Example\/Chips.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/gitlab.codigo.id\/iOS\/Chips.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "81E568C57DFE25BFCC5B798D0B9CAF1195CDB958"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/gitlab.codigo.id\/iOS\/Net-CJ.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "948E24008489545167B24EB3D1B3B0BD4844BF51"
+    }
+  ]
+}

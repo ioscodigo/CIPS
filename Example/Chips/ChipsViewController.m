@@ -24,49 +24,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    [Squad initWithClientId:@"6b345e743f707b70283b29" withClientSecret:@"4473524f74692f3039796725693b45724834554e38716e38545024673347542179444d7034545e2e70367831523b525a3434" withCompanyId:@"11"];
-//    [[Squad instance] loginWithEmail:@"leomastakusuma@gmail.com" andPassoword:@"Masta123" completion:^(SquadResponseModel *response) {
-//        
-//    }];
-    [[UIApplication sharedApplication]setStatusBarHidden:true];
-//    [Squad initWithClientId:@"1028948410f4662836" withClientSecret:@"f3752b5d0b7e308adba65b06aed0dc81"];
-//    [[Squad instance] loginWithEmail:@"leomastakusuma@gmail.com" andPassoword:@"Masta123" completion:^(SquadResponseModel *response) {
-//        
-//    }];
-//    [Squ]
+
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    if(!accessToken){
-        [SquadViewHelper SquadLoginViewWithController:self delegate:self];
-    }else{
-        [SquadViewHelper SquadProfileViewWithController:self token:accessToken];
-    }
-//    [[SquadViewHelper helper] showMessage:@"TEST" status:SUCCESS];
-//    [self presentViewController:[[[SquadViewHelper alloc] init] viewController] animated:true completion:nil];
-//    CGFloat space = 2;
-//    NSDictionary *attributed = @{
-//                                 NSKernAttributeName : @(space),
-//                                 NSFontAttributeName : self.labelTest.font
-//                                 };
-//    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.labelTest.text attributes:attributed];
-//    self.labelTest.attributedText = attrString;
-//    [self.labelTest layoutIfNeeded];
-//    [self ]
-//    [self iamgePicker];
-}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(BOOL)prefersStatusBarHidden{
     return true;
     
 }
+
+- (IBAction)QnockOnClick:(id)sender {
+    [self showTestVC:@"qnockTestVC"];
+}
+- (IBAction)SquadOnClick:(id)sender {
+    [self showTestVC:@"squadTestVC"];
+}
+
+-(void)showTestVC:(NSString *)name{
+    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:name];
+    [self presentViewController:vc animated:true completion:nil];
+}
+
 
 -(void)iamgePicker{
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
@@ -86,9 +67,9 @@
                                 @"user_id":@"1",
                                 @"access_token":@"e2b194d1ecd62705c26773d9cd4fdb48ab9d2da1"
                                 };
-        [[Squad instance] uploadImageWithParam:param respon:^(SquadResponseModel *response) {
-            [self response:response];
-        }];
+//        [[Squad instance] uploadImageWithParam:param respon:^(SquadResponseModel *response) {
+//            [self response:response];
+//        }];
     }];
 }
 

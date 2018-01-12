@@ -54,7 +54,7 @@
         return;
     }
     [helper addLoading];
-    [Squad.instance registerFirstWithEmail:email password:pass firstName:firstName lastName:lastName companyid:Squad.instance.companyID redirecturi:@"http://web.squad.dev.codigo.id/forgot" verifyuri:@"http://web.squad.dev.codigo.id/" completion:^(SquadResponseModel *response) {
+    [Squad.instance registerFirstWithEmail:email password:pass firstName:firstName lastName:lastName companyid:Squad.instance.companyID redirecturi:@"http://web.squad.dev.codigo.id/forgot" verifyuri:@"http://web.squad.dev.codigo.id/Register/verification" completion:^(SquadResponseModel *response) {
         NSLog(@"data %@",response.data);
         [helper removeLoading];
         if([response.status isEqualToString:@"200"]){

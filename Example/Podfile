@@ -2,6 +2,8 @@ use_frameworks!
 
 target 'Chips_Example' do
   pod 'Cips', :path => '../'
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
 
   target 'Chips_Tests' do
     inherit! :search_paths

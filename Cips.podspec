@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Cips'
-  s.version          = '0.1.1'
+  s.version          = '0.1.0'
   s.summary          = 'iOS SDK for Cips Service.'
 
 # This description is used to generate tags and improve search results.
@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 iOS SDK for Cips Service.
 DESC
 
-  s.homepage         = 'http://gitlab.codigo.id/iOS/Chips'
+  s.homepage         = 'https://github.com/ioscodigo/CIPS'
   # s.screenshots    = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'iOS Team' => 'ios@codigo.id' }
-  s.source           = { :git => 'http://gitlab.codigo.id/iOS/Chips.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/ioscodigo/CIPS.git', :tag => s.version.to_s }
   s.requires_arc	 = true
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
@@ -40,7 +40,7 @@ DESC
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
    s.public_header_files = 'Cips/Core/Cips.h'
-#  s.private_header_files = 'Cips/Squad/*.h'
+# s.private_header_files = 'Cips/Squad/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking'
 
@@ -50,18 +50,34 @@ DESC
     # core.private_header_files = 'Cips/Core/*.h'
     end
 
-    s.subspec 'Squad' do |squad|
-        squad.dependency	'Cips/Core'
-        squad.source_files = 'Cips/Squad/**/*.{h,m}'
-        squad.resource_bundles = {
-            'CipsSquad' => ['Cips/Squad/Resource/**/*.{storyboard,xcassets,xib}']
-        }
-        squad.private_header_files = ['Cips/Squad/Internal/*.h','Cips/Squad/Views/*.h']
-    end
-
     s.subspec 'Qnock' do |qnock|
         qnock.dependency	'Cips/Core'
         qnock.source_files = 'Cips/Qnock/**/*'
-        
+        qnock.private_header_files = ['Cips/Qnock/Internal/*.h']
     end
+#s.subspec 'Squad' do |squad|
+#       squad.dependency	'Cips/Core'
+#       squad.dependency 'FacebookCore', '~> 0.2.0'
+#       squad.dependency 'FacebookLogin', '~> 0.2.0'
+#       squad.dependency 'SDWebImage', '~> 4.0'
+#       squad.source_files = 'Cips/Squad/**/*.{h,m}'
+#       squad.resource_bundles = {
+#           'CipsSquad' => ['Cips/Squad/Resource/**/*.{storyboard,xcassets,xib}']
+#       }
+#       squad.private_header_files = ['Cips/Squad/Internal/*.h','Cips/Squad/Views/*.h']
+#end
+
+
+
+#   s.subspec 'Hearsay' do |hearsay|
+#       hearsay.dependency     'Cips/Core'
+#       hearsay.source_files = 'Cips/Hearsay/**/*.{h,m}'
+#       hearsay.private_header_files = ['Cips/Hearsay/Internal/*.h']
+#   end
+
+#   s.subspec 'Spotlight' do |spotlight|
+#       spotlight.dependency     'Cips/Core'
+#       spotlight.source_files = 'Cips/Spotlight/**/*.{h,m}'
+#       spotlight.private_header_files = ['Cips/Spotlight/Internal/*.h']
+#   end
 end

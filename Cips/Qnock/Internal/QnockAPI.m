@@ -9,9 +9,11 @@
 #import "QnockAPI.h"
 #import "QnockConstant.h"
 
-#define QNOCK_PROTOCOL                      @"http://"
-#define QNOCK_BASE_PRODUCTION               (QNOCK_PROTOCOL @"push.qnock.netconnect.stg.codigo.id")
-#define QNOCK_BASE_SANDBOX                  (QNOCK_PROTOCOL @"push.qnock.netconnect.stg.codigo.id")
+#define QNOCK_PROTOCOL                      @"https://"
+
+#define QNOCK_BASE_PRODUCTION               (QNOCK_PROTOCOL @"api.qnock.id")
+#define QNOCK_BASE_SANDBOX                  (QNOCK_PROTOCOL @"api.sandbox.qnock.id")
+
 
 @implementation QnockAPI
     NSString *BaseAPI_qnock;
@@ -31,12 +33,25 @@
 }
 
 -(id)initWithSecretKey:(NSString *)clientSecret withClientid:(NSString*)clientid completion:(void (^)(NSString *responseToken))block{
+    return [[QnockAPI alloc] initWithSecretKey:clientSecret withClientid:clientid withEnvironment:PRODUCTION completion:block];
+}
+
+-(id)initWithSecretKey:(NSString *)clientSecret withClientid:(NSString*)clientid withEnvironment:(CIPSENVIRONMENT)env completion:(void (^)(NSString *responseToken))block{
     self = [super init];
     if (self) {
         client_secret_qnock = clientSecret;
         client_id_qnock = clientid;
         helper_qnock = [CipsHTTPHelper instance];
-        BaseAPI_qnock = QNOCK_BASE_SANDBOX;
+        switch (env) {
+            case PRODUCTION:
+                BaseAPI_qnock = QNOCK_BASE_PRODUCTION;
+                break;
+            case SANDBOX:
+                BaseAPI_qnock = QNOCK_BASE_SANDBOX;
+                break;
+            default:
+                break;
+        }
         _keyTokenQnock = @"QNOCKTOKEN";
         _tokenQnock = @"";
         NSString *client = [NSString stringWithFormat:@"%@:%@", clientid, clientSecret];
@@ -72,7 +87,7 @@
 -(void)qnockPostWithUrl:(NSString *)url withHeader:(NSDictionary *)header withParam:(NSDictionary *)param completion:(qnockCompletion)block{
 //    param = nil;
     [helper_qnock requestJSONWithMethod:POST WithUrl:[NSString stringWithFormat:@"%@%@",BaseAPI_qnock,url] withParameter:param withHeader:header withBlock:^(CipsHTTPResponse *respon) {
-        NSLog(@"QNOCK response %@",respon.responString);
+//        NSLog(@"QNOCK response %@",respon.responString);
         QnockResponseModel *responQnock = [[QnockResponseModel alloc] init];
         if(respon.error){
             responQnock.isSucces = false;
@@ -124,7 +139,7 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
--(void)setEnvironment:(ENVIRONMENT)env{
+-(void)setEnvironment:(CIPSENVIRONMENT)env onComplete:(void (^)(NSString *responseToken))block{
     switch (env) {
         case PRODUCTION:
             BaseAPI_qnock = QNOCK_BASE_PRODUCTION;
@@ -135,6 +150,12 @@
         default:
             break;
     }
+    [self generateToken:^(NSString *responseToken) {
+        [self checkStatus];
+        if(block){
+            block(responseToken);
+        }
+    }];
 }
 
 - (BOOL)isTokenAvailable {
@@ -179,7 +200,7 @@
     NSDictionary *header = @{
                              @"Authorization" : [NSString stringWithFormat:@"Basic %@", authBase64Qnock]};
     [helper_qnock requestFormDataWithMethod:POST WithUrl:[NSString stringWithFormat:@"%@%@",BaseAPI_qnock,QNOCK_TOKEN] withParameter:nil withHeader:header withBlock:^(CipsHTTPResponse *respon) {
-        NSLog(@"QNOCK response %@",respon.responString);
+//        NSLog(@"QNOCK response %@",respon.responString);
         QnockResponseModel *responQnock = [[QnockResponseModel alloc] init];
         if(respon.error){
             responQnock.isSucces = false;
@@ -235,10 +256,10 @@ open func received(_ userinfo:[AnyHashable: Any])->AnyObject?{
 */
 
 -(id) recevied: (NSDictionary *) userinfo {
-    NSString *unix_id;
-    if (unix_id == userinfo[@"unix_id"]) {
+    NSString *unix_id = userinfo[@"unix_id"];
+    if (unix_id){
         [self sendImpresition:unix_id];
-        NSData *data = userinfo[@"data"];
+        id data = userinfo[@"data"];
         return data;
     }
     return nil;
