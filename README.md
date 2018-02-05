@@ -445,7 +445,7 @@ return true
 ```
 
 #### Story
--   List Story without channel
+    - List Story without channel
     This function to get list story without channel
 ```swift
 [Spotlight.instance spotlightStoryListWithUserid:@"guest" page:0 limit:10 limitArticle:@"10" onComplete:^(SpotlightResponseModel *response) {
@@ -453,7 +453,7 @@ return true
 }];
 ```
 
--   List Story with Channel
+    - List Story with Channel
     This function to get list story with channel
 ```swift
 [Spotlight.instance spotlightStoryListWithChannel:channel_no withUserId:@"guest" page:0 limit:10 limitArticle:@"10" onComplete:^(SpotlightResponseModel *response) {
@@ -461,7 +461,7 @@ return true
 }];
 ```
 
--   Detail Story
+    - Detail Story
     This function to get story detail
 ```swift
 [Spotlight.instance spotlightStoryDetailWithStoryNo:_story_no withUserId:@"guest" limitArticle:10 onComplete:^(SpotlightResponseModel *response) {
