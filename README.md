@@ -292,13 +292,13 @@ return true
 
 ##### Homepage
     List function to get list article homepage by type and channel
- - Homepage Headline with Channel
+- Homepage Headline with Channel
 ```swift
 [Spotlight.instance spotlightHomepageHeadlineWithChannel:_channel onComplete:^(SpotlightResponseModel *response) {
                 
     }];
 ```
--   Homepage Story with Channel
+- Homepage Story with Channel
 ```swift
 [Spotlight.instance spotlightHomepageStoryWithChannel:_channel onComplete:^(SpotlightResponseModel *response) {
         
