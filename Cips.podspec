@@ -52,7 +52,7 @@ DESC
 
     s.subspec 'Qnock' do |qnock|
         qnock.dependency	'Cips/Core'
-        qnock.source_files = 'Cips/Qnock/**/*'
+        qnock.source_files = 'Cips/Qnock/*.{h.m}'
         qnock.private_header_files = ['Cips/Qnock/Internal/*.h']
     end
 #s.subspec 'Squad' do |squad|

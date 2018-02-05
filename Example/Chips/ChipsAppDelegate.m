@@ -13,7 +13,10 @@
 //import UserNotifications
 //#import <Firebase>
 
+
 @implementation ChipsAppDelegate
+
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -148,7 +151,7 @@
     NSLog(@"%@", userInfo);
     NSObject *data = [Qnock.instance notifReceived:userInfo];
     if([data isKindOfClass:[NSString class]]){
-        NSString *d = (NSString *)data;
+//        NSString *d = (NSString *)data;
         UIViewController *controller = [self visibleViewController:UIApplication.sharedApplication.keyWindow.rootViewController];
         if([controller isKindOfClass:[QnockPushViewController class]]){
             

@@ -52,6 +52,7 @@ static Qnock *objQnock = nil;
             
         }];
     }
+    return self;
 }
 
 +(void)initWithClientId:(NSString *)clientID withClientSecret:(NSString *)clientSecret completion:(void (^)(NSString *responseToken))block{

@@ -69,7 +69,6 @@ static CipsHTTPHelper *sharedInstance = nil;
     NSData *data = nil;
     if(param != nil){
         data = [NSJSONSerialization dataWithJSONObject:param options:0 error:nil];
-        NSString *query = [self joinQueryWithDictionary:param];
         NSString *length = [NSString stringWithFormat:@"%lu",(unsigned long)[data length]];
         [head addEntriesFromDictionary:@{@"Content-Length":length}];
     }

@@ -7,7 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		304E3995200722630077074D /* SpotlightTestingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304E3994200722630077074D /* SpotlightTestingViewController.m */; };
+		304355AB2018875C0077F008 /* SpotlightStoryDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 304355AA2018875C0077F008 /* SpotlightStoryDetailTableViewCell.m */; };
+		304355AE201983B50077F008 /* SpotlightStoryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304355AD201983B50077F008 /* SpotlightStoryDetailViewController.m */; };
+		304355B520199D1B0077F008 /* SpotlightArticleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304355B320199D1B0077F008 /* SpotlightArticleListViewController.m */; };
+		304355B82019CDA20077F008 /* SpotlightArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304355B72019CDA20077F008 /* SpotlightArticleDetailViewController.m */; };
+		304355BB2019E84F0077F008 /* SpotlightArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304355BA2019E84F0077F008 /* SpotlightArticleViewController.m */; };
+		304355BF201D76B40077F008 /* SpotlightHomepageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304355BE201D76B40077F008 /* SpotlightHomepageListViewController.m */; };
+		304355C2201DEB970077F008 /* SpotlightLiveStreamingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304355C1201DEB970077F008 /* SpotlightLiveStreamingViewController.m */; };
+		304355C5201EB9670077F008 /* SpotlightHomepageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304355C4201EB9670077F008 /* SpotlightHomepageViewController.m */; };
+		304355C8201ED03F0077F008 /* SpotlightSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 304355C7201ED03F0077F008 /* SpotlightSupport.m */; };
+		30556FA22015923A00C0BD1A /* Spotlight.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30556FA02015923A00C0BD1A /* Spotlight.storyboard */; };
+		30556FA620159AEF00C0BD1A /* SpotlightTestingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30556FA520159AEF00C0BD1A /* SpotlightTestingViewController.m */; };
+		30556FA920159B0B00C0BD1A /* SpotlightChannelListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30556FA820159B0B00C0BD1A /* SpotlightChannelListViewController.m */; };
+		30AE607A2016DCF20029E7D8 /* SpotlightStoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AE60792016DCF20029E7D8 /* SpotlightStoryListViewController.m */; };
 		30B06F721FD4F9C100B1513D /* SquadTestingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B06F711FD4F9C100B1513D /* SquadTestingViewController.m */; };
 		30EA35DF1FE0DBB700BE8851 /* QnockTestingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30EA35DE1FE0DBB700BE8851 /* QnockTestingViewController.m */; };
 		30EA35E21FE0E23700BE8851 /* QnockPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30EA35E11FE0E23700BE8851 /* QnockPushViewController.m */; };
@@ -46,8 +58,31 @@
 		14CD888A67CEAA82E8961874 /* Pods-Chips_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chips_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chips_Example/Pods-Chips_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		1F760229FAC6B9681B7F97BD /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2EE2355C93F86DB46BC643E4 /* Pods_Chips_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chips_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		304E3993200722630077074D /* SpotlightTestingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotlightTestingViewController.h; sourceTree = "<group>"; };
-		304E3994200722630077074D /* SpotlightTestingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotlightTestingViewController.m; sourceTree = "<group>"; };
+		304355A92018875C0077F008 /* SpotlightStoryDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpotlightStoryDetailTableViewCell.h; path = Spotlight/Detail/SpotlightStoryDetailTableViewCell.h; sourceTree = "<group>"; };
+		304355AA2018875C0077F008 /* SpotlightStoryDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SpotlightStoryDetailTableViewCell.m; path = Spotlight/Detail/SpotlightStoryDetailTableViewCell.m; sourceTree = "<group>"; };
+		304355AC201983B50077F008 /* SpotlightStoryDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpotlightStoryDetailViewController.h; path = Spotlight/SpotlightStoryDetailViewController.h; sourceTree = "<group>"; };
+		304355AD201983B50077F008 /* SpotlightStoryDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SpotlightStoryDetailViewController.m; path = Spotlight/SpotlightStoryDetailViewController.m; sourceTree = "<group>"; };
+		304355B320199D1B0077F008 /* SpotlightArticleListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotlightArticleListViewController.m; path = Spotlight/SpotlightArticleListViewController.m; sourceTree = "<group>"; };
+		304355B420199D1B0077F008 /* SpotlightArticleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotlightArticleListViewController.h; path = Spotlight/SpotlightArticleListViewController.h; sourceTree = "<group>"; };
+		304355B62019CDA20077F008 /* SpotlightArticleDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpotlightArticleDetailViewController.h; path = Spotlight/SpotlightArticleDetailViewController.h; sourceTree = "<group>"; };
+		304355B72019CDA20077F008 /* SpotlightArticleDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SpotlightArticleDetailViewController.m; path = Spotlight/SpotlightArticleDetailViewController.m; sourceTree = "<group>"; };
+		304355B92019E84F0077F008 /* SpotlightArticleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpotlightArticleViewController.h; path = Spotlight/SpotlightArticleViewController.h; sourceTree = "<group>"; };
+		304355BA2019E84F0077F008 /* SpotlightArticleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SpotlightArticleViewController.m; path = Spotlight/SpotlightArticleViewController.m; sourceTree = "<group>"; };
+		304355BD201D76B40077F008 /* SpotlightHomepageListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpotlightHomepageListViewController.h; path = Spotlight/SpotlightHomepageListViewController.h; sourceTree = "<group>"; };
+		304355BE201D76B40077F008 /* SpotlightHomepageListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SpotlightHomepageListViewController.m; path = Spotlight/SpotlightHomepageListViewController.m; sourceTree = "<group>"; };
+		304355C0201DEB970077F008 /* SpotlightLiveStreamingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpotlightLiveStreamingViewController.h; path = Spotlight/SpotlightLiveStreamingViewController.h; sourceTree = "<group>"; };
+		304355C1201DEB970077F008 /* SpotlightLiveStreamingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SpotlightLiveStreamingViewController.m; path = Spotlight/SpotlightLiveStreamingViewController.m; sourceTree = "<group>"; };
+		304355C3201EB9670077F008 /* SpotlightHomepageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpotlightHomepageViewController.h; path = Spotlight/SpotlightHomepageViewController.h; sourceTree = "<group>"; };
+		304355C4201EB9670077F008 /* SpotlightHomepageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SpotlightHomepageViewController.m; path = Spotlight/SpotlightHomepageViewController.m; sourceTree = "<group>"; };
+		304355C6201ED03F0077F008 /* SpotlightSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpotlightSupport.h; path = Spotlight/SpotlightSupport.h; sourceTree = "<group>"; };
+		304355C7201ED03F0077F008 /* SpotlightSupport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SpotlightSupport.m; path = Spotlight/SpotlightSupport.m; sourceTree = "<group>"; };
+		30556FA12015923A00C0BD1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Spotlight.storyboard; sourceTree = "<group>"; };
+		30556FA420159AEF00C0BD1A /* SpotlightTestingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotlightTestingViewController.h; path = Spotlight/SpotlightTestingViewController.h; sourceTree = "<group>"; };
+		30556FA520159AEF00C0BD1A /* SpotlightTestingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotlightTestingViewController.m; path = Spotlight/SpotlightTestingViewController.m; sourceTree = "<group>"; };
+		30556FA720159B0B00C0BD1A /* SpotlightChannelListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotlightChannelListViewController.h; path = Spotlight/SpotlightChannelListViewController.h; sourceTree = "<group>"; };
+		30556FA820159B0B00C0BD1A /* SpotlightChannelListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotlightChannelListViewController.m; path = Spotlight/SpotlightChannelListViewController.m; sourceTree = "<group>"; };
+		30AE60782016DCF20029E7D8 /* SpotlightStoryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotlightStoryListViewController.h; path = Spotlight/SpotlightStoryListViewController.h; sourceTree = "<group>"; };
+		30AE60792016DCF20029E7D8 /* SpotlightStoryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotlightStoryListViewController.m; path = Spotlight/SpotlightStoryListViewController.m; sourceTree = "<group>"; };
 		30B06F701FD4F9C100B1513D /* SquadTestingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquadTestingViewController.h; sourceTree = "<group>"; };
 		30B06F711FD4F9C100B1513D /* SquadTestingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquadTestingViewController.m; sourceTree = "<group>"; };
 		30EA35DD1FE0DBB700BE8851 /* QnockTestingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QnockTestingViewController.h; sourceTree = "<group>"; };
@@ -110,6 +145,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		304355A8201887190077F008 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				304355A92018875C0077F008 /* SpotlightStoryDetailTableViewCell.h */,
+				304355AA2018875C0077F008 /* SpotlightStoryDetailTableViewCell.m */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		304355AF2019957C0077F008 /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				304355B420199D1B0077F008 /* SpotlightArticleListViewController.h */,
+				304355B320199D1B0077F008 /* SpotlightArticleListViewController.m */,
+				304355B62019CDA20077F008 /* SpotlightArticleDetailViewController.h */,
+				304355B72019CDA20077F008 /* SpotlightArticleDetailViewController.m */,
+				304355B92019E84F0077F008 /* SpotlightArticleViewController.h */,
+				304355BA2019E84F0077F008 /* SpotlightArticleViewController.m */,
+			);
+			name = Article;
+			sourceTree = "<group>";
+		};
+		304355BC201D76920077F008 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		30556FA320159AC700C0BD1A /* Spotlight */ = {
+			isa = PBXGroup;
+			children = (
+				304355BC201D76920077F008 /* New Group */,
+				304355AF2019957C0077F008 /* Article */,
+				304355A8201887190077F008 /* Detail */,
+				30AE60782016DCF20029E7D8 /* SpotlightStoryListViewController.h */,
+				304355C0201DEB970077F008 /* SpotlightLiveStreamingViewController.h */,
+				304355C1201DEB970077F008 /* SpotlightLiveStreamingViewController.m */,
+				30AE60792016DCF20029E7D8 /* SpotlightStoryListViewController.m */,
+				30556FA420159AEF00C0BD1A /* SpotlightTestingViewController.h */,
+				30556FA520159AEF00C0BD1A /* SpotlightTestingViewController.m */,
+				30556FA720159B0B00C0BD1A /* SpotlightChannelListViewController.h */,
+				30556FA820159B0B00C0BD1A /* SpotlightChannelListViewController.m */,
+				30556FA02015923A00C0BD1A /* Spotlight.storyboard */,
+				304355AC201983B50077F008 /* SpotlightStoryDetailViewController.h */,
+				304355AD201983B50077F008 /* SpotlightStoryDetailViewController.m */,
+				304355BD201D76B40077F008 /* SpotlightHomepageListViewController.h */,
+				304355BE201D76B40077F008 /* SpotlightHomepageListViewController.m */,
+				304355C3201EB9670077F008 /* SpotlightHomepageViewController.h */,
+				304355C4201EB9670077F008 /* SpotlightHomepageViewController.m */,
+				304355C6201ED03F0077F008 /* SpotlightSupport.h */,
+				304355C7201ED03F0077F008 /* SpotlightSupport.m */,
+			);
+			name = Spotlight;
+			sourceTree = "<group>";
+		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +239,7 @@
 		6003F593195388D20070C39A /* Example for Chips */ = {
 			isa = PBXGroup;
 			children = (
+				30556FA320159AC700C0BD1A /* Spotlight */,
 				6003F59C195388D20070C39A /* ChipsAppDelegate.h */,
 				6003F59D195388D20070C39A /* ChipsAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -162,8 +254,6 @@
 				30EA35DE1FE0DBB700BE8851 /* QnockTestingViewController.m */,
 				30EA35E01FE0E23700BE8851 /* QnockPushViewController.h */,
 				30EA35E11FE0E23700BE8851 /* QnockPushViewController.m */,
-				304E3993200722630077074D /* SpotlightTestingViewController.h */,
-				304E3994200722630077074D /* SpotlightTestingViewController.m */,
 			);
 			name = "Example for Chips";
 			path = Chips;
@@ -316,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				30556FA22015923A00C0BD1A /* Spotlight.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				30EA35E41FE3B06D00BE8851 /* GoogleService-Info.plist in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
@@ -431,13 +522,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				304355C5201EB9670077F008 /* SpotlightHomepageViewController.m in Sources */,
 				6003F59E195388D20070C39A /* ChipsAppDelegate.m in Sources */,
+				304355C8201ED03F0077F008 /* SpotlightSupport.m in Sources */,
 				30EA35E21FE0E23700BE8851 /* QnockPushViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* ChipsViewController.m in Sources */,
+				304355AE201983B50077F008 /* SpotlightStoryDetailViewController.m in Sources */,
+				304355B82019CDA20077F008 /* SpotlightArticleDetailViewController.m in Sources */,
+				304355B520199D1B0077F008 /* SpotlightArticleListViewController.m in Sources */,
+				30AE607A2016DCF20029E7D8 /* SpotlightStoryListViewController.m in Sources */,
+				30556FA920159B0B00C0BD1A /* SpotlightChannelListViewController.m in Sources */,
+				304355C2201DEB970077F008 /* SpotlightLiveStreamingViewController.m in Sources */,
+				304355AB2018875C0077F008 /* SpotlightStoryDetailTableViewCell.m in Sources */,
 				30EA35DF1FE0DBB700BE8851 /* QnockTestingViewController.m in Sources */,
+				304355BB2019E84F0077F008 /* SpotlightArticleViewController.m in Sources */,
+				30556FA620159AEF00C0BD1A /* SpotlightTestingViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				30B06F721FD4F9C100B1513D /* SquadTestingViewController.m in Sources */,
-				304E3995200722630077074D /* SpotlightTestingViewController.m in Sources */,
+				304355BF201D76B40077F008 /* SpotlightHomepageListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +562,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		30556FA02015923A00C0BD1A /* Spotlight.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30556FA12015923A00C0BD1A /* Base */,
+			);
+			name = Spotlight.storyboard;
+			sourceTree = "<group>";
+		};
 		6003F596195388D20070C39A /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
