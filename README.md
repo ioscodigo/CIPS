@@ -292,38 +292,38 @@ return true
 
 ##### Homepage
     List function to get list article homepage by type and channel
-- Homepage Headline with Channel
+    - Homepage Headline with Channel
 ```swift
 [Spotlight.instance spotlightHomepageHeadlineWithChannel:_channel onComplete:^(SpotlightResponseModel *response) {
                 
-    }];
-```
-- Homepage Story with Channel
-```swift
-[Spotlight.instance spotlightHomepageStoryWithChannel:_channel onComplete:^(SpotlightResponseModel *response) {
-        
 }];
 ```
-- Homepage Editor with Channel
+    - Homepage Story with Channel
+```swift
+[Spotlight.instance spotlightHomepageStoryWithChannel:_channel onComplete:^(SpotlightResponseModel *response) {
+ 
+}];
+```
+    - Homepage Editor with Channel
 ```swift
 [Spotlight.instance spotlightHomepageEditorChoiceWithChannel:_channel onComplete:^(SpotlightResponseModel *response) {
               
 }];
 ```
-- Homepage Newsboost with Channel
+    - Homepage Newsboost with Channel
 ```swift
 [Spotlight.instance spotlightHomepageNewsboostWithChannel:_channel onComplete:^(SpotlightResponseModel *response) {
               
 }];
 ```
-- Homepage Commercial with Channel
+    - Homepage Commercial with Channel
 ```swift
 [Spotlight.instance spotlightHomepageCommercialWithChannel:_channel onComplete:^(SpotlightResponseModel *response) {
         
 }];
 ```
 
-- Homepage Boxtype with Channel
+    - Homepage Boxtype with Channel
 ```swift
 [Spotlight.instance spotlightHomepageBoxTypeWithChannel:_channel onComplete:^(SpotlightResponseModel *response) {
                 
@@ -334,63 +334,63 @@ return true
 
     List function to get list article by type
     
-- Basic List Article
+    - Basic List Article
 ```swift
 [Spotlight.instance spotlightArticleWithWithUserId:@"guset" page:0 limit:10 onComplete:^(SpotlightResponseModel *response) {
                
 }];
 ```
-- Basic List Article with Channel
+    - Basic List Article with Channel
 ```swift
 [Spotlight.instance spotlightArticleWithChannel:channelNo withUserId:@"guest" page:0 limit:10 onComplete:^(SpotlightResponseModel *response) {
            
 }];
 ```
 
-- Standard List Article
+    - Standard List Article
 ```swift
 [Spotlight.instance spotlightArticleStandardWithUserId:@"guest" page:0 limit:10 onComplete:^(SpotlightResponseModel *response) {
               
 }];
 ```
-- Standard List Article with Channel
+    - Standard List Article with Channel
 ```swift
 [Spotlight.instance spotlightArticleStandardWithChannel:channelNo withUserId:@"guest" page:0 limit:10 onComplete:^(SpotlightResponseModel *response) {
                 
 }];
 ```
 
--  List Article Gallery 
+    - List Article Gallery 
 ```swift
 [Spotlight.instance spotlightArticleGalleryWithUserId:@"guest" withPage:0 limit:10 onComplete:^(SpotlightResponseModel *response) {
                
 }];
 ```
-- List Article Gallery with Channel
+    - List Article Gallery with Channel
 ```swift
 [Spotlight.instance spotlightArticleGalleryWithChannel:channelNo withUserId:@"guest" page:0 limit:10 onComplete:^(SpotlightResponseModel *response) {
                 
 }];
 ```
-- List Article Group
+    - List Article Group
 ```swift
 [Spotlight.instance spotlightArticleGroupWithUserId:@"guest" withPage:0 limit:10 onComplete:^(SpotlightResponseModel *response) {
         
 }];
 ```
-- List Article Group with Channel
+    - List Article Group with Channel
 ```swift
 [Spotlight.instance spotlightArticleGroupWithChannel:channelNo withUserId:@"guest" page:0 limit:10 onComplete:^(SpotlightResponseModel *response) {
         
 }];
 ```
-- List Article Around me
+    - List Article Around me
 ```swift
 [Spotlight.instance spotlightArticleAroundMeWithLatitude:@"latitude cordinate" longitude:@"longitude cordinate" radius:@"10" withUserId:@"guest" page:0 limit:10 onComplete:^(SpotlightResponseModel *response) {
 
 }];
 ```
-- Detail Article
+    - Detail Article
     This function to get Detail article
 ```swift
 [Spotlight.instance spotlightArticleDetailWithId:_article_id withUserId:@"guest" onComplete:^(SpotlightResponseModel *response) {
@@ -398,7 +398,7 @@ return true
 }];
 ```
 
-- Share Article
+    - Share Article
     This function to share article
 ```swift
 [Spotlight.instance spotlightArticleShareWithArticleNo:article_no withUserId:@"guset" type:@"2" fromEmail:@"abc@codigo.id" toEmail:@"test2@codigo.id" message:@"test" onComplete:^(SpotlightResponseModel *response) {
@@ -407,7 +407,7 @@ return true
 ```
 
 #### Live Streaming
-- List Live Streaming with Channel
+    - List Live Streaming with Channel
     This function to get list live streaming
 ```swift
 [Spotlight.instance spotlightLiveStreamingWithChannel:channelNo withUserId:@"guest" onComplete:^(SpotlightResponseModel *response) {
@@ -415,7 +415,7 @@ return true
 }];
 ```
 
-- Share Live Streaming
+    - Share Live Streaming
     This function to share live streaming
 ```swift
 [Spotlight.instance spotlightLiveStreamingShareWithStreamingId:live_streaming_no userid:@"guest" shareType:@"2" fromEmail:@"test@mailhog.codigo.id" toEmail:@"test2@mailhog.codigo.id" message:@"msg" onComplete:^(SpotlightResponseModel *response) {
@@ -424,7 +424,7 @@ return true
 ```
 
 #### Reaction
-- List Reaction on Article
+    - List Reaction on Article
     This function to get list Reaction
 ```swift
  [Spotlight.instance spotlightReactionListWithArticleId:article_no withUserId:@"guest" onComplete:^(SpotlightResponseModel *respon) {
@@ -432,7 +432,7 @@ return true
 }];
 ```
 
-- Submit Reaction on Article
+    - Submit Reaction on Article
     This function to submit Reaction
 ```swift
 [Spotlight.instance spotlightReactionSubmitWithArticleId:article_no withReactionNo:@"2" withUserId:@"guest" onComplete:^(SpotlightResponseModel *response) {
@@ -441,7 +441,7 @@ return true
 ```
 
 #### Story
-- List Story without channel
+    - List Story without channel
     This function to get list story without channel
 ```swift
 [Spotlight.instance spotlightStoryListWithUserid:@"guest" page:0 limit:10 limitArticle:@"10" onComplete:^(SpotlightResponseModel *response) {
@@ -449,7 +449,7 @@ return true
 }];
 ```
 
-- List Story with Channel
+    - List Story with Channel
     This function to get list story with channel
 ```swift
 [Spotlight.instance spotlightStoryListWithChannel:channel_no withUserId:@"guest" page:0 limit:10 limitArticle:@"10" onComplete:^(SpotlightResponseModel *response) {
@@ -457,7 +457,7 @@ return true
 }];
 ```
 
-- Detail Story
+    - Detail Story
     This function to get story detail
 ```swift
 [Spotlight.instance spotlightStoryDetailWithStoryNo:_story_no withUserId:@"guest" limitArticle:10 onComplete:^(SpotlightResponseModel *response) {
