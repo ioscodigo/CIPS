@@ -101,6 +101,7 @@ Qnock.setEnvironment(ENVIRONMENT)
 
 ```ruby
 pod 'Cips/Squad'
+pod 'Cips/SquadSocial' // use this pod if use social login with fb
 ```
 
 #### Init Squad
@@ -120,7 +121,7 @@ return true
     This function to login on squad
 
 ```swift
-    Squad.instance().login(withEmail: email, andPassoword: password) { (respon) in
+    Squad.instance().login(withEmail: email, andPassword: password) { (respon) in
         //respon on squad 
         //get token an refresh token   
      }
@@ -247,6 +248,52 @@ return true
         }
 ```
 
+##### Social
+	This function to access squad using social
+
+	- Check Social
+		This function to check if social account has exist in squad 
+
+	```swift
+ 	Squad.instance().socialCheckFromFacebook(withAccessToken: "token_fb", withUserId: "userid_fb") { (respon) in
+            
+    }
+ 	```
+
+ 	```swift
+ 	Squad.instance().socialCheckFromTwitter(withUserId: "userid_twitter", withAccessToken: "token_twitter", withAcessTokenScret: "secret_twitter", withConsumerKey: "consumer_token_twitter", withConsumerSecret: "consumer_secret_twitter") { (respon) in
+            
+        }
+ 	```
+ 	respon code from squad
+ 	200 = Success Login with social
+ 	202 = Failed login with Social but your email already registered on squad -> Use Login Social to continue login
+ 	203 = Failed login with social and cant access email on social ->Use login social or register social to continue
+ 	204 = Failed login with Social and your email not registered on squad -> Use register social to continue
+
+ 	- Login Social 
+ 		This function to login with social first time, if return code from check social is 202 or 203
+
+ 	```swift
+ 	Squad.instance().socialLoginFromFacebook(withEmail: "Email_squad == email_fb", withPassword: "passwor_squad", withUserId: "userid_fb", withAccessToken: "token_fb") { (respon) in
+            
+        }	
+ 	```
+ 	```swift
+ 	Squad.instance().socialLoginFromTwitter(withEmail: "email_twitter == email_squad", withPassword: "pass_squad", withUserId: "userid_twitter", withAccessToken: "token_twitter", withAcessTokenSecret: "secret_twitter", withConsumerKey: "consumer_token_twitter", withConsumerSecret: "consumer_secret_twitter") { (respon) in
+            
+        }
+ 	```
+
+ 	- Register Social
+ 		This function to register with social , if return code from check social is 203 or 204
+
+ 	```swift
+ 		Squad.instance().socialRegister(from: "facebook or twitter", withEmail: "email", withPassword: "pass", withUserId: "userid_social", withAccessToken: "token_social", withAcessTokenScret: "secret_twitter or 1 if fb", withConsumerKey: "consumer_token of 1 if fb", withConsumerSecret: "consumer_secret or 1 if fb", firstName: "first_name", lastName: "last_name", companyid: "company_id", redirecturi: "redirect_uri", verifyuri: "verify_uri") { (respon) in
+        
+        }
+ 	```
+
 #### List View Controller Squad
     Squad provide basic view controller you can use for login, register, update profile , etc. This list fuction to show view controll from squad
 
@@ -262,6 +309,14 @@ return true
 ```swift
     func squadLoginResponse(_ data: [AnyHashable : Any]!, status isSuccees: Bool, message: String!, controller: UIViewController!) {
         
+    }
+```
+	Initialize this delegate if you usins social login with Twitter
+```swift
+    func login(twitter complete: ((String?, String?, String?, String?, String?) -> Void)!) {
+        //login twitter sdk
+        
+        complete("token_twitter","secret_twitter","consumer_token_twitter","consumer_secret_twitter","userid_twitter")
     }
 ```
 #### Profile View Controller
