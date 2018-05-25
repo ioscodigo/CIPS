@@ -12,9 +12,6 @@
 @implementation Hearsay
 
 
-
-//SquadAPI *api;
-
 static Hearsay *obj = nil;
 HearsayAPI *hearsay_api;
 

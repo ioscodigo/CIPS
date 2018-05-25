@@ -9,8 +9,6 @@
 #import "HearsayAPI.h"
 #import "HearsayConstant.h"
 
-//#define HEARSAY_BASE_PRODUCTION @"http://api.hearsay.cips.stg.codigo.id/"
-//#define HEARSAY_BASE_SANDBOX @"http://api.sandbox.hearsay.cips.stg.codigo.id/"
 #define HEARSAY_BASE_PRODUCTION @"http://api.hearsay.id/"
 #define HEARSAY_BASE_SANDBOX @"http://api.sandbox.hearsay.id/"
 
@@ -63,9 +61,6 @@ NSString *hearsay_base_api;
 
 -(void)request:(NSString *)url withMethod:(HTTPMethod)method withHeader:(NSDictionary *)header withParamater:(NSDictionary *)param onComplete:(hearsayCompletion)complete{
     [hearsay_helper requestJSONWithMethod:method WithUrl:[NSString stringWithFormat:@"%@%@",hearsay_base_api,url] withParameter:param withHeader:header withBlock:^(CipsHTTPResponse *respon) {
-        NSLog(@"Hearsay response %@",[NSString stringWithFormat:@"%@%@",hearsay_base_api,url]);
-        NSLog(@"Hearsay response %@",respon.responString);
-        NSLog(@"Hearsay error %@",respon.error);
         HearsayResponseModel *responHearsay = [[HearsayResponseModel alloc] init];
         if(respon.error){
             responHearsay.isSuccess = false;
@@ -152,7 +147,6 @@ NSString *hearsay_base_api;
 }
 
 -(void)getCategoryReport:(hearsayCompletion)onComplete{
-//    [self request:HEARSAY_COMMENT_REPORT_CATEGORY withMethod:GET withHeader:@{@"token":self.token} withParamater:@{} onComplete:onComplete];
     [hearsay_helper request:GET withURL:[NSString stringWithFormat:@"%@%@",hearsay_base_api,HEARSAY_COMMENT_REPORT_CATEGORY] withHeaders:@{@"token":self.token} withBlock:^(CipsHTTPResponse *respon) {
         HearsayResponseModel *responHearsay = [[HearsayResponseModel alloc] init];
         if(respon.error){
@@ -193,9 +187,5 @@ NSString *hearsay_base_api;
                             };
     [self post:HEARSAY_COMMENT_VOTE withParameter:param onComplete:completion];
 }
-
-//-(void)
-
-
 
 @end

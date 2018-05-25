@@ -11,8 +11,6 @@
 //#import "Cips"
 
 #define SQUAD_PROTOCOL                      @"https://"
-//#define SQUAD_BASE_PRODUCTION               (SQUAD_PROTOCOL @"api.squad.cips.stg.codigo.id/")
-//#define SQUAD_BASE_SANDBOX                  (SQUAD_PROTOCOL @"api.sandbox.squad.cips.stg.codigo.id/")
 #define SQUAD_BASE_DEVELOPMENT              (SQUAD_PROTOCOL @"api.squad.cips.id/")
 #define SQUAD_BASE_PRODUCTION               (SQUAD_PROTOCOL @"api.squad.cips.id/")
 #define SQUAD_BASE_SANDBOX                  (SQUAD_PROTOCOL @"api.squad.cips.id/")
@@ -80,7 +78,6 @@
             responSquad.isSucces = true;
         }
         if(respon.data){
-//            NSLog(@"Respon Data %@",respon.data);
             responSquad.message = [respon.data objectForKey:@"message"];
             responSquad.display_message = [respon.data objectForKey:@"display_message"];
             responSquad.status = [respon.data objectForKey:@"status"];
@@ -161,15 +158,7 @@
     
     // close form
     [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths objectAtIndex:0];
-//    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"file.txt"];
-//    [body writeToFile:filePath atomically:true];
-//    NSLog(@"-------");
-//    NSLog(@"%@",filePath);
-//    NSLog(@"-------");
-//    NSLog(@"%@",documentsDirectory);
-    // set request body
+
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BaseAPI,SQUAD_UPLOAD_IMAGE]]];
     [request setHTTPMethod:@"POST"];
@@ -198,7 +187,6 @@
                 responSquad.status = [json objectForKey:@"status"];
                 responSquad.data = [json objectForKey:@"data"];
             }
-//            NSLog(@"responstr %@",responseStr);
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             block(responSquad);
@@ -230,10 +218,6 @@
 -(void)getUserInfoWithParam:(NSDictionary *)param completion:(squadCompletion)block{
     [self postWithUrl:SQUAD_USER_INFO_PARAM withParam:param withBlock:block];
 }
-
-
-
-//-(void)universalSearch:(NSDictionary *)param
 
 -(void)verifyEmailWithParam:(NSDictionary *)param completion:(squadCompletion)block{
     NSMutableDictionary *paramater = [param mutableCopy];

@@ -8,11 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-//#import <Views/SquadRegisterViewController.h>
-//#import <Views/StatusView.h>
-//
-//#import "Views/SquadLoginViewController.h"
-//#import "Views/SquadRegisterViewController.h"
 typedef enum {
     SUCCESS,
     ERROR,

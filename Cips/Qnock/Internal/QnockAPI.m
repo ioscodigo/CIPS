@@ -11,12 +11,8 @@
 
 #define QNOCK_PROTOCOL                      @"http://"
 
-//#define QNOCK_BASE_PRODUCTION               (QNOCK_PROTOCOL @"api.qnock.id")
-//#define QNOCK_BASE_SANDBOX                  (QNOCK_PROTOCOL @"api.sandbox.qnock.id")
-
-
-#define QNOCK_BASE_PRODUCTION               (QNOCK_PROTOCOL @"api.qnock.cips.dev.codigo.id")
-#define QNOCK_BASE_SANDBOX                  (QNOCK_PROTOCOL @"api.sandbox.qnock.cips.dev.codigo.id")
+#define QNOCK_BASE_PRODUCTION               (QNOCK_PROTOCOL @"api.qnock.id")
+#define QNOCK_BASE_SANDBOX                  (QNOCK_PROTOCOL @"api.sandbox.qnock.id")
 
 
 @implementation QnockAPI
@@ -84,14 +80,11 @@
 -(void)qnockPostWithUrl:(NSString *)url withParam:(NSDictionary *)param withBlock:(void (^)(QnockResponseModel *response))block{
     NSDictionary *header = @{
                              @"Authorization" : [NSString stringWithFormat:@"Basic %@", authBase64Qnock]};
-//    NSLog(@"params %@", header);
     [self qnockPostWithUrl:url withHeader:header withParam:param completion:block];
 }
 
 -(void)qnockPostWithUrl:(NSString *)url withHeader:(NSDictionary *)header withParam:(NSDictionary *)param completion:(qnockCompletion)block{
-//    param = nil;
     [helper_qnock requestJSONWithMethod:POST WithUrl:[NSString stringWithFormat:@"%@%@",BaseAPI_qnock,url] withParameter:param withHeader:header withBlock:^(CipsHTTPResponse *respon) {
-//        NSLog(@"QNOCK response %@",respon.responString);
         QnockResponseModel *responQnock = [[QnockResponseModel alloc] init];
         if(respon.error){
             responQnock.isSucces = false;
@@ -204,7 +197,6 @@
     NSDictionary *header = @{
                              @"Authorization" : [NSString stringWithFormat:@"Basic %@", authBase64Qnock]};
     [helper_qnock requestFormDataWithMethod:POST WithUrl:[NSString stringWithFormat:@"%@%@",BaseAPI_qnock,QNOCK_TOKEN] withParameter:nil withHeader:header withBlock:^(CipsHTTPResponse *respon) {
-//        NSLog(@"QNOCK response %@",respon.responString);
         QnockResponseModel *responQnock = [[QnockResponseModel alloc] init];
         if(respon.error){
             responQnock.isSucces = false;
@@ -248,16 +240,6 @@
                                        }];
     [self qnockPostWithUrl:QNOCK_UNSUBSCRIBE withParam:params withBlock:block];
 }
-/*
-open func received(_ userinfo:[AnyHashable: Any])->AnyObject?{
-    if let unix_id = userinfo["unix_id"] as? String{
-        sendImpresition(unix_id)
-        let data = userinfo["data"]
-        return data as AnyObject?
-    }
-    return nil
-}
-*/
 
 -(id) recevied: (NSDictionary *) userinfo {
     NSString *unix_id = userinfo[@"unix_id"];

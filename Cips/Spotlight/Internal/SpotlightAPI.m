@@ -9,11 +9,6 @@
 #import "SpotlightAPI.h"
 #import "SpotlightConstant.h"
 
-
-//#define SPOTLIGHT_PROTOCOL @"http://api.spotlight.cips.stg.codigo.id/"
-//#define SPOTLIGHT_BASE_PRODUCTION @"http://api.spotlight.cips.dev.codigo.id/"
-//#define SPOTLIGHT_BASE_SANDBOX @"http://api.spotlight.sandbox.cips.dev.codigo.id/"
-
 #define SPOTLIGHT_BASE_PRODUCTION @"https://api.spotlight.id/"
 #define SPOTLIGHT_BASE_SANDBOX @"https://api.sandbox.spotlight.id/"
 
