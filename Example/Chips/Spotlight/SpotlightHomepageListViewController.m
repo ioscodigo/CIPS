@@ -73,7 +73,19 @@ NSArray *data;
 
 -(void)responSpotligh:(SpotlightResponseModel *)respon{
     if([respon.status isEqualToString:@"200"]){
-        data = respon.data;
+//        if([respon.data isKindOfClass:[NSArray class]]){
+//            NSArray *item = (NSArray *)respon.data;
+//            if(self.type == 5){
+//            NSMutableArray *d = [NSMutableArray new];
+//            for (NSDictionary *i in item) {
+//                [d addObjectsFromArray:[i valueForKey:@"listArticle"]];
+//            }
+//            data = d;
+//            }else{
+//                data = item;
+//            }
+//        }
+        data = [respon.data valueForKey:@"list"];
         [_tableView reloadData];
     }else{
         [SpotlightSupport showMessage:@"error" msg:respon.display_message vc:self];

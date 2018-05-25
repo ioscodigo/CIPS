@@ -28,6 +28,10 @@
     helper = [SquadViewHelper helper];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    _imageCover.layer.cornerRadius = _imageCover.frame.size.width / 2;
+}
+
 - (void)viewDidAppear:(BOOL)animated{
     [helper addLoading];
     [self loadDataProfile];
@@ -42,9 +46,13 @@
             _labelName.text = [NSString stringWithFormat:@"%@ %@",[userData StringForKey:@"first_name"],[userData StringForKey:@"last_name"]];
             _labelEmail.text = [userData StringForKey:@"email"];
             _labelBirthDate.text = [userData StringForKey:@"birthdate"]; //01-januari-1897
+            _labelBirthPlace.text = [userData StringForKey:@"birthplace"];
+            _labelPhone.text = [userData StringForKey:@"phone_number"];
             _labelGender.text = [userData StringForKey:@"gender"];
             _labelAddress.text = [userData StringForKey:@"address"];
+            _labelZipCode.text = [userData StringForKey:@"zip"];
 //            _labelCity.text = [userData StringForKey:@"city"];
+//            label
             NSString *photo = [userData StringForKey:@"photo"];
             if([photo length] > 1){
                 [_imageCover sd_setImageWithURL:[NSURL URLWithString:photo] placeholderImage:[UIImage imageNamed:@"ico-profile"]];

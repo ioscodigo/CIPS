@@ -54,17 +54,61 @@
         return;
     }
     [helper addLoading];
-    [Squad.instance registerFirstWithEmail:email password:pass firstName:firstName lastName:lastName companyid:Squad.instance.companyID redirecturi:@"http://web.squad.dev.codigo.id/forgot" verifyuri:@"http://web.squad.dev.codigo.id/Register/verification" completion:^(SquadResponseModel *response) {
+    if(self.fromSocial){
+        NSString *from = self.fromFacebook ? @"facebook" : @"twitter";
+        if(self.fromFacebook){
+            
+        }else{
+            
+            
+        }
+        NSLog(@"From social");
+        [Squad.instance socialRegisterFrom:from withEmail:email withPassword:pass withUserId:[_socialParam valueForKey:@"userid"] withAccessToken:[_socialParam valueForKey:@"token"] withAcessTokenScret:[_socialParam valueForKey:@"secret"] withConsumerKey:[_socialParam valueForKey:@"token_consumer"] withConsumerSecret:[_socialParam valueForKey:@"secret_consumer"] firstName:firstName lastName:lastName companyid:Squad.instance.companyID redirecturi:self.redirectURI verifyuri:self.verifyURI sendEmail:!self.isAutoVerifyRegister completion:^(SquadResponseModel *response) {
+            [helper removeLoading];
+            NSLog(@"data %@",response.data);
+            if([response.status isEqualToString:@"200"]){
+                if (self.isAutoVerifyRegister) {
+                    NSDictionary *data = response.data;
+                    [Squad.instance verificationRegisterWithUserid:[data valueForKey:@"user_id"] code:[data valueForKey:@"verification_code"] redirect:self.redirectURI respon:^(SquadResponseModel *response) {
+                        PopupMessage *popUp = [[PopupMessage alloc] init];
+                        popUp.delegate = self;
+                        [popUp show:response.display_message];
+                    }];
+                }else{
+                    PopupMessage *popUp = [[PopupMessage alloc] init];
+                    popUp.delegate = self;
+                    [popUp show:@"Success! Please Check your email to activate your account"];
+                }
+            }else{
+                [helper showMessage:response.display_message status:ERROR];
+            }
+        }];
+       
+    }else{
+        NSLog(@"From email");
+    [Squad.instance registerFirstWithEmail:email password:pass firstName:firstName lastName:lastName companyid:Squad.instance.companyID redirecturi:self.redirectURI verifyuri:self.verifyURI sendEmail:!self.isAutoVerifyRegister completion:^(SquadResponseModel *response) {
         NSLog(@"data %@",response.data);
         [helper removeLoading];
         if([response.status isEqualToString:@"200"]){
-            PopupMessage *popUp = [[PopupMessage alloc] init];
-            popUp.delegate = self;
-            [popUp show:@"Success! Please Check your email to activate your account"];
+            if (self.isAutoVerifyRegister) {
+                [helper addLoading];
+                NSDictionary *data = [response.data objectForKey:@"result"];
+                [Squad.instance verificationRegisterWithUserid:[data valueForKey:@"user_id"] code:[data valueForKey:@"verification_code"] redirect:self.redirectURI respon:^(SquadResponseModel *response) {
+                    [helper removeLoading];
+                    PopupMessage *popUp = [[PopupMessage alloc] init];
+                    popUp.delegate = self;
+                    [popUp show:response.display_message];
+                }];
+            }else{
+                PopupMessage *popUp = [[PopupMessage alloc] init];
+                popUp.delegate = self;
+                [popUp show:@"Success! Please Check your email to activate your account"];
+            }
         }else{
             [helper showMessage:response.display_message status:ERROR];
         }
     }];
+    }
 }
 
 -(void)popupOnDismiss{

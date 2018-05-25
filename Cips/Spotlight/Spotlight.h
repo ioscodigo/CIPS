@@ -86,6 +86,8 @@ typedef void (^spotlightCompletion)(SpotlightResponseModel *response);
 
 -(void)spotlightArticleAroundMeWithLatitude:(NSString *)latitude longitude:(NSString *)longitude radius:(NSString *)radius withUserId:(NSString *)user_id page:(int)page limit:(int)limit onComplete:(spotlightCompletion)complete;
 
+-(void)spotlightArticleSearchWithKeyword:(NSString *)keyword withLimit:(int)limit withUserId:(NSString *)user_id onComplete:(spotlightCompletion)complete;
+
 -(void)spotlightLiveStreamingWithChannel:(NSString *)channel withUserId:(NSString *)user_id onComplete:(spotlightCompletion)complete;
 
 -(void)spotlightLiveStreamingShareWithStreamingId:(NSString *)streaming_id userid:(NSString *)user_id shareType:(NSString *)type fromEmail:(NSString *)from_email toEmail:(NSString *)to_email message:(NSString *)message onComplete:(spotlightCompletion)complete;

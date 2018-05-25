@@ -58,7 +58,12 @@
     [Squad alloc];
     api = [[SquadAPI alloc] initWithSecretKey:clientSecret withClientid:clientID withCompanyId:companyID];
     Squad.instance.companyID = companyID;
-    
+}
+
++(void)initWithClientId:(NSString *)clientID withClientSecret:(NSString *)clientSecret withCompanyId:(NSString *)companyID withEnvironment:(CIPSENVIRONMENT)env{
+    [Squad alloc];
+    api = [[SquadAPI alloc] initWithSecretKey:clientSecret withClientid:clientID withCompanyId:companyID withEnvironment:env];
+    Squad.instance.companyID = companyID;
 }
 
 
@@ -67,7 +72,7 @@
     [api setEnvironment:env];
 }
 
--(void)loginWithEmail:(NSString *)email andPassoword:(NSString *)password completion:(squadCompletion)respon{
+-(void)loginWithEmail:(NSString *)email andPassword:(NSString *)password completion:(squadCompletion)respon{
     NSDictionary *param = @{
                             @"username":email,
                             @"email":email,
@@ -77,8 +82,7 @@
     [api loginWithParam:param completion:respon];
 }
 
--(void)registerFirstWithEmail:(NSString *)email password:(NSString *)password firstName:(NSString *)firstname lastName:(NSString *)lastname companyid:(NSString *)comp_id redirecturi:(NSString *)red_uri verifyuri:(NSString *)ver_uri completion:(squadCompletion)respon{
-    NSLog(@"%@:%@:%@:%@:%@:%@:%@",email,password,firstname,lastname,_companyID,red_uri,ver_uri);
+-(void)registerFirstWithEmail:(NSString *)email password:(NSString *)password firstName:(NSString *)firstname lastName:(NSString *)lastname companyid:(NSString *)comp_id redirecturi:(NSString *)red_uri verifyuri:(NSString *)ver_uri sendEmail:(bool)isSend completion:(squadCompletion)respon{
     NSDictionary *param = @{
                             @"email":email,
                             @"password":password,
@@ -86,7 +90,8 @@
                             @"last_name":lastname,
                             @"company_id":_companyID,
                             @"redirect_uri":red_uri,
-                            @"Verify_url":ver_uri
+                            @"Verify_url":ver_uri,
+                            @"nomail":isSend ? @"0" : @"1"
                             };
     [api registerWithParam:param completion:respon];
 }
@@ -203,10 +208,72 @@
     [api getListCityWithCountryId:countryID completion:response];
 }
 
+-(void)socialCheckFromTwitterWithUserId:(NSString *)userid withAccessToken:(NSString *)access_token withAcessTokenScret:(NSString *)token_secret withConsumerKey:(NSString *)consumer_key withConsumerSecret:(NSString *)consumer_secret respon:(squadCompletion)response{
+    [self socialCheckFrom:@"twitter" withUserId:userid withAccessToken:access_token withAcessTokenScret:token_secret withConsumerKey:consumer_key withConsumerSecret:consumer_secret respon:response];
+}
 
 
+-(void)socialCheckFromFacebookWithAccessToken:(NSString *)access_token withUserId:(NSString *)userid respon:(squadCompletion)response{
+    [self socialCheckFrom:@"facebook" withUserId:userid withAccessToken:access_token withAcessTokenScret:@"1" withConsumerKey:@"1" withConsumerSecret:@"1" respon:response];
+}
+
+-(void)socialCheckFrom:(NSString *)from withUserId:(NSString *)userid withAccessToken:(NSString *)access_token withAcessTokenScret:(NSString *)token_secret withConsumerKey:(NSString *)consumer_key withConsumerSecret:(NSString *)consumer_secret respon:(squadCompletion)response{
+    NSDictionary *param = @{
+                            @"social_id":userid,
+                            @"social_from":from,
+                            @"access_token":access_token,
+                            @"access_token_secret":token_secret,
+                            @"consumer_key":consumer_key,
+                            @"consumer_secret":consumer_secret
+                            };
+    NSLog(@"Param social %@",param);
+    [api socialLogin:CHECK withParam:param withCompletion:response];
+}
+-(void)socialLoginFromFacebookWithEmail:(NSString *)email withPassword:(NSString *)pass withUserId:(NSString *)userid withAccessToken:(NSString *)access_token respon:(squadCompletion)response{
+    [self socialLoginFrom:@"facebook" withEmail:email withPassword:pass withUserId:userid withAccessToken:access_token withAcessTokenScret:@"1" withConsumerKey:@"1" withConsumerSecret:@"1" respon:response];
+}
 
 
+-(void)socialLoginFromTwitterWithEmail:(NSString *)email withPassword:(NSString *)pass withUserId:(NSString *)userid withAccessToken:(NSString *)access_token withAcessTokenScret:(NSString *)token_secret withConsumerKey:(NSString *)consumer_key withConsumerSecret:(NSString *)consumer_secret respon:(squadCompletion)response{
+    [self socialLoginFrom:@"twitter" withEmail:email withPassword:pass withUserId:userid withAccessToken:access_token withAcessTokenScret:token_secret withConsumerKey:consumer_key withConsumerSecret:consumer_secret respon:response];
+}
+
+-(void)socialLoginFrom:(NSString *)from withEmail:(NSString *)email withPassword:(NSString *)pass withUserId:(NSString *)userid withAccessToken:(NSString *)access_token withAcessTokenScret:(NSString *)token_secret withConsumerKey:(NSString *)consumer_key withConsumerSecret:(NSString *)consumer_secret respon:(squadCompletion)response{
+    NSDictionary *param = @{
+                            @"social_id":userid,
+                            @"from":from,
+                            @"access_token":access_token,
+                            @"access_token_secret":token_secret,
+                            @"consumer_key":consumer_key,
+                            @"consumer_secret":consumer_secret,
+                            @"email":email,
+                            @"password":pass,
+                            @"username":email,
+                            @"grant_type":@"password"
+                            };
+    NSLog(@"Social Login %@",param);
+    [api socialLogin:LOGIN withParam:param withCompletion:response];
+}
+
+-(void)socialRegisterFrom:(NSString *)from withEmail:(NSString *)email withPassword:(NSString *)pass withUserId:(NSString *)userid withAccessToken:(NSString *)access_token withAcessTokenScret:(NSString *)token_secret withConsumerKey:(NSString *)consumer_key withConsumerSecret:(NSString *)consumer_secret firstName:(NSString *)firstname lastName:(NSString *)lastname companyid:(NSString *)comp_id redirecturi:(NSString *)red_uri verifyuri:(NSString *)ver_uri sendEmail:(bool)isSend completion:(squadCompletion)respon{
+    NSDictionary *param = @{
+                            @"email":email,
+                            @"password":pass,
+                            @"first_name":firstname,
+                            @"last_name":lastname,
+                            @"company_id":_companyID,
+                            @"redirect_uri":red_uri,
+                            @"Verify_url":ver_uri,
+                            @"social_id":userid,
+                            @"from":from,
+                            @"access_token":access_token,
+                            @"access_token_secret":token_secret,
+                            @"consumer_key":consumer_key,
+                            @"consumer_secret":consumer_secret,
+                            @"nomail":isSend ? @"0" : @"1"
+                            };
+    [api socialLogin:REGISTER withParam:param withCompletion:respon];
+}
 
 
 

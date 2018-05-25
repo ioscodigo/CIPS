@@ -10,10 +10,13 @@
 #import "SquadConstant.h"
 //#import "Cips"
 
-#define SQUAD_PROTOCOL                      @"http://"
-#define SQUAD_BASE_PRODUCTION               (SQUAD_PROTOCOL @"api.squad.cips.stg.codigo.id/")
-#define SQUAD_BASE_SANDBOX                  (SQUAD_PROTOCOL @"api.squad.cips.stg.codigo.id/")
-#define SQUAD_BASE_DEVELOPMENT              (SQUAD_PROTOCOL @"api.squad.cips.dev.codigo.id/")
+#define SQUAD_PROTOCOL                      @"https://"
+//#define SQUAD_BASE_PRODUCTION               (SQUAD_PROTOCOL @"api.squad.cips.stg.codigo.id/")
+//#define SQUAD_BASE_SANDBOX                  (SQUAD_PROTOCOL @"api.sandbox.squad.cips.stg.codigo.id/")
+#define SQUAD_BASE_DEVELOPMENT              (SQUAD_PROTOCOL @"api.squad.cips.id/")
+#define SQUAD_BASE_PRODUCTION               (SQUAD_PROTOCOL @"api.squad.cips.id/")
+#define SQUAD_BASE_SANDBOX                  (SQUAD_PROTOCOL @"api.squad.cips.id/")
+
 
 #define KEYCHAIN_SQUAD_IS_LOGIN @"SquadIsLogin"
 #define KEYCHAIN_SQUAD_ACCESS_TOKEN @"SquadIsLogin"
@@ -40,12 +43,26 @@
         client_secret = clientSecret;
         client_id = clientid;
         helper = [CipsHTTPHelper instance];
-        BaseAPI = SQUAD_BASE_DEVELOPMENT;
+        BaseAPI = SQUAD_BASE_PRODUCTION;
         wrapper = helper.keyChain;
         company_id = companyID;
     }
     return self;
 }
+
+-(id)initWithSecretKey:(NSString *)clientSecret withClientid:(NSString*)clientid withCompanyId:(NSString *)companyID withEnvironment:(CIPSENVIRONMENT)env{
+    self = [super init];
+    if (self) {
+        client_secret = clientSecret;
+        client_id = clientid;
+        helper = [CipsHTTPHelper instance];
+        BaseAPI = env == PRODUCTION ? SQUAD_BASE_PRODUCTION : SQUAD_BASE_SANDBOX;
+        wrapper = helper.keyChain;
+        company_id = companyID;
+    }
+    return self;
+}
+
 -(void)postWithUrl:(NSString *)url withParam:(NSDictionary *)param withBlock:(squadCompletion)block{
     [self postWithUrl:url withHeader:nil withParam:param completion:block];
 }
@@ -63,6 +80,7 @@
             responSquad.isSucces = true;
         }
         if(respon.data){
+//            NSLog(@"Respon Data %@",respon.data);
             responSquad.message = [respon.data objectForKey:@"message"];
             responSquad.display_message = [respon.data objectForKey:@"display_message"];
             responSquad.status = [respon.data objectForKey:@"status"];
@@ -82,11 +100,11 @@
     [self postWithUrl:SQUAD_LOGIN withParam:parameter withBlock:^(SquadResponseModel *response) {
         if(response.statusCode == 200){
             if(response.data && [response.data objectForKey:@"access_token"]){
-#if !(TARGET_IPHONE_SIMULATOR)
-                [wrapper mySetObject:[response.data objectForKey:@"access_token"] forKey:KEYCHAIN_SQUAD_ACCESS_TOKEN];
-                [wrapper mySetObject:[NSString stringWithFormat:@"%f",[[[NSDate alloc] init] timeIntervalSince1970]] forKey:KEYCHAIN_SQUAD_DATE_ACCESS_TOKEN];
-                
-#endif
+//#if !(TARGET_IPHONE_SIMULATOR)
+//                [wrapper mySetObject:[response.data objectForKey:@"access_token"] forKey:KEYCHAIN_SQUAD_ACCESS_TOKEN];
+//                [wrapper mySetObject:[NSString stringWithFormat:@"%f",[[[NSDate alloc] init] timeIntervalSince1970]] forKey:KEYCHAIN_SQUAD_DATE_ACCESS_TOKEN];
+//
+//#endif
             }
         }
         block(response);
@@ -95,7 +113,6 @@
 
 
 -(BOOL)SquadIsLogin{
-    
     BOOL isLogin = [wrapper myObjectForKey:KEYCHAIN_SQUAD_IS_LOGIN] == [NSNull class] ? false : [wrapper myObjectForKey:KEYCHAIN_SQUAD_IS_LOGIN];
     return isLogin;
 }
@@ -144,7 +161,14 @@
     
     // close form
     [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"file.txt"];
+//    [body writeToFile:filePath atomically:true];
+//    NSLog(@"-------");
+//    NSLog(@"%@",filePath);
+//    NSLog(@"-------");
+//    NSLog(@"%@",documentsDirectory);
     // set request body
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BaseAPI,SQUAD_UPLOAD_IMAGE]]];
@@ -157,7 +181,9 @@
         responSquad.error = error;
         responSquad.isSucces = false;
         if(!error){
-//            NSString *responseStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            NSString *responseStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            NSLog(@"RESPON %@",responseStr);
+            NSLog(@"ERROR %@",error);
             NSError *jsonError = nil;
             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
             responSquad.error = nil;
@@ -297,6 +323,30 @@
 
 -(NSString *)getURL:(NSString *)str{
     return [NSString stringWithFormat:@"%@%@",BaseAPI,str];
+}
+
+-(void)socialLogin:(SQUAD_SOCIAL)type withParam:(NSDictionary *)param withCompletion:(squadCompletion)block{
+    NSMutableDictionary *p = [NSMutableDictionary dictionaryWithDictionary:param];
+    [p addEntriesFromDictionary:@{
+                                  @"company_id":company_id,
+                                  @"client_id":client_id,
+                                  @"client_secret":client_secret
+                                  }];
+    NSString *url = @"";
+    switch (type) {
+        case REGISTER:
+            url = SQUAD_SOCIAL_REGISTER;
+            break;
+        case LOGIN:
+            url = SQUAD_SOCIAL_LOGIN;
+            break;
+        case CHECK:
+            url = SQUAD_SOCIAL_CHECK;
+            break;
+        default:
+            break;
+    }
+    [self postWithUrl:url withParam:p withBlock:block];
 }
 
 @end

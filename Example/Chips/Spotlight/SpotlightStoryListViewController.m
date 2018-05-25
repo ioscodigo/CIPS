@@ -31,16 +31,19 @@ NSArray *data;
 //            NSLog(@"respon %@",response.data);
             if([response.status isEqualToString:@"200"]){
                 data = [response.data valueForKey:@"list"];
+                
+//                NSLog(@"RESPON STORY %d",((NSArray *)[response.data objectForKey:@"list"]).count);
                 [_storytableView reloadData];
             }else{
                 [SpotlightSupport showMessage:@"error" msg:response.display_message vc:self];
             }
         }];
     }else{
-        [Spotlight.instance spotlightStoryListWithChannel:@"CHANNEL00217" withUserId:@"guest" page:0 limit:10 limitArticle:@"10" onComplete:^(SpotlightResponseModel *response) {
+        [Spotlight.instance spotlightStoryListWithChannel:@"CHANNEL14418" withUserId:@"guest" page:0 limit:10 limitArticle:@"10" onComplete:^(SpotlightResponseModel *response) {
 //            NSLog(@"respon %@",response.data);
             if([response.status isEqualToString:@"200"]){
                 data = [response.data valueForKey:@"list"];
+//                NSLog(@"RESPON STORY %d",((NSArray *)[response.data objectForKey:@"list"]).count);
                 [_storytableView reloadData];
             }else{
                 [SpotlightSupport showMessage:@"error" msg:response.display_message vc:self];

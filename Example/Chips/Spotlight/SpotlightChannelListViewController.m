@@ -25,7 +25,8 @@ NSArray *data;
 //    _tableView.
     [Spotlight.instance spotlightChannelListWithUserId:@"guset" onComplete:^(SpotlightResponseModel *response) {
         if([response.status isEqualToString:@"200"]){
-            data = (NSArray *)response.data;
+            data = [response.data valueForKey:@"result"];
+            NSLog(@"%@",data);
             [_tableView reloadData];
         }
     }];

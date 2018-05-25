@@ -29,3 +29,6 @@
 #define SQUAD_DELETE_USER @"User/delete_user"
 #define SQUAD_LIST_CITY @"Resource/city"
 #define SQUAD_LIST_COUNTRY @"Resource/country"
+#define SQUAD_SOCIAL_LOGIN @"User/login_social"
+#define SQUAD_SOCIAL_CHECK @"User/check_social"
+#define SQUAD_SOCIAL_REGISTER @"User/register_social"

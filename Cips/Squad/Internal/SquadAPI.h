@@ -12,8 +12,16 @@
 
 typedef void (^squadCompletion)(SquadResponseModel *response);
 
+typedef enum {
+    CHECK,
+    LOGIN,
+    REGISTER
+}SQUAD_SOCIAL;
+
 @interface SquadAPI : NSObject
 -(id)initWithSecretKey:(NSString *)clientSecret withClientid:(NSString*)clientid withCompanyId:(NSString *)companyID;
+-(id)initWithSecretKey:(NSString *)clientSecret withClientid:(NSString*)clientid withCompanyId:(NSString *)companyID withEnvironment:(CIPSENVIRONMENT)env;
+
 -(void)setEnvironment:(CIPSENVIRONMENT)env;
 
 -(void)loginWithParam:(NSDictionary *)param completion:(squadCompletion)block;
@@ -37,4 +45,5 @@ typedef void (^squadCompletion)(SquadResponseModel *response);
 -(void)resendVerificationRegisterWithParam:(NSDictionary *)param completion:(squadCompletion)block;
 -(void)getListCountryWithCompletion:(squadCompletion)block;
 -(void)getListCityWithCountryId:(NSString *)countryid completion:(squadCompletion)block;
+-(void)socialLogin:(SQUAD_SOCIAL)type withParam:(NSDictionary *)param withCompletion:(squadCompletion)block;
 @end

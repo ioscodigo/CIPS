@@ -10,6 +10,8 @@
 #import <Cips/Cips.h>
 #import "QnockPushViewController.h"
 #import <Firebase.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <TwitterKit/TWTRKit.h>
 //import UserNotifications
 //#import <Firebase>
 
@@ -20,11 +22,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    [Qnock initWithClientId:@"672c61636742" withClientSecret:@"8YsaV2wvDH" completion:^(NSString *responseToken) {
-//        
-//    }];
+    [Qnock initWithClientId:@"MtXJoYnarJBb" withClientSecret:@"heJhiRFsfq" completion:^(NSString *responseToken) {
+//
+    }];
     [FIRApp configure];
     [FIRMessaging messaging].delegate = self;
+    
+    [[Twitter sharedInstance] startWithConsumerKey:@"ra5tx5wdSXhYyOtnOKljqn7Bt" consumerSecret:@"BgMD63gohasIJVz15GKyASs1XCYJKjEcD9OHTLflyl9XpAippf"];
+
 //    [Qnock initWithClientId:@"8" withClientSecret:@"Z6AJioWnew" completion:^(NSString *responseToken) {
 //        NSLog(@"repons %@", responseToken);
 //    }];
@@ -51,7 +56,8 @@
     }
     [application registerForRemoteNotifications];
 
-    return YES;
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                    didFinishLaunchingWithOptions:launchOptions];
 }
 
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
@@ -103,6 +109,21 @@
         [controller presentViewController:push animated:true completion:nil];
     }
 }
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    
+    BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                                  openURL:url
+                                                        sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                                               annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
+                    ];
+    // Add any custom logic here.
+    BOOL tw = [[Twitter sharedInstance] application:application openURL:url options:options];
+    return handled || tw;
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

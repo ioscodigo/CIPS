@@ -40,6 +40,7 @@ NSArray *data;
             [instance spotlightArticleWithChannel:[SpotlightSupport.service channelNo] withUserId:@"guest" page:0 limit:10 onComplete:^(SpotlightResponseModel *response) {
                 [self responseList:response];
             }];
+            break;
         }
         case 2:
         {
@@ -67,7 +68,8 @@ NSArray *data;
             [instance spotlightArticleGalleryWithChannel:[SpotlightSupport.service channelNo] withUserId:@"guest" page:0 limit:10 onComplete:^(SpotlightResponseModel *response) {
                 [self responseList:response];
             }];
-            break;        }
+            break;
+        }
         case 6:
         {
             [instance spotlightArticleGroupWithUserId:@"guest" withPage:0 limit:10 onComplete:^(SpotlightResponseModel *response) {
@@ -77,7 +79,7 @@ NSArray *data;
         }
         case 7:
         {
-            [instance spotlightArticleGroupWithChannel:[SpotlightSupport.service channelNo] withUserId:@"guest" page:0 limit:10 onComplete:^(SpotlightResponseModel *response) {
+            [instance spotlightArticleGroupWithChannel:@"CHANNEL00817" withUserId:@"guest" page:0 limit:10 onComplete:^(SpotlightResponseModel *response) {
                 [self responseList:response];
             }];
             break;
@@ -87,6 +89,7 @@ NSArray *data;
             [instance spotlightArticleAroundMeWithLatitude:@"-6.1700972" longitude:@"106.827665" radius:@"10" withUserId:@"guest" page:0 limit:10 onComplete:^(SpotlightResponseModel *response) {
                 [self responseList:response];
             }];
+            break;
         }
         default:
             break;

@@ -24,7 +24,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+//    NSNumber *a = [NSNumber numberwithid]
 }
 
 -(void)viewDidAppear:(BOOL)animated{

@@ -40,10 +40,13 @@ int LOADINGTAG = 9912;
     return sharedInstance;
 }
 
-+(void)SquadLoginViewWithController:(UIViewController *)controller delegate:(id<SquadControllerDelegate>)delegate{
++(void)SquadLoginViewWithController:(UIViewController *)controller withRedirectURL:(NSString *)redirect withVerifyURL:(NSString *)verify autoVerifyRegister:(bool)autoVerify delegate:(id<SquadControllerDelegate>)delegate{
     SquadViewHelper *helper = [SquadViewHelper helper];
     SquadLoginViewController *login = [helper.storyboard instantiateViewControllerWithIdentifier:@"SquadLoginVC"];
     login.delegate = delegate;
+    login.isAutoVerifyRegister = autoVerify;
+    login.redirectURI = redirect;
+    login.verifyURI = verify;
     UINavigationController *NavController = [[UINavigationController alloc] initWithRootViewController:login];
     [NavController setNavigationBarHidden:true];
     [controller presentViewController:NavController animated:true completion:nil];

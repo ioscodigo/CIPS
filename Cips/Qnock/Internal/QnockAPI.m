@@ -9,10 +9,14 @@
 #import "QnockAPI.h"
 #import "QnockConstant.h"
 
-#define QNOCK_PROTOCOL                      @"https://"
+#define QNOCK_PROTOCOL                      @"http://"
 
-#define QNOCK_BASE_PRODUCTION               (QNOCK_PROTOCOL @"api.qnock.id")
-#define QNOCK_BASE_SANDBOX                  (QNOCK_PROTOCOL @"api.sandbox.qnock.id")
+//#define QNOCK_BASE_PRODUCTION               (QNOCK_PROTOCOL @"api.qnock.id")
+//#define QNOCK_BASE_SANDBOX                  (QNOCK_PROTOCOL @"api.sandbox.qnock.id")
+
+
+#define QNOCK_BASE_PRODUCTION               (QNOCK_PROTOCOL @"api.qnock.cips.dev.codigo.id")
+#define QNOCK_BASE_SANDBOX                  (QNOCK_PROTOCOL @"api.sandbox.qnock.cips.dev.codigo.id")
 
 
 @implementation QnockAPI

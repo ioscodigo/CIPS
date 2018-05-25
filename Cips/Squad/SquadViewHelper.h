@@ -19,13 +19,16 @@ typedef enum {
     WARNING
 } STATUS_VIEW;
 
-@protocol SquadControllerDelegate
+@protocol SquadControllerDelegate<NSObject>
 
 @optional
 -(void)squadLoginResponse:(NSDictionary *)data status:(BOOL)isSuccees message:(NSString *)message controller:(UIViewController *)controller;
 
 @optional
 -(void)squadRegisterResponse:(NSDictionary *)data status:(BOOL)isSuccess message:(NSString *)message controller:(UIViewController *)controller;
+
+@optional
+-(void)LoginWithTwitter:(void (^)(NSString *access_token, NSString *secret_token, NSString *consumer_key, NSString *consumer_secret, NSString *userid))complete;
 
 @end
 
@@ -40,7 +43,7 @@ typedef enum {
 -(void)removeLoading;
 
 +(SquadViewHelper *)helper;
-+(void)SquadLoginViewWithController:(UIViewController *)controller delegate:(id<SquadControllerDelegate>)delegate;
++(void)SquadLoginViewWithController:(UIViewController *)controller withRedirectURL:(NSString *)redirect withVerifyURL:(NSString *)verify autoVerifyRegister:(bool)autoVerify delegate:(id<SquadControllerDelegate>)delegate;
 +(void)SquadProfileViewWithController:(UIViewController *)controller token:(NSString *)access_token;
 -(void)showMessage:(NSString *)msg status:(STATUS_VIEW)status;
 

@@ -123,6 +123,10 @@ static Spotlight *objSpotlight = nil;
     [apiSpotlight spotlightArticleWithType:ARTICLE_AROUND_ME withUserId:user_id withParam:param page:page limit:limit completion:complete];
 }
 
+-(void)spotlightArticleSearchWithKeyword:(NSString *)keyword withLimit:(int)limit withUserId:(NSString *)user_id onComplete:(spotlightCompletion)complete{
+    [apiSpotlight spotlightArticleWithType:ARTICLE_SEARCH withUserId:user_id withParam:keyword page:0 limit:limit completion:complete];
+}
+
 -(void)spotlightLiveStreamingWithChannel:(NSString *)channel withUserId:(NSString *)user_id onComplete:(spotlightCompletion)complete{
     [apiSpotlight spotlightLiveStreamingWithChannel:channel withUserId:user_id withBlock:complete];
 }

@@ -40,7 +40,7 @@ DESC
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
    s.public_header_files = 'Cips/Core/Cips.h'
-# s.private_header_files = 'Cips/Squad/*.h'
+    # s.private_header_files = 'Cips/Squad/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking'
 
@@ -52,32 +52,39 @@ DESC
 
     s.subspec 'Qnock' do |qnock|
         qnock.dependency	'Cips/Core'
-        qnock.source_files = 'Cips/Qnock/*.{h.m}'
+        qnock.source_files = 'Cips/Qnock/**/*.{h,m}'
         qnock.private_header_files = ['Cips/Qnock/Internal/*.h']
     end
-#s.subspec 'Squad' do |squad|
-#       squad.dependency	'Cips/Core'
-#       squad.dependency 'FacebookCore', '~> 0.2.0'
-#       squad.dependency 'FacebookLogin', '~> 0.2.0'
-#       squad.dependency 'SDWebImage', '~> 4.0'
-#       squad.source_files = 'Cips/Squad/**/*.{h,m}'
-#       squad.resource_bundles = {
-#           'CipsSquad' => ['Cips/Squad/Resource/**/*.{storyboard,xcassets,xib}']
-#       }
-#       squad.private_header_files = ['Cips/Squad/Internal/*.h','Cips/Squad/Views/*.h']
-#end
+    s.subspec 'Squad' do |squad|
+        squad.dependency	'Cips/Core'
+        squad.dependency 'SDWebImage', '~> 4.0'
+        squad.source_files = 'Cips/Squad/**/*.{h,m}'
+        squad.exclude_files = 'Cips/Squad/SquadSocial.h'
+#  squad.weak_frameworks = 'TwitterKit'
+        squad.frameworks = 'Foundation', 'UIKit'
+        squad.resource_bundles = {
+            'CipsSquad' => ['Cips/Squad/Resource/**/*.{storyboard,xcassets,xib}']
+        }
+        squad.private_header_files = ['Cips/Squad/Internal/*.h','Cips/Squad/Views/*.h']
+    end
+
+    s.subspec 'SquadSocial' do |social|
+    social.dependency 'Cips/Squad'
+    social.subspec 'Facebook' do |fb|
+        fb.dependency 'FBSDKLoginKit', '~> 4.25.0'
+    end
+ end
 
 
+   s.subspec 'Hearsay' do |hearsay|
+       hearsay.dependency     'Cips/Core'
+       hearsay.source_files = 'Cips/Hearsay/**/*.{h,m}'
+       hearsay.private_header_files = ['Cips/Hearsay/Internal/*.h']
+   end
 
-#   s.subspec 'Hearsay' do |hearsay|
-#       hearsay.dependency     'Cips/Core'
-#       hearsay.source_files = 'Cips/Hearsay/**/*.{h,m}'
-#       hearsay.private_header_files = ['Cips/Hearsay/Internal/*.h']
-#   end
-
-#   s.subspec 'Spotlight' do |spotlight|
-#       spotlight.dependency     'Cips/Core'
-#       spotlight.source_files = 'Cips/Spotlight/**/*.{h,m}'
-#       spotlight.private_header_files = ['Cips/Spotlight/Internal/*.h']
-#   end
+    s.subspec 'Spotlight' do |spotlight|
+        spotlight.dependency     'Cips/Core'
+        spotlight.source_files = 'Cips/Spotlight/**/*.{h,m}'
+        spotlight.private_header_files = ['Cips/Spotlight/Internal/*.h']
+    end
 end

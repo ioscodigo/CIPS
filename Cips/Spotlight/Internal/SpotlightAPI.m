@@ -10,10 +10,12 @@
 #import "SpotlightConstant.h"
 
 
-#define SPOTLIGHT_PROTOCOL @"http://api.spotlight.cips.stg.codigo.id/"
-#define SPOTLIGHT_BASE_PRODUCTION @"http://api.spotlight.cips.dev.codigo.id/"
-#define SPOTLIGHT_BASE_SANDBOX @"http://api.spotlight.sandbox.cips.dev.codigo.id/"
+//#define SPOTLIGHT_PROTOCOL @"http://api.spotlight.cips.stg.codigo.id/"
+//#define SPOTLIGHT_BASE_PRODUCTION @"http://api.spotlight.cips.dev.codigo.id/"
+//#define SPOTLIGHT_BASE_SANDBOX @"http://api.spotlight.sandbox.cips.dev.codigo.id/"
 
+#define SPOTLIGHT_BASE_PRODUCTION @"https://api.spotlight.id/"
+#define SPOTLIGHT_BASE_SANDBOX @"https://api.sandbox.spotlight.id/"
 
 @implementation SpotlightAPI
 
@@ -80,6 +82,7 @@ NSString *sp_company_id;
             block(true,token);
         }else{
             spotlight_access_token = @"";
+            NSLog(@"log %@",response.display_message);
             block(false,@"");
         }
     }];
@@ -91,6 +94,7 @@ NSString *sp_company_id;
 
 -(void)spotlightHomepageWithChannel:(NSString *)channel withType:(SPOTLIGHT_HOMEPAGE_TYPE)type page:(int)page limit:(int)limit completion:(spotlightCompletion)respon{
     NSString *baseurl = @"";
+    NSString *limitstr = @"";
     switch (type) {
         case HOMEPAGE_HEADLINE:
             baseurl = SPOTLIGHT_HOMEPAGE_HEADLINE;
@@ -109,11 +113,12 @@ NSString *sp_company_id;
             break;
         case HOMEPAGE_BOXTYPE:
             baseurl = SPOTLIGHT_HOMEPAGE_BOXTYPE;
+            limitstr = [NSString stringWithFormat:@"?limitArticle=%d",limit];
             break;
         default:
             break;
     }
-    baseurl = [NSString stringWithFormat:@"%@%@",baseurl,channel];
+    baseurl = [NSString stringWithFormat:@"%@%@%@",baseurl,channel,limitstr];
     [self spotlightGetWithURL:baseurl withHeader:@{} withBlock:respon];
 }
 
@@ -125,6 +130,9 @@ NSString *sp_company_id;
             break;
         case ARTICLE_GALLERY:
             baseurl = [NSString stringWithFormat:SPOTLIGHT_ARTICLE_GALLERY,page,limit];
+            break;
+        case ARTICLE_CHANNEL_GALLERY:
+            baseurl = [NSString stringWithFormat:SPOTLIGHT_ARTICLE_GALLERY_CHANNEL,param,page,limit];
             break;
         case ARTICLE_CHANNEL_STANDARD:
             baseurl = [NSString stringWithFormat:SPOTLIGHT_ARTICLE_CHANNEL_STANDARD,param,page,limit];

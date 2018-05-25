@@ -7,10 +7,12 @@
 //
 
 #define HEARSAY_COMMENT_GET @"main_comment"
+#define HEARSAY_COMMENT_CHILD_GET @"sub_comment"
 #define HEARSAY_COMMENT_VOTE @"vote"
 #define HEARSAY_COMMENT_POST @"post_comment"
 #define HEARSAY_COMMENT_REPORT @"report"
 #define HEARSAY_COMMENT_REPORT_LIST @"report_comment_list"
+#define HEARSAY_COMMENT_REPORT_CATEGORY @"category_report_comment_list"
 #define HEARSAY_TOKEN_GET @"get_token"
 #define HEARSAY_USER_BAN @"ban_user"
 #define HEARSAY_USER_REPORT @"report_user"

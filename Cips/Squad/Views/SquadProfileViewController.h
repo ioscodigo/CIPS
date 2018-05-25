@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelCountry;
 @property (weak, nonatomic) IBOutlet UILabel *labelCity;
 @property (weak, nonatomic) IBOutlet UILabel *labelZipCode;
+@property (weak, nonatomic) IBOutlet UILabel *labelPhone;
 @property (weak, nonatomic) IBOutlet UIImageView *imageCover;
 
 @property (weak, nonatomic) NSString *accessToken;

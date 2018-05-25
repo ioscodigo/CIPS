@@ -14,11 +14,12 @@
 #import "../SquadViewHelper.h"
 #import "UIImageView+WebCache.h"
 #import "TPKeyboardAvoiding/UIScrollView+TPKeyboardAvoidingAdditions.h"
+#import <Photos/Photos.h>
 
 
 typedef void (^CaseBlock)();
 
-@interface SquadEditProfileViewController ()<UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
+@interface SquadEditProfileViewController ()<UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>{
     NSArray *listCountry;
     NSArray *listCity;
     NSArray *listGender;
@@ -47,6 +48,8 @@ typedef void (^CaseBlock)();
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightCountry;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightZipcode;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightCity;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightBirthday;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintHeightName;
 
 
 
@@ -59,17 +62,66 @@ typedef void (^CaseBlock)();
     countryid = @"0";
     cityid = @"0";
     listGender = @[@{@"_name":@"Male",@"_id":@"2"},@{@"_name":@"Female",@"_id":@"1"}];
-    listPicker = @{};
+    listPicker = @[];
     _viewPicker.delegate = self;
     _viewPicker.dataSource = self;
     typeShow = -1;
     genderid = @"2";
     _fieldBirthGender.text = @"Male";
+    _fieldBirthdayDay.delegate = self;
+    _fieldBirthdayMonth.delegate = self;
+    _fieldBirthdayYear.delegate = self;
     [self getListCountry];
     // Do any additional setup after loading the view.
 }
 
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    NSCharacterSet *notDigit = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+    NSCharacterSet *validChars = [[NSCharacterSet characterSetWithCharactersInString:@"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"] invertedSet];
+    bool allDigit = [textField.text rangeOfCharacterFromSet:notDigit].location == NSNotFound;
+    bool isDigit = [string rangeOfCharacterFromSet:notDigit].location == NSNotFound;
+    bool isChar = [string rangeOfCharacterFromSet:validChars].location == NSNotFound;
+    NSLog(@" bool %d, %d, %d",allDigit,isChar,isDigit);
+    if([string isEqualToString:@""]){
+        return true;
+    }
+    if (allDigit && isDigit) {
+        int count = [textField.text intValue];
+        int next = [string intValue];
+        if(textField == _fieldBirthdayDay){
+            if(textField.text.length >= 2){
+                return false;
+            }
+            if (count > 32){
+                return false;
+            }
+            if (count == 3) {
+                return next < 2;
+            }
+            return count < 4;
+        }
+        if(textField == _fieldBirthdayMonth){
+            if(textField.text.length >= 2){
+                return false;
+            }
+            if (count == 1){
+                return next < 3;
+            }
+            return count == 0;
+        }
+        if(textField == _fieldBirthdayYear) {
+            if(textField.text.length >= 4){
+                return false;
+            }
+            
+            return count < 210;
+        }
+    }
+    return true;
+}
+
 -(void)viewWillAppear:(BOOL)animated{
+    _imageProfile.layer.cornerRadius = _imageProfile.frame.size.height / 2;
     [self getEditProfile];
 }
 
@@ -77,6 +129,8 @@ typedef void (^CaseBlock)();
     [Squad.instance getListCountry:^(SquadResponseModel *response) {
         if([response.status isEqualToString:@"200"]){
             listCountry = [response.data objectForKey:@"country"];
+        }else{
+            NSLog(@"country %@",response.display_message);
         }
     }];
 }
@@ -212,9 +266,7 @@ typedef void (^CaseBlock)();
         [tempDict addEntriesFromDictionary:@{@"gender":genderid}];
     }
     [tempDict addEntriesFromDictionary:@{@"birthdate":[NSString stringWithFormat:@"%@-%@-%@",_fieldBirthdayYear.text,_fieldBirthdayMonth.text,_fieldBirthdayDay.text]}];
-    NSLog(@"edit %@",tempDict);
     [Squad.instance profileEditWithData:tempDict respon:^(SquadResponseModel *response) {
-        NSLog(@"response data %@",response.data);
         if([response.status isEqualToString:@"200"]){
             [SquadViewHelper.helper showMessage:response.display_message status:SUCCESS];
             [self getEditProfile];
@@ -228,41 +280,41 @@ typedef void (^CaseBlock)();
     [Squad.instance resourceWithParamsGetWithToken:_accessToken respon:^(SquadResponseModel *response) {
         if(response.isSucces){
             NSDictionary *userData = [response.data objectForKey:@"user"];
-            _fieldFirstName.text = [userData StringForKey:@"first_name"];
-            _fieldLastName.text = [userData StringForKey:@"last_name"];
-            _fieldEmail.text = [userData StringForKey:@"email"];
+            self.fieldFirstName.text = [userData StringForKey:@"first_name"];
+            self.fieldLastName.text = [userData StringForKey:@"last_name"];
+            self.fieldEmail.text = [userData StringForKey:@"email"];
 //            _fieldBirthGender.text = [userData StringForKey:@"gender"];
-            _fieldAddress.text = [userData StringForKey:@"address"];
-            _fieldZipCode.text = [userData StringForKey:@"zip"];
-            _fieldBirthPlace.text = [userData StringForKey:@"birthplace"];
-            _fieldPhoneNumber.text = [userData StringForKey:@"phone_number"];
+            self.fieldAddress.text = [userData StringForKey:@"address"];
+            self.fieldZipCode.text = [userData StringForKey:@"zip"];
+            self.fieldBirthPlace.text = [userData StringForKey:@"birthplace"];
+            self.fieldPhoneNumber.text = [userData StringForKey:@"phone_number"];
             if([[userData objectForKey:@"country"] objectForKey:@"_id"] != nil){
                 cityid = [[userData objectForKey:@"city"] objectForKey:@"_id"];
-                _fieldCity.text = [[userData objectForKey:@"city"] objectForKey:@"_name"];
+                self.fieldCity.text = [[userData objectForKey:@"city"] objectForKey:@"_name"];
             }
             if([[userData objectForKey:@"country"] objectForKey:@"_id"] != nil){
                 countryid = [[userData objectForKey:@"country"] objectForKey:@"_id"];
-                _fieldCountry.text = [[userData objectForKey:@"country"] objectForKey:@"_name"];
+                self.fieldCountry.text = [[userData objectForKey:@"country"] objectForKey:@"_name"];
             }
             if([[userData StringForKey:@"gender"] length] > 0){
                 genderid = [userData StringForKey:@"gender"];
                 if([genderid isEqualToString:@"2"]){
-                    _fieldBirthGender.text = @"Male";
+                    self.fieldBirthGender.text = @"Male";
                 }else{
-                    _fieldBirthGender.text = @"Female";
+                    self.fieldBirthGender.text = @"Female";
                 }
             }
             NSString *photo = [userData StringForKey:@"photo"];
             if([photo length] > 1){
-                [_imageProfile sd_setImageWithURL:[NSURL URLWithString:photo] placeholderImage:[UIImage imageNamed:@"ico-profile"]];
+                [self.imageProfile sd_setImageWithURL:[NSURL URLWithString:photo] placeholderImage:[UIImage imageNamed:@"ico-profile"]];
             }
             self.userID = [userData StringForKey:@"user_id"];
-            _fieldBirthGender.text = [self.userID isEqualToString:@"1"] ? @"female" : @"male";
+            self.fieldBirthGender.text = [self.userID isEqualToString:@"1"] ? @"female" : @"male";
             NSArray *birthDate = [[userData StringForKey:@"birthdate"] componentsSeparatedByString:@"-"];
             if(birthDate.count > 2) {
-                _fieldBirthdayYear.text = birthDate[0];
-                _fieldBirthdayMonth.text = birthDate[1];
-                _fieldBirthdayDay.text = birthDate[2];
+                self.fieldBirthdayYear.text = birthDate[0];
+                self.fieldBirthdayMonth.text = birthDate[1];
+                self.fieldBirthdayDay.text = birthDate[2];
             }
             [self disableView:userData];
         }else{
@@ -276,13 +328,13 @@ typedef void (^CaseBlock)();
     NSDictionary *d = @{
                         @"phone_number":
                             ^{
-                                [_fieldPhoneNumber setEnabled:true];
-                                [_fieldPhoneNumber.superview setHidden:false];
+                                [self.fieldPhoneNumber setEnabled:true];
+                                [self.fieldPhoneNumber.superview setHidden:false];
                                 _constraintHeightPhoneNumber.constant = 50;
                             },
                         @"gender":
                             ^{
-                                [_buttonGender setEnabled:true];
+                                [self.buttonGender setEnabled:true];
                                 [_fieldBirthGender.superview setHidden:false];
                                 _constraintHeightGender.constant = 50;
                             },
@@ -291,6 +343,10 @@ typedef void (^CaseBlock)();
                                 [_fieldBirthdayDay setEnabled:true];
                                 [_fieldBirthdayMonth setEnabled:true];
                                 [_fieldBirthdayYear setEnabled:true];
+                                [_fieldBirthdayDay.superview setHidden:false];
+                                [_fieldBirthdayMonth.superview setHidden:false];
+                                [_fieldBirthdayYear.superview setHidden:false];
+                                _constraintHeightBirthday.constant = 50;
                             },
                         @"birthplace":
                             ^{ 
@@ -326,10 +382,14 @@ typedef void (^CaseBlock)();
                         @"first_name":
                             ^{
                                 [_fieldFirstName setEnabled:true];
+                                _fieldFirstName.superview.hidden = false;
+                                _constraintHeightName.constant = 50;
                             },
                         @"last_name":
                             ^{
                                 [_fieldLastName setEnabled:true];
+                                _fieldLastName.superview.hidden = false;
+                                _constraintHeightName.constant = 50;
                             }
                         };
     for (NSString *keys in [item allKeys]) {
@@ -340,36 +400,67 @@ typedef void (^CaseBlock)();
 }
 
 -(void)getPhoto:(BOOL)fromCamera{
+    SquadViewHelper *helper = [SquadViewHelper helper];
+    switch ([PHPhotoLibrary authorizationStatus]) {
+        case PHAuthorizationStatusAuthorized:
+            [self authorize:fromCamera];
+            break;
+        case PHAuthorizationStatusNotDetermined:{
+            [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+                if(status == PHAuthorizationStatusAuthorized){
+                    [self authorize:fromCamera];
+                }else{
+                    [helper showMessage:@"It is not determined until now" status:ERROR];
+                }
+            }];
+            break;
+        }
+        case PHAuthorizationStatusRestricted:
+            [helper showMessage:@"User do not have access to photo album or camera." status:ERROR];
+            break;
+        case PHAuthorizationStatusDenied:
+            [helper showMessage:@"User has denied the permission." status:ERROR];
+            break;
+        default:
+            break;
+    }
+    
+}
+
+-(void)authorize:(BOOL)fromCamera{
     UIImagePickerController *controller = [[UIImagePickerController alloc] init];
     controller.delegate = self;
     controller.allowsEditing = true;
+    controller.modalPresentationStyle = UIModalPresentationOverFullScreen;
     controller.sourceType = fromCamera ? UIImagePickerControllerSourceTypeCamera : UIImagePickerControllerSourceTypePhotoLibrary;
     [self presentViewController:controller animated:true completion:nil];
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-    NSLog(@"info %@",[info allKeys]);
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    NSLog(@"image size %lul",[UIImageJPEGRepresentation(image, 0.5) length]);
+    if(image){
     [picker dismissViewControllerAnimated:true completion:^{
         [SquadViewHelper.helper addLoading];
+        [Squad.instance uploadImage:UIImageJPEGRepresentation(image, 0.6) userid:_userID accessToken:_accessToken respon:^(SquadResponseModel *response) {
+            [SquadViewHelper.helper removeLoading];
+            if([response.status isEqualToString:@"200"]){
+                NSLog(@"%@",response.message);
+                NSLog(@"%@",response.data);
+                [SquadViewHelper.helper showMessage:response.display_message status:SUCCESS];
+                [self getEditProfile];
+            }else{
+                [SquadViewHelper.helper showMessage:response.display_message status:ERROR];
+            }
+        }];
     }];
-    [Squad.instance uploadImage:UIImageJPEGRepresentation(image, 0.6) userid:_userID accessToken:_accessToken respon:^(SquadResponseModel *response) {
-        [SquadViewHelper.helper removeLoading];
-        if([response.status isEqualToString:@"200"]){
-            [SquadViewHelper.helper showMessage:response.display_message status:SUCCESS];
-            [self getEditProfile];
-        }else{
-            [SquadViewHelper.helper showMessage:response.display_message status:SUCCESS];
-        }
-    }];
+    }
 }
 
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     return listPicker.count + 1;
 }
-
-//-willsho
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;

@@ -16,11 +16,22 @@
 		304355C2201DEB970077F008 /* SpotlightLiveStreamingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304355C1201DEB970077F008 /* SpotlightLiveStreamingViewController.m */; };
 		304355C5201EB9670077F008 /* SpotlightHomepageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304355C4201EB9670077F008 /* SpotlightHomepageViewController.m */; };
 		304355C8201ED03F0077F008 /* SpotlightSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 304355C7201ED03F0077F008 /* SpotlightSupport.m */; };
+		3045D5F32073715B00839B58 /* Hearsay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3045D5F22073715B00839B58 /* Hearsay.storyboard */; };
+		304FA262202D42A100DE8042 /* SpotlightSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 304FA261202D42A100DE8042 /* SpotlightSearchViewController.m */; };
 		30556FA22015923A00C0BD1A /* Spotlight.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30556FA02015923A00C0BD1A /* Spotlight.storyboard */; };
 		30556FA620159AEF00C0BD1A /* SpotlightTestingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30556FA520159AEF00C0BD1A /* SpotlightTestingViewController.m */; };
 		30556FA920159B0B00C0BD1A /* SpotlightChannelListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30556FA820159B0B00C0BD1A /* SpotlightChannelListViewController.m */; };
+		306A8EDB20771A3C00FF326C /* CommentCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 306A8ED920771A3C00FF326C /* CommentCellTableViewCell.m */; };
+		306A8EDC20771A3C00FF326C /* CommentCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 306A8EDA20771A3C00FF326C /* CommentCellTableViewCell.xib */; };
+		306A8EDF20777B1700FF326C /* HearsayCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 306A8EDE20777B1700FF326C /* HearsayCommentViewController.m */; };
+		306A8EE2207DB1CC00FF326C /* CommentChildTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 306A8EE1207DB1CC00FF326C /* CommentChildTableViewCell.m */; };
+		3082978C2088502D001ADD48 /* HelperHearsay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3082978B2088502D001ADD48 /* HelperHearsay.swift */; };
 		30AE607A2016DCF20029E7D8 /* SpotlightStoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30AE60792016DCF20029E7D8 /* SpotlightStoryListViewController.m */; };
 		30B06F721FD4F9C100B1513D /* SquadTestingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30B06F711FD4F9C100B1513D /* SquadTestingViewController.m */; };
+		30BD9B26208057C9003E1215 /* HearsayReplyCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BD9B24208057C9003E1215 /* HearsayReplyCommentTableViewCell.m */; };
+		30BD9B27208057C9003E1215 /* HearsayReplyCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30BD9B25208057C9003E1215 /* HearsayReplyCommentTableViewCell.xib */; };
+		30BF8B3020720C800063E3FF /* HearsayTestingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30BF8B2F20720C800063E3FF /* HearsayTestingViewController.m */; };
+		30DAA0072091841D0089A72C /* ChipsExampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30DAA0062091841D0089A72C /* ChipsExampleTableViewController.m */; };
 		30EA35DF1FE0DBB700BE8851 /* QnockTestingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30EA35DE1FE0DBB700BE8851 /* QnockTestingViewController.m */; };
 		30EA35E21FE0E23700BE8851 /* QnockPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30EA35E11FE0E23700BE8851 /* QnockPushViewController.m */; };
 		30EA35E41FE3B06D00BE8851 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30EA35E31FE3B06D00BE8851 /* GoogleService-Info.plist */; };
@@ -76,15 +87,34 @@
 		304355C4201EB9670077F008 /* SpotlightHomepageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SpotlightHomepageViewController.m; path = Spotlight/SpotlightHomepageViewController.m; sourceTree = "<group>"; };
 		304355C6201ED03F0077F008 /* SpotlightSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpotlightSupport.h; path = Spotlight/SpotlightSupport.h; sourceTree = "<group>"; };
 		304355C7201ED03F0077F008 /* SpotlightSupport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SpotlightSupport.m; path = Spotlight/SpotlightSupport.m; sourceTree = "<group>"; };
+		3045D5F22073715B00839B58 /* Hearsay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Hearsay.storyboard; path = Hearsay/Hearsay.storyboard; sourceTree = "<group>"; };
+		304FA260202D42A100DE8042 /* SpotlightSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SpotlightSearchViewController.h; path = Spotlight/SpotlightSearchViewController.h; sourceTree = "<group>"; };
+		304FA261202D42A100DE8042 /* SpotlightSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SpotlightSearchViewController.m; path = Spotlight/SpotlightSearchViewController.m; sourceTree = "<group>"; };
 		30556FA12015923A00C0BD1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Spotlight.storyboard; sourceTree = "<group>"; };
 		30556FA420159AEF00C0BD1A /* SpotlightTestingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotlightTestingViewController.h; path = Spotlight/SpotlightTestingViewController.h; sourceTree = "<group>"; };
 		30556FA520159AEF00C0BD1A /* SpotlightTestingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotlightTestingViewController.m; path = Spotlight/SpotlightTestingViewController.m; sourceTree = "<group>"; };
 		30556FA720159B0B00C0BD1A /* SpotlightChannelListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotlightChannelListViewController.h; path = Spotlight/SpotlightChannelListViewController.h; sourceTree = "<group>"; };
 		30556FA820159B0B00C0BD1A /* SpotlightChannelListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotlightChannelListViewController.m; path = Spotlight/SpotlightChannelListViewController.m; sourceTree = "<group>"; };
+		306A8ED820771A3C00FF326C /* CommentCellTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommentCellTableViewCell.h; path = Hearsay/CommentCellTableViewCell.h; sourceTree = "<group>"; };
+		306A8ED920771A3C00FF326C /* CommentCellTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CommentCellTableViewCell.m; path = Hearsay/CommentCellTableViewCell.m; sourceTree = "<group>"; };
+		306A8EDA20771A3C00FF326C /* CommentCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CommentCellTableViewCell.xib; path = Hearsay/CommentCellTableViewCell.xib; sourceTree = "<group>"; };
+		306A8EDD20777B1700FF326C /* HearsayCommentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HearsayCommentViewController.h; path = Hearsay/HearsayCommentViewController.h; sourceTree = "<group>"; };
+		306A8EDE20777B1700FF326C /* HearsayCommentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HearsayCommentViewController.m; path = Hearsay/HearsayCommentViewController.m; sourceTree = "<group>"; };
+		306A8EE0207DB1CC00FF326C /* CommentChildTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommentChildTableViewCell.h; path = Hearsay/CommentChildTableViewCell.h; sourceTree = "<group>"; };
+		306A8EE1207DB1CC00FF326C /* CommentChildTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CommentChildTableViewCell.m; path = Hearsay/CommentChildTableViewCell.m; sourceTree = "<group>"; };
+		3082978820884E7F001ADD48 /* Chips_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Chips_Example-Bridging-Header.h"; sourceTree = "<group>"; };
+		3082978B2088502D001ADD48 /* HelperHearsay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HelperHearsay.swift; path = Hearsay/HelperHearsay.swift; sourceTree = "<group>"; };
 		30AE60782016DCF20029E7D8 /* SpotlightStoryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpotlightStoryListViewController.h; path = Spotlight/SpotlightStoryListViewController.h; sourceTree = "<group>"; };
 		30AE60792016DCF20029E7D8 /* SpotlightStoryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpotlightStoryListViewController.m; path = Spotlight/SpotlightStoryListViewController.m; sourceTree = "<group>"; };
 		30B06F701FD4F9C100B1513D /* SquadTestingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SquadTestingViewController.h; sourceTree = "<group>"; };
 		30B06F711FD4F9C100B1513D /* SquadTestingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SquadTestingViewController.m; sourceTree = "<group>"; };
+		30BD9B23208057C9003E1215 /* HearsayReplyCommentTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HearsayReplyCommentTableViewCell.h; path = Hearsay/HearsayReplyCommentTableViewCell.h; sourceTree = "<group>"; };
+		30BD9B24208057C9003E1215 /* HearsayReplyCommentTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HearsayReplyCommentTableViewCell.m; path = Hearsay/HearsayReplyCommentTableViewCell.m; sourceTree = "<group>"; };
+		30BD9B25208057C9003E1215 /* HearsayReplyCommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HearsayReplyCommentTableViewCell.xib; path = Hearsay/HearsayReplyCommentTableViewCell.xib; sourceTree = "<group>"; };
+		30BF8B2E20720C800063E3FF /* HearsayTestingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HearsayTestingViewController.h; sourceTree = "<group>"; };
+		30BF8B2F20720C800063E3FF /* HearsayTestingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HearsayTestingViewController.m; sourceTree = "<group>"; };
+		30DAA0052091841D0089A72C /* ChipsExampleTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChipsExampleTableViewController.h; sourceTree = "<group>"; };
+		30DAA0062091841D0089A72C /* ChipsExampleTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChipsExampleTableViewController.m; sourceTree = "<group>"; };
 		30EA35DD1FE0DBB700BE8851 /* QnockTestingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QnockTestingViewController.h; sourceTree = "<group>"; };
 		30EA35DE1FE0DBB700BE8851 /* QnockTestingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QnockTestingViewController.m; sourceTree = "<group>"; };
 		30EA35E01FE0E23700BE8851 /* QnockPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QnockPushViewController.h; sourceTree = "<group>"; };
@@ -163,6 +193,8 @@
 				304355B72019CDA20077F008 /* SpotlightArticleDetailViewController.m */,
 				304355B92019E84F0077F008 /* SpotlightArticleViewController.h */,
 				304355BA2019E84F0077F008 /* SpotlightArticleViewController.m */,
+				304FA260202D42A100DE8042 /* SpotlightSearchViewController.h */,
+				304FA261202D42A100DE8042 /* SpotlightSearchViewController.m */,
 			);
 			name = Article;
 			sourceTree = "<group>";
@@ -199,6 +231,28 @@
 				304355C7201ED03F0077F008 /* SpotlightSupport.m */,
 			);
 			name = Spotlight;
+			sourceTree = "<group>";
+		};
+		30BF8B2D20720C610063E3FF /* Hearsay */ = {
+			isa = PBXGroup;
+			children = (
+				30BF8B2E20720C800063E3FF /* HearsayTestingViewController.h */,
+				30BF8B2F20720C800063E3FF /* HearsayTestingViewController.m */,
+				3045D5F22073715B00839B58 /* Hearsay.storyboard */,
+				306A8ED820771A3C00FF326C /* CommentCellTableViewCell.h */,
+				306A8ED920771A3C00FF326C /* CommentCellTableViewCell.m */,
+				306A8EDA20771A3C00FF326C /* CommentCellTableViewCell.xib */,
+				306A8EDD20777B1700FF326C /* HearsayCommentViewController.h */,
+				306A8EDE20777B1700FF326C /* HearsayCommentViewController.m */,
+				306A8EE0207DB1CC00FF326C /* CommentChildTableViewCell.h */,
+				306A8EE1207DB1CC00FF326C /* CommentChildTableViewCell.m */,
+				30BD9B23208057C9003E1215 /* HearsayReplyCommentTableViewCell.h */,
+				30BD9B24208057C9003E1215 /* HearsayReplyCommentTableViewCell.m */,
+				30BD9B25208057C9003E1215 /* HearsayReplyCommentTableViewCell.xib */,
+				3082978820884E7F001ADD48 /* Chips_Example-Bridging-Header.h */,
+				3082978B2088502D001ADD48 /* HelperHearsay.swift */,
+			);
+			name = Hearsay;
 			sourceTree = "<group>";
 		};
 		6003F581195388D10070C39A = {
@@ -239,6 +293,7 @@
 		6003F593195388D20070C39A /* Example for Chips */ = {
 			isa = PBXGroup;
 			children = (
+				30BF8B2D20720C610063E3FF /* Hearsay */,
 				30556FA320159AC700C0BD1A /* Spotlight */,
 				6003F59C195388D20070C39A /* ChipsAppDelegate.h */,
 				6003F59D195388D20070C39A /* ChipsAppDelegate.m */,
@@ -254,6 +309,8 @@
 				30EA35DE1FE0DBB700BE8851 /* QnockTestingViewController.m */,
 				30EA35E01FE0E23700BE8851 /* QnockPushViewController.h */,
 				30EA35E11FE0E23700BE8851 /* QnockPushViewController.m */,
+				30DAA0052091841D0089A72C /* ChipsExampleTableViewController.h */,
+				30DAA0062091841D0089A72C /* ChipsExampleTableViewController.m */,
 			);
 			name = "Example for Chips";
 			path = Chips;
@@ -342,8 +399,6 @@
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				EF41D525599377C72BE0FE71 /* [CP] Embed Pods Frameworks */,
-				87AEA4FD5921A579D479DF12 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -367,6 +422,7 @@
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
 						DevelopmentTeam = H8YLW5ZK54;
+						LastSwiftMigration = 0920;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -407,8 +463,11 @@
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				30556FA22015923A00C0BD1A /* Spotlight.storyboard in Resources */,
+				30BD9B27208057C9003E1215 /* HearsayReplyCommentTableViewCell.xib in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
+				306A8EDC20771A3C00FF326C /* CommentCellTableViewCell.xib in Resources */,
 				30EA35E41FE3B06D00BE8851 /* GoogleService-Info.plist in Resources */,
+				3045D5F32073715B00839B58 /* Hearsay.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
@@ -431,9 +490,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Chips_Example/Pods-Chips_Example-resources.sh",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterShareExtensionUIResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -446,28 +510,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Chips_Example-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		87AEA4FD5921A579D479DF12 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chips_Tests/Pods-Chips_Tests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		920E092B9009A7323BA97E02 /* [CP] Embed Pods Frameworks */ = {
@@ -476,28 +528,40 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Chips_Example/Pods-Chips_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Cips/Cips.framework",
+				"${BUILT_PRODUCTS_DIR}/DateTools/DateTools.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Sheeeeeeeeet/Sheeeeeeeeet.framework",
+				"${BUILT_PRODUCTS_DIR}/TLFloatLabelTextField/TLFloatLabelTextField.framework",
+				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cips.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateTools.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sheeeeeeeeet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TLFloatLabelTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chips_Example/Pods-Chips_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EF41D525599377C72BE0FE71 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chips_Tests/Pods-Chips_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FDCA7B9A24E7906DC76E2892 /* [CP] Check Pods Manifest.lock */ = {
@@ -506,13 +570,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Chips_Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -525,14 +592,22 @@
 				304355C5201EB9670077F008 /* SpotlightHomepageViewController.m in Sources */,
 				6003F59E195388D20070C39A /* ChipsAppDelegate.m in Sources */,
 				304355C8201ED03F0077F008 /* SpotlightSupport.m in Sources */,
+				3082978C2088502D001ADD48 /* HelperHearsay.swift in Sources */,
 				30EA35E21FE0E23700BE8851 /* QnockPushViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* ChipsViewController.m in Sources */,
 				304355AE201983B50077F008 /* SpotlightStoryDetailViewController.m in Sources */,
+				306A8EE2207DB1CC00FF326C /* CommentChildTableViewCell.m in Sources */,
+				304FA262202D42A100DE8042 /* SpotlightSearchViewController.m in Sources */,
 				304355B82019CDA20077F008 /* SpotlightArticleDetailViewController.m in Sources */,
 				304355B520199D1B0077F008 /* SpotlightArticleListViewController.m in Sources */,
 				30AE607A2016DCF20029E7D8 /* SpotlightStoryListViewController.m in Sources */,
 				30556FA920159B0B00C0BD1A /* SpotlightChannelListViewController.m in Sources */,
+				30BD9B26208057C9003E1215 /* HearsayReplyCommentTableViewCell.m in Sources */,
+				30BF8B3020720C800063E3FF /* HearsayTestingViewController.m in Sources */,
+				306A8EDF20777B1700FF326C /* HearsayCommentViewController.m in Sources */,
+				30DAA0072091841D0089A72C /* ChipsExampleTableViewController.m in Sources */,
 				304355C2201DEB970077F008 /* SpotlightLiveStreamingViewController.m in Sources */,
+				306A8EDB20771A3C00FF326C /* CommentCellTableViewCell.m in Sources */,
 				304355AB2018875C0077F008 /* SpotlightStoryDetailTableViewCell.m in Sources */,
 				30EA35DF1FE0DBB700BE8851 /* QnockTestingViewController.m in Sources */,
 				304355BB2019E84F0077F008 /* SpotlightArticleViewController.m in Sources */,
@@ -615,6 +690,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -655,6 +731,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -675,15 +752,21 @@
 			baseConfigurationReference = 14CD888A67CEAA82E8961874 /* Pods-Chips_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Chips_Example.entitlements;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = H8YLW5ZK54;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chips/Chips-Prefix.pch";
 				INFOPLIST_FILE = "Chips/Chips-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = id.codigo.CipsExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Chips/Chips_Example-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -693,15 +776,20 @@
 			baseConfigurationReference = FFD60A8B93F6A4F4615CAE70 /* Pods-Chips_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Chips_Example.entitlements;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = H8YLW5ZK54;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chips/Chips-Prefix.pch";
 				INFOPLIST_FILE = "Chips/Chips-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = id.codigo.CipsExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Chips/Chips_Example-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -710,6 +798,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4436CC76C8B57768B93BB484 /* Pods-Chips_Tests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -734,6 +823,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B14834D537440FD83F2204F9 /* Pods-Chips_Tests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

@@ -14,6 +14,10 @@
 #define APPS_ID @"BRANCH001"
 #define COMPANY_ID @"1"
 
+//#define APPS_SECRET @"3c516b727d7d67392e486d435731294b3e686e2f4e6636524d466b4265537b3f374b58254b3f67333e5a37395d515a26536b"
+//#define APPS_ID @"3c49756d3c56"
+//#define COMPANY_ID @"5"
+
 @interface SpotlightTestingViewController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barbuttonenvironment;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -30,7 +34,7 @@ bool isLogin = false;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    list = @[@"Login",@"Channel List",@"Homepage",@"Story List",@"Story List With Channel",@"Article List",@"Live Streaming"];
+    list = @[@"Login",@"Channel List",@"Homepage",@"Story List",@"Story List With Channel",@"Article List",@"Live Streaming",@"Search"];
     spotlightStoryboard = [UIStoryboard storyboardWithName:@"Spotlight" bundle:nil];
 //    [Spotlight initWithAppsSecret:APPS_SECRET withClientId:APPS_ID withCompanyId:COMPANY_ID completion:^(bool isSuccess, NSString *responseToken) {
 //        NSLog(@"LOGIN SPOTLIGHT %@",responseToken);
@@ -43,7 +47,8 @@ bool isLogin = false;
 //    _tableView.delegate = self;
 //    _tableView.dataSource = self;
     [_tableView reloadData];
-    [SpotlightSupport service].channelNo = @"CHANNEL01517";
+//    [SpotlightSupport service].channelNo = @"CHANNEL00217";
+    [SpotlightSupport service].channelNo = @"CHANNEL14418";
     NSLog(@"TEST");
     // Do any additional setup after loading the view.
 }
@@ -65,7 +70,7 @@ bool isLogin = false;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSArray *listIdentifier = @[@"",@"spotlightChannelListVC",@"spotlightHomepageVC",@"spotlightStoryListVC",@"spotlightStoryListVC",@"spotlightArticleVC",@"spotlightLiveStreamingListVC"];
+    NSArray *listIdentifier = @[@"",@"spotlightChannelListVC",@"spotlightHomepageVC",@"spotlightStoryListVC",@"spotlightStoryListVC",@"spotlightArticleVC",@"spotlightLiveStreamingListVC",@"spotlightSearchVC"];
     switch (indexPath.row) {    
         case 0:
         {

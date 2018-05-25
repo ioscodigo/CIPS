@@ -7,10 +7,13 @@
 //
 
 #import "SquadChangePasswordViewController.h"
+#import "SquadCustomView+Keyboard.h"
 #import <Cips/Cips.h>
 #import "../SquadViewHelper.h"
 
-@interface SquadChangePasswordViewController ()
+@interface SquadChangePasswordViewController ()<UITextFieldDelegate>{
+     SquadCustomView_Keyboard *keyboardNotif;
+}
 @property (weak, nonatomic) IBOutlet UITextField *fieldOldPass;
 @property (weak, nonatomic) IBOutlet UITextField *fieldNewPass;
 @property (weak, nonatomic) IBOutlet UITextField *fieldConfirmationPass;
@@ -25,6 +28,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _fieldOldPass.delegate = self;
+    _fieldNewPass.delegate = self;
+    _fieldConfirmationPass.delegate = self;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    keyboardNotif = [SquadCustomView_Keyboard initWithView:_viewKeyboard  andController:self];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [keyboardNotif removeNotif];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField endEditing:true];
+    return true;
 }
 
 - (IBAction)toggleShowPassOld:(id)sender {

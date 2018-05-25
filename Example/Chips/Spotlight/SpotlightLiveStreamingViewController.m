@@ -20,6 +20,8 @@
 NSArray *data;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    data = @[];
+    [self.tableView reloadData];
     [Spotlight.instance spotlightLiveStreamingWithChannel:[SpotlightSupport service].channelNo withUserId:@"guest" onComplete:^(SpotlightResponseModel *response) {
         if([response.status isEqualToString:@"200"]){
             data = response.data;

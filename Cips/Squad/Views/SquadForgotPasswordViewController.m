@@ -25,7 +25,7 @@
 
 - (IBAction)sendRequstForgot:(id)sender {
     NSString *email = self.fieldEmailAddress.text;
-    [Squad.instance passwordForgotWithUserid:@"" email:email verifyUrl:@"http://web.squad.dev.codigo.id" redirectUrl:@"http://web.squad.dev.codigo.id/forgot" respon:^(SquadResponseModel *response) {
+    [Squad.instance passwordForgotWithUserid:@"" email:email verifyUrl:self.verifyURI redirectUrl:self.redirectURI respon:^(SquadResponseModel *response) {
         if([response.status isEqualToString:@"200"]){
             PopupMessage *msg = [[PopupMessage alloc] init];
             msg.delegate = self;

@@ -13,4 +13,7 @@
 @property (weak, nonatomic) NSString *accessToken;
 @property (weak, nonatomic) NSString *userID;
 
+@property (strong, nonatomic) NSString *redirectURI;
+@property (strong, nonatomic) NSString *verifyURI;
+
 @end

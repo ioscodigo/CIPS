@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *fieldChannelName;
 @property (weak, nonatomic) IBOutlet UITextField *fieldPushChannel;
 @property (weak, nonatomic) IBOutlet UITextField *fieldPushText;
+@property (weak, nonatomic) IBOutlet UILabel *labelCode;
 
 @end
 
@@ -24,6 +25,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    self.labelCode.text = FIRMessaging.messaging.FCMToken;
 }
 
 - (IBAction)subscribeOnClick:(id)sender {
