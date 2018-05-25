@@ -29,17 +29,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dav-z6-NaX">
-                                                <rect key="frame" x="0.0" y="0.0" width="220.5" height="643"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="643"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico-logo" translatesAutoresizingMaskIntoConstraints="NO" id="CiV-97-qhk">
-                                                        <rect key="frame" x="46" y="44" width="129" height="48"/>
+                                                        <rect key="frame" x="123.5" y="44" width="129" height="48"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="48" id="IZW-5Y-pTT"/>
                                                             <constraint firstAttribute="width" constant="129" id="pmP-6n-Wc6"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELCOME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opE-r9-BOo" customClass="SquadCustomLabel">
-                                                        <rect key="frame" x="63" y="124" width="96" height="24"/>
+                                                        <rect key="frame" x="140.5" y="124" width="96" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -50,13 +50,13 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <view clipsSubviews="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lpO-lJ-WM3" customClass="SquadCustomView">
-                                                        <rect key="frame" x="44" y="211" width="132.5" height="100"/>
+                                                        <rect key="frame" x="44" y="211" width="287" height="100"/>
                                                         <subviews>
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BDW-85-3Sv" customClass="SquadCustomView">
-                                                                <rect key="frame" x="0.0" y="0.0" width="132.5" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="287" height="50"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8g3-Bm-5kj">
-                                                                        <rect key="frame" x="20" y="16.5" width="92.5" height="17"/>
+                                                                        <rect key="frame" x="20" y="16.5" width="247" height="17"/>
                                                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -80,16 +80,16 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="39e-rR-FZ1" customClass="SquadCustomView">
-                                                                <rect key="frame" x="0.0" y="50" width="132.5" height="50"/>
+                                                                <rect key="frame" x="0.0" y="50" width="287" height="50"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iAx-0f-HlG">
-                                                                        <rect key="frame" x="20" y="16" width="66.5" height="17"/>
+                                                                        <rect key="frame" x="20" y="16" width="221" height="17"/>
                                                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                                                     </textField>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ds-xb-CZs">
-                                                                        <rect key="frame" x="95.5" y="12.5" width="25" height="25"/>
+                                                                        <rect key="frame" x="250" y="12.5" width="25" height="25"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico-password" highlightedImage="ico-password-active" translatesAutoresizingMaskIntoConstraints="NO" id="huk-uz-EtH">
                                                                                 <rect key="frame" x="3" y="5.5" width="22" height="14"/>
@@ -161,10 +161,10 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zLx-hv-vdR" customClass="SquadCustomView">
-                                                        <rect key="frame" x="44" y="371" width="132.5" height="56"/>
+                                                        <rect key="frame" x="44" y="371" width="287" height="56"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rs-ta-O4T">
-                                                                <rect key="frame" x="0.0" y="0.0" width="132.5" height="56"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="287" height="56"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                                 <state key="normal" title="Sign In">
                                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -189,7 +189,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sd7-r5-lb8">
-                                                        <rect key="frame" x="62.5" y="323" width="114" height="29"/>
+                                                        <rect key="frame" x="217" y="323" width="114" height="29"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                         <state key="normal" title="Forgot password?">
                                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
@@ -199,7 +199,7 @@
                                                         </connections>
                                                     </button>
                                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gi-lD-Tri">
-                                                        <rect key="frame" x="83.5" y="441" width="53.5" height="17"/>
+                                                        <rect key="frame" x="161" y="441" width="53.5" height="17"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gz-Oz-ahW">
                                                                 <rect key="frame" x="0.0" y="8" width="14" height="1"/>
@@ -237,7 +237,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view hidden="YES" tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RiX-Mh-svx">
-                                                        <rect key="frame" x="20" y="472" width="180" height="40"/>
+                                                        <rect key="frame" x="97.5" y="472" width="180" height="40"/>
                                                         <subviews>
                                                             <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rO1-Rv-7af">
                                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -333,7 +333,7 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fap-82-qlN">
-                                                        <rect key="frame" x="35.5" y="564" width="150" height="29"/>
+                                                        <rect key="frame" x="113" y="564" width="150" height="29"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         <state key="normal" title="Register New Account">
                                                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
