@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Cips'
-  s.version          = '0.2.1'
+  s.version          = '0.2.2'
   s.summary          = 'iOS SDK for Cips Service.'
 
 # This description is used to generate tags and improve search results.
@@ -55,25 +55,25 @@ DESC
         qnock.source_files = 'Cips/Qnock/**/*.{h,m}'
         qnock.private_header_files = ['Cips/Qnock/Internal/*.h']
     end
-    s.subspec 'Squad' do |squad|
-        squad.dependency	'Cips/Core'
-        squad.dependency 'SDWebImage', '~> 4.0'
-        squad.source_files = 'Cips/Squad/**/*.{h,m}'
-        squad.exclude_files = 'Cips/Squad/SquadSocial.h'
+#    s.subspec 'Squad' do |squad|
+#        squad.dependency	'Cips/Core'
+#        squad.dependency 'SDWebImage', '~> 4.0'
+#        squad.source_files = 'Cips/Squad/**/*.{h,m}'
+#        squad.exclude_files = 'Cips/Squad/SquadSocial.h'
 #  squad.weak_frameworks = 'TwitterKit'
-        squad.frameworks = 'Foundation', 'UIKit'
-        squad.resource_bundles = {
-            'CipsSquad' => ['Cips/Squad/Resource/**/*.{storyboard,xcassets,xib}']
-        }
-        squad.private_header_files = ['Cips/Squad/Internal/*.h','Cips/Squad/Views/*.h']
-    end
+#        squad.frameworks = 'Foundation', 'UIKit'
+#        squad.resource_bundles = {
+#            'CipsSquad' => ['Cips/Squad/Resource/**/*.{storyboard,xcassets,xib}']
+#       }
+#        squad.private_header_files = ['Cips/Squad/Internal/*.h','Cips/Squad/Views/*.h']
+#    end
 
-    s.subspec 'SquadSocial' do |social|
-    social.dependency 'Cips/Squad'
-    social.subspec 'Facebook' do |fb|
-        fb.dependency 'FBSDKLoginKit', '~> 4.25.0'
-    end
- end
+#    s.subspec 'SquadSocial' do |social|
+#    social.dependency 'Cips/Squad'
+#    social.subspec 'Facebook' do |fb|
+#        fb.dependency 'FBSDKLoginKit', '~> 4.25.0'
+#   end
+# end
 
 
    s.subspec 'Hearsay' do |hearsay|
