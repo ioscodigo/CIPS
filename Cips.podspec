@@ -29,7 +29,7 @@ DESC
   s.requires_arc	 = true
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
   s.xcconfig       = { 'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/"' }
 
  s.source_files = 'Cips/Core/Cips.{h,m}'
@@ -55,25 +55,25 @@ DESC
         qnock.source_files = 'Cips/Qnock/**/*.{h,m}'
         qnock.private_header_files = ['Cips/Qnock/Internal/*.h']
     end
-#    s.subspec 'Squad' do |squad|
-#        squad.dependency	'Cips/Core'
-#        squad.dependency 'SDWebImage', '~> 4.0'
-#        squad.source_files = 'Cips/Squad/**/*.{h,m}'
+    s.subspec 'Squad' do |squad|
+        squad.dependency	'Cips/Core'
+        squad.dependency 'SDWebImage', '~> 4.0'
+        squad.source_files = 'Cips/Squad/**/*.{h,m}'
 #        squad.exclude_files = 'Cips/Squad/SquadSocial.h'
-#  squad.weak_frameworks = 'TwitterKit'
-#        squad.frameworks = 'Foundation', 'UIKit'
-#        squad.resource_bundles = {
-#            'CipsSquad' => ['Cips/Squad/Resource/**/*.{storyboard,xcassets,xib}']
-#       }
-#        squad.private_header_files = ['Cips/Squad/Internal/*.h','Cips/Squad/Views/*.h']
-#    end
+#squad.weak_frameworks = 'TwitterKit'
+        squad.frameworks = 'Foundation', 'UIKit'
+        squad.resource_bundles = {
+            'CipsSquad' => ['Cips/Squad/Resource/**/*.{storyboard,xcassets,xib}']
+       }
+        squad.private_header_files = ['Cips/Squad/Internal/*.h','Cips/Squad/Views/*.h']
+    end
 
 #    s.subspec 'SquadSocial' do |social|
-#    social.dependency 'Cips/Squad'
-#    social.subspec 'Facebook' do |fb|
-#        fb.dependency 'FBSDKLoginKit', '~> 4.25.0'
-#   end
-# end
+#   social.dependency 'Cips/Squad'
+#   social.subspec 'Facebook' do |fb|
+#       fb.dependency 'FBSDKLoginKit', '~> 4.25.0'
+#  end
+#end
 
 
    s.subspec 'Hearsay' do |hearsay|

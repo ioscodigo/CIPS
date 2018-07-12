@@ -196,6 +196,13 @@ static Spotlight *objSpotlight = nil;
     [apiSpotlight setEnvironment:env onComplete:block];
 }
 
+-(void)spotlightBulkArticleWithParam:(NSArray *)slug_no withBlock:(spotlightCompletion)block{
+    NSDictionary *param = @{
+                            @"slug_uniq":[slug_no componentsJoinedByString:@","]
+                            };
+    [apiSpotlight spotlightBulkArticleWithParam:param withBlock:block];
+}
+
 
 
 

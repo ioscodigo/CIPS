@@ -77,7 +77,7 @@ NSString *sp_company_id;
             block(true,token);
         }else{
             spotlight_access_token = @"";
-            NSLog(@"log %@",response.display_message);
+//            NSLog(@"log %@",response.display_message);
             block(false,@"");
         }
     }];
@@ -202,12 +202,13 @@ NSString *sp_company_id;
     [self spotlightPostWithURL:SPOTLIGHT_LIVE_STREAMING_SHARE withParam:param withHeader:@{@"userid":[param objectForKey:@"userid"]} withBlock:block];
 }
 
+-(void)spotlightBulkArticleWithParam:(NSDictionary *)param withBlock:(spotlightCompletion)block{
+    [self spotlightPostWithURL:SPOTLIGHT_BULK_ARTICLE withParam:param withHeader:@{@"userid":@"guest"} withBlock:block];
+}
+
 
 -(void)spotlightRequest:(NSString *)url withMethod:(HTTPMethod)method withHeader:(NSDictionary *)header withParam:(NSDictionary *)param completion:(spotlightCompletion)block{
-    NSLog(@"REQUEST SPOTLIGHT baseurl %@",url);
     [spotlight_helper requestJSONWithMethod:method WithUrl:[NSString stringWithFormat:@"%@%@",base_api,url] withParameter:param withHeader:header withBlock:^(CipsHTTPResponse *respon) {
-        NSLog(@"SPOTLIGHT response %@",[NSString stringWithFormat:@"%@%@",base_api,url]);
-        NSLog(@"SPORLIGHT response %@",respon.responString);
         SpotlightResponseModel *responSpotlight = [[SpotlightResponseModel alloc] init];
         if(respon.error){
             responSpotlight.isSucces = false;

@@ -40,5 +40,7 @@
 
 -(void)spotlightLiveStreamingShareWithParam:(NSDictionary *)param withBlock:(spotlightCompletion)block;
 
+-(void)spotlightBulkArticleWithParam:(NSDictionary *)param withBlock:(spotlightCompletion)block;
+
 -(void)setEnvironment:(CIPSENVIRONMENT)env onComplete:(void (^)(bool isSuccess, NSString *responseToken))block;
 @end
