@@ -171,6 +171,8 @@
         responSquad.isSucces = false;
         if(!error){
             NSString *responseStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            NSLog(@"RESPON %@",responseStr);
+            NSLog(@"ERROR %@",error);
             NSError *jsonError = nil;
             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
             responSquad.error = nil;

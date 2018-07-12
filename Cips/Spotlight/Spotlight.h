@@ -106,7 +106,5 @@ typedef void (^spotlightCompletion)(SpotlightResponseModel *response);
 
 -(void)spotlightStoryShareWithStoryNo:(NSString *)story_no withUserId:(NSString *)user_id type:(NSString *)type fromEmail:(NSString *)from_email toEmail:(NSString *)to_email message:(NSString *)message onComplete:(spotlightCompletion)complete;
 
--(void)spotlightBulkArticleWithParam:(NSArray *)slug_no withBlock:(spotlightCompletion)block;
-
 -(void)spotlightChangeEnvironment:(CIPSENVIRONMENT)env onComplete:(void (^)(bool isSuccess, NSString *responseToken))block;
 @end

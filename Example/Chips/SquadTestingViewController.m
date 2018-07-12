@@ -8,13 +8,13 @@
 
 #import "SquadTestingViewController.h"
 #import <Cips/Cips.h>
-//#import <Cips/SquadViewHelper.h>
+#import <Cips/SquadViewHelper.h>
 #import <TwitterKit/TWTRKit.h>
 
-@interface SquadTestingViewController ()<LoginWithTwitterDelegate>
+@interface SquadTestingViewController ()<SquadControllerDelegate,LoginWithTwitterDelegate>
 {
     Squad *squad;
-//    SquadViewHelper *helper;
+    SquadViewHelper *helper;
     NSString *accessToken;
     NSString *refreshToken;
     NSString *userid;
@@ -44,17 +44,17 @@
     UIAlertController *alert2 = [UIAlertController alertControllerWithTitle:@"Auto Verify" message:@"Please select is send email or not while register" preferredStyle:UIAlertControllerStyleActionSheet];
     [Squad initWithClientId:@"BRANCH001" withClientSecret:@"3c516b727d7d67392e486d435731294b3e686e2f4e6636524d466b4265537b3f374b58254b3f67333e5a37395d515a26536b" withCompanyId:@"1" withEnvironment:PRODUCTION];
     squad = Squad.instance;
-//    helper = SquadViewHelper.helper;
+    helper = SquadViewHelper.helper;
     [alert addAction:[UIAlertAction actionWithTitle:@"PRODUCTION" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [Squad initWithClientId:@"BRANCH001" withClientSecret:@"3c516b727d7d67392e486d435731294b3e686e2f4e6636524d466b4265537b3f374b58254b3f67333e5a37395d515a26536b" withCompanyId:@"1" withEnvironment:PRODUCTION];
         squad = Squad.instance;
-//        helper = SquadViewHelper.helper;
+        helper = SquadViewHelper.helper;
         [self presentViewController:alert2 animated:true completion:nil];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"SANDBOX" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [Squad initWithClientId:@"BRANCH001" withClientSecret:@"3c516b727d7d67392e486d435731294b3e686e2f4e6636524d466b4265537b3f374b58254b3f67333e5a37395d515a26536b" withCompanyId:@"1" withEnvironment:SANDBOX];
         squad = Squad.instance;
-//        helper = SquadViewHelper.helper;
+        helper = SquadViewHelper.helper;
         [self presentViewController:alert2 animated:true completion:nil];
     }]];
         [alert2 addAction:[UIAlertAction actionWithTitle:@"Auto Verify/Not Send Email" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -78,34 +78,34 @@
 }
 
 - (IBAction)squadLoginOnClick:(id)sender {
-//    [SquadViewHelper SquadLoginViewWithController:self withRedirectURL:@"http://web.squad.dev.codigo.id/register" withVerifyURL:@"http://web.squad.dev.codigo.id/Register/verification" autoVerifyRegister:autoVerify delegate:self];
+    [SquadViewHelper SquadLoginViewWithController:self withRedirectURL:@"http://web.squad.dev.codigo.id/register" withVerifyURL:@"http://web.squad.dev.codigo.id/Register/verification" autoVerifyRegister:autoVerify delegate:self];
 }
 
 - (IBAction)squadViewProfileOnClick:(id)sender {
-//    [SquadViewHelper SquadProfileViewWithController:self token:accessToken];
+    [SquadViewHelper SquadProfileViewWithController:self token:accessToken];
 }
 
 - (IBAction)squadCheckTokenOnClick:(id)sender {
-//    [squad userInfoGetWithToken:accessToken respon:^(SquadResponseModel *response) {
-//        if([response.status isEqualToString:@"200"]){
-//            [helper showMessage:@"Access Token Valid" status:SUCCESS];
-//        }else{
-//            [helper showMessage:response.display_message status:ERROR];
-//        }
-//    }];
+    [squad userInfoGetWithToken:accessToken respon:^(SquadResponseModel *response) {
+        if([response.status isEqualToString:@"200"]){
+            [helper showMessage:@"Access Token Valid" status:SUCCESS];
+        }else{
+            [helper showMessage:response.display_message status:ERROR];
+        }
+    }];
 }
 
 - (IBAction)squadRefreshTokenOnClick:(id)sender {
-//    [squad tokenRefreshWithToken:refreshToken respon:^(SquadResponseModel *response) {
-//        if([response.status isEqualToString:@"200"]){
-//            [helper showMessage:@"Sukses Refresh Token" status:SUCCESS];
-//            accessToken = [response.data objectForKey:@"access_token"];
-//            refreshToken = [response.data objectForKey:@"refresh_token"];
-//            NSLog(@"Access token %@",accessToken);
-//        }else{
-//            [helper showMessage:response.display_message status:ERROR];
-//        }
-//    }];
+    [squad tokenRefreshWithToken:refreshToken respon:^(SquadResponseModel *response) {
+        if([response.status isEqualToString:@"200"]){
+            [helper showMessage:@"Sukses Refresh Token" status:SUCCESS];
+            accessToken = [response.data objectForKey:@"access_token"];
+            refreshToken = [response.data objectForKey:@"refresh_token"];
+            NSLog(@"Access token %@",accessToken);
+        }else{
+            [helper showMessage:response.display_message status:ERROR];
+        }
+    }];
 }
 
 -(void)LoginWithTwitter:(void (^)(NSString *, NSString *, NSString *, NSString *, NSString *))complete{

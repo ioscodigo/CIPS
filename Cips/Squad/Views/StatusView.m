@@ -29,6 +29,7 @@
         if(![[UIApplication sharedApplication] isStatusBarHidden]){
             top += 20;
         }
+        NSLog(@"top %f",top);
         [[label.leadingAnchor constraintEqualToAnchor:self.leadingAnchor constant:10] setActive:true];
         [[label.trailingAnchor constraintEqualToAnchor:self.trailingAnchor constant: -10] setActive:true];
         [[label.topAnchor constraintEqualToAnchor:self.topAnchor constant:top] setActive:true];

@@ -36,4 +36,3 @@
 #define SPOTLIGHT_STORY_HOMEPAGE @"story/?page=%d&limit=%d&limitarticle=%@"
 #define SPOTLIGHT_STORY_CHANNEL @"story/%@?page=%d&limit=%d&limitarticle=%d"
 #define SPOTLIGHT_STORY_DETAIL @"story/detail/%@?limitarticle=%d"
-#define SPOTLIGHT_BULK_ARTICLE @"articles/search/bulk"

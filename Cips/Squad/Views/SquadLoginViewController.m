@@ -52,7 +52,7 @@
     withSocial = false;
     Class fbClass = NSClassFromString(@"FBSDKLoginManager");
     bool hasTwitter = (_delegate != nil && [_delegate respondsToSelector:@selector(LoginWithTwitter:)]);
-    if ((fbClass != nil || hasTwitter) && false){
+    if (fbClass != nil || hasTwitter){
         [_viewHolderSocial setHidden:false];
         if(fbClass){
             NSLog(@"HAS CLASS");
