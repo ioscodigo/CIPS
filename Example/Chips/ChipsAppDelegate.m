@@ -28,7 +28,7 @@
     [FIRApp configure];
     [FIRMessaging messaging].delegate = self;
     
-    [[Twitter sharedInstance] startWithConsumerKey:@"ra5tx5wdSXhYyOtnOKljqn7Bt" consumerSecret:@"BgMD63gohasIJVz15GKyASs1XCYJKjEcD9OHTLflyl9XpAippf"];
+    [[Twitter sharedInstance] startWithConsumerKey:@"" consumerSecret:@""];
 
 //    [Qnock initWithClientId:@"8" withClientSecret:@"Z6AJioWnew" completion:^(NSString *responseToken) {
 //        NSLog(@"repons %@", responseToken);
